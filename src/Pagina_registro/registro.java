@@ -32,7 +32,7 @@ public class registro extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jButton12 = new javax.swing.JButton();
+        inicio_sesion = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         searchBox = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -51,7 +51,7 @@ public class registro extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();
-        jButton2 = new javax.swing.JButton();
+        registrarse = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
@@ -71,14 +71,14 @@ public class registro extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("MANGO GAMES");
 
-        jButton12.setBackground(new java.awt.Color(0, 153, 255));
-        jButton12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton12.setText("login");
-        jButton12.setToolTipText("");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        inicio_sesion.setBackground(new java.awt.Color(0, 153, 255));
+        inicio_sesion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        inicio_sesion.setForeground(new java.awt.Color(255, 255, 255));
+        inicio_sesion.setText("login");
+        inicio_sesion.setToolTipText("");
+        inicio_sesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                inicio_sesionActionPerformed(evt);
             }
         });
 
@@ -128,7 +128,7 @@ public class registro extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton12)
+                        .addComponent(inicio_sesion)
                         .addGap(21, 21, 21))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
@@ -143,7 +143,7 @@ public class registro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inicio_sesion, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(searchBox, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
@@ -192,7 +192,6 @@ public class registro extends javax.swing.JFrame {
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jTextField4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField4.setText("jTextField1");
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -205,7 +204,6 @@ public class registro extends javax.swing.JFrame {
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -218,7 +216,6 @@ public class registro extends javax.swing.JFrame {
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField2.setText("jTextField1");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -231,7 +228,6 @@ public class registro extends javax.swing.JFrame {
         jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField5.setText("jTextField1");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -244,21 +240,25 @@ public class registro extends javax.swing.JFrame {
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jPasswordField2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jPasswordField2.setText("jPasswordField1");
         jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField2ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
+        registrarse.setText("Registrarse");
+        registrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarseActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("COMUNIDAD AUTONOMA:");
         jLabel11.setAutoscrolls(true);
         jLabel11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Andalucia", "Murcia", "Extremadura", "Castilla la Mancha", "Castilla y Leon", "Comunitat Valenciana", "Catalonia", "Galicia", "Navarra", "Pais Vasco", "La Rioja" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -271,7 +271,6 @@ public class registro extends javax.swing.JFrame {
         jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jPasswordField3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jPasswordField3.setText("jPasswordField1");
         jPasswordField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField3ActionPerformed(evt);
@@ -326,7 +325,7 @@ public class registro extends javax.swing.JFrame {
                             .addComponent(jCheckBox1)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(235, 235, 235)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -364,7 +363,7 @@ public class registro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jCheckBox1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -437,9 +436,9 @@ public class registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField2ActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void inicio_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicio_sesionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_inicio_sesionActionPerformed
 
     private void jPasswordField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField3ActionPerformed
         // TODO add your handling code here:
@@ -452,6 +451,10 @@ public class registro extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registrarseActionPerformed
     
     /**
      * @param args the command line arguments
@@ -490,9 +493,8 @@ public class registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton inicio_sesion;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -516,6 +518,7 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JButton registrarse;
     private javax.swing.JTextField searchBox;
     private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables

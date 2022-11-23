@@ -68,7 +68,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jButton12" min="-2" max="-2" attributes="0"/>
+                              <Component id="inicio_sesion" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -88,7 +88,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jButton12" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="inicio_sesion" min="-2" pref="20" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="searchBox" pref="30" max="32767" attributes="0"/>
@@ -129,7 +129,7 @@
                 <Property name="text" type="java.lang.String" value="MANGO GAMES"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton12">
+            <Component class="javax.swing.JButton" name="inicio_sesion">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -144,7 +144,7 @@
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton12ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inicio_sesionActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="searchButton">
@@ -276,7 +276,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
-                                  <Component id="jButton2" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <Component id="registrarse" min="-2" pref="105" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="58" max="32767" attributes="0"/>
@@ -325,7 +325,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="22" max="32767" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="registrarse" min="-2" pref="54" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -385,7 +385,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="jTextField1"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField4ActionPerformed"/>
@@ -406,7 +405,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="jTextField1"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
@@ -427,7 +425,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="jTextField1"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
@@ -448,7 +445,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="jTextField1"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField5ActionPerformed"/>
@@ -469,16 +465,18 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="jPasswordField1"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField2ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="registrarse">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jButton2"/>
+                    <Property name="text" type="java.lang.String" value="Registrarse"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrarseActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
                   <Properties>
@@ -493,11 +491,18 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox1">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="11">
+                        <StringItem index="0" value="Andalucia"/>
+                        <StringItem index="1" value="Murcia"/>
+                        <StringItem index="2" value="Extremadura"/>
+                        <StringItem index="3" value="Castilla la Mancha"/>
+                        <StringItem index="4" value="Castilla y Leon"/>
+                        <StringItem index="5" value="Comunitat Valenciana"/>
+                        <StringItem index="6" value="Catalonia"/>
+                        <StringItem index="7" value="Galicia"/>
+                        <StringItem index="8" value="Navarra"/>
+                        <StringItem index="9" value="Pais Vasco"/>
+                        <StringItem index="10" value="La Rioja"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -523,7 +528,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="jPasswordField1"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField3ActionPerformed"/>
