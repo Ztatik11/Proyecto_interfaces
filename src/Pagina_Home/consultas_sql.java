@@ -7,6 +7,7 @@ package Pagina_Home;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 /**
@@ -16,23 +17,26 @@ import java.sql.SQLException;
 public class consultas_sql {
     Connection connection_;
 
-	public consultas_sql(String db_,String login_,String password_) {
+	public consultas_sql(String db_,String login_,String password_) throws SQLException {
 		// Conexion
 
-		String url_ = "jdbc:sqlserver://localhost:1433;database="+db_+";user="+login_+";password="+password_+";encrypt=true;trustServerCertificate=true;";
 		this.connection_ = null;
                     try {
-                            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                            Class.forName("com.mysql.cj.jdbc.Driver");
                     } catch (ClassNotFoundException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                     }
                     try {
-                            this.connection_ = DriverManager.getConnection(url_);
+                            this.connection_ = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db_,login_,password_);
                             System.out.println("Conexion a base de datos " + db_ + " correcta.");
                     } catch (SQLException e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
+                        // TODO Auto-generated catch block
+                        System.out.println("La base de datos no existe, creando Base de datos...");
+                        this.connection_ = DriverManager.getConnection("jdbc:mysql://localhost:3306/",login_,password_);
+                        Statement creacion_base_datos = this.connection_.createStatement();
+                        creacion_base_datos.executeUpdate("create database mango_games");
+                        e.printStackTrace();
                     }
 	}
 }

@@ -16,7 +16,7 @@ public class homeMain extends JFrame {
     
     public static void main(String[] args) {
         
-        consultas_sql conexion_db = new consultas_sql("usuario","clave","tuma");
+        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
     }
     
 }
