@@ -30,13 +30,30 @@ public class consultas_sql {
                     try {
                             this.connection_ = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db_,login_,password_);
                             System.out.println("Conexion a base de datos " + db_ + " correcta.");
+                            
                     } catch (SQLException e) {
                         // TODO Auto-generated catch block
                         System.out.println("La base de datos no existe, creando Base de datos...");
                         this.connection_ = DriverManager.getConnection("jdbc:mysql://localhost:3306/",login_,password_);
+                        System.out.println("Puñeta mala");
                         Statement creacion_base_datos = this.connection_.createStatement();
                         creacion_base_datos.executeUpdate("create database mango_games");
                         e.printStackTrace();
                     }
 	}
+    public Connection getConnection_() {
+        return connection_;
+    }
+
+    public void setConnection_(Connection connection_) {
+            this.connection_ = connection_;
+    }
+    
+    
+    
+    public void creacion_tabla(String nombre_tabla, String atributos) throws SQLException {
+       Statement st_;
+       st_=this.connection_.createStatement();
+       st_.executeUpdate("create table if not exists " + nombre_tabla + "(" + atributos + ")");
+    }
 }
