@@ -341,8 +341,13 @@ public class InterfazJuego extends javax.swing.JFrame {
 
     private void Boton_comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_comprarActionPerformed
         // TODO add your handling code here:
-        this.Confirmacion_compra.setVisible(true);
-        this.Confirmacion_compra.setEnabled(true);
+        if(this.usuario!=null){
+           this.Confirmacion_compra.setVisible(true);
+           this.Confirmacion_compra.setEnabled(true);
+        }else{
+            //NECESITAS INICIAR SESION O REGISTRARTE
+        }
+        
         
     }//GEN-LAST:event_Boton_comprarActionPerformed
 
