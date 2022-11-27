@@ -17,7 +17,7 @@ public class homeInterface extends javax.swing.JFrame {
      */
     public homeInterface() {
         initComponents();
-        menu.setVisible(false);
+        
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
     }
