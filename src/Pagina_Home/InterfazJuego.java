@@ -10,7 +10,8 @@ package Pagina_Home;
  */
 
 public class InterfazJuego extends javax.swing.JFrame {
-
+    boolean sesion_iniciada=false;
+    String usuario = null;
     /**
      * Creates new form NewJFrame
      */
@@ -29,6 +30,10 @@ public class InterfazJuego extends javax.swing.JFrame {
     private void initComponents() {
 
         Ventana_juego = new javax.swing.JPanel();
+        Confirmacion_compra = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        Boton_confirmacion_compra = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         Banner = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         Boton_login = new javax.swing.JButton();
@@ -37,15 +42,11 @@ public class InterfazJuego extends javax.swing.JFrame {
         searchBox = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         informacion_juego = new javax.swing.JPanel();
-        Confirmacion_compra = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        Boton_confirmacion_compra = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         Imagenes_precio = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         Boton_comprar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSlider1 = new javax.swing.JSlider();
+        jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         Informacion_juego = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -61,6 +62,55 @@ public class InterfazJuego extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(880, 560));
 
         Ventana_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Confirmacion_compra.setBackground(new java.awt.Color(178, 89, 249));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setText("¡COMPRA REALIZADA!");
+
+        Boton_confirmacion_compra.setBackground(new java.awt.Color(0, 153, 255));
+        Boton_confirmacion_compra.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Boton_confirmacion_compra.setForeground(new java.awt.Color(255, 255, 255));
+        Boton_confirmacion_compra.setText("OK");
+        Boton_confirmacion_compra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_confirmacion_compraActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Smile.png"))); // NOI18N
+        jLabel7.setText("jLabel7");
+
+        javax.swing.GroupLayout Confirmacion_compraLayout = new javax.swing.GroupLayout(Confirmacion_compra);
+        Confirmacion_compra.setLayout(Confirmacion_compraLayout);
+        Confirmacion_compraLayout.setHorizontalGroup(
+            Confirmacion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Confirmacion_compraLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Boton_confirmacion_compra)
+                .addGap(264, 264, 264))
+            .addGroup(Confirmacion_compraLayout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addGroup(Confirmacion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Confirmacion_compraLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel2))
+                .addContainerGap(120, Short.MAX_VALUE))
+        );
+        Confirmacion_compraLayout.setVerticalGroup(
+            Confirmacion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Confirmacion_compraLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Boton_confirmacion_compra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
+        );
+
+        Ventana_juego.add(Confirmacion_compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 140, 620, 360));
 
         Banner.setBackground(new java.awt.Color(0, 153, 255));
 
@@ -168,58 +218,7 @@ public class InterfazJuego extends javax.swing.JFrame {
         informacion_juego.setBackground(new java.awt.Color(0, 102, 204));
         informacion_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Confirmacion_compra.setBackground(new java.awt.Color(178, 89, 249));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setText("¡COMPRA REALIZADA!");
-
-        Boton_confirmacion_compra.setBackground(new java.awt.Color(0, 153, 255));
-        Boton_confirmacion_compra.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Boton_confirmacion_compra.setForeground(new java.awt.Color(255, 255, 255));
-        Boton_confirmacion_compra.setText("OK");
-        Boton_confirmacion_compra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_confirmacion_compraActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("jLabel7");
-
-        javax.swing.GroupLayout Confirmacion_compraLayout = new javax.swing.GroupLayout(Confirmacion_compra);
-        Confirmacion_compra.setLayout(Confirmacion_compraLayout);
-        Confirmacion_compraLayout.setHorizontalGroup(
-            Confirmacion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Confirmacion_compraLayout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(jLabel2)
-                .addContainerGap(120, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Confirmacion_compraLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Confirmacion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Confirmacion_compraLayout.createSequentialGroup()
-                        .addComponent(Boton_confirmacion_compra)
-                        .addGap(264, 264, 264))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Confirmacion_compraLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(286, 286, 286))))
-        );
-        Confirmacion_compraLayout.setVerticalGroup(
-            Confirmacion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Confirmacion_compraLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2)
-                .addGap(72, 72, 72)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                .addComponent(Boton_confirmacion_compra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-        );
-
-        informacion_juego.add(Confirmacion_compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 10, 620, 360));
-
         Imagenes_precio.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel6.setText("0       1       2       3       4       5");
 
         Boton_comprar.setBackground(new java.awt.Color(0, 153, 255));
         Boton_comprar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -237,6 +236,8 @@ public class InterfazJuego extends javax.swing.JFrame {
 
         jSlider1.setBackground(new java.awt.Color(255, 51, 0));
         jSlider1.setForeground(new java.awt.Color(0, 153, 255));
+
+        jLabel6.setText("0       1       2       3       4       5");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dum.jpg"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -340,7 +341,7 @@ public class InterfazJuego extends javax.swing.JFrame {
 
     private void Boton_comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_comprarActionPerformed
         // TODO add your handling code here:
-        
+        this.Confirmacion_compra.setVisible(true);
         
     }//GEN-LAST:event_Boton_comprarActionPerformed
 
@@ -372,6 +373,7 @@ public class InterfazJuego extends javax.swing.JFrame {
 
     private void Boton_confirmacion_compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_confirmacion_compraActionPerformed
         // TODO add your handling code here:
+        this.Confirmacion_compra.setVisible(false);
     }//GEN-LAST:event_Boton_confirmacion_compraActionPerformed
     
     
@@ -418,7 +420,7 @@ public class InterfazJuego extends javax.swing.JFrame {
     private javax.swing.JButton Boton_confirmacion_compra;
     private javax.swing.JButton Boton_login;
     private javax.swing.JButton Boton_registro;
-    private javax.swing.JPanel Confirmacion_compra;
+    public javax.swing.JPanel Confirmacion_compra;
     private javax.swing.JPanel Imagenes_precio;
     private javax.swing.JPanel Informacion_juego;
     private javax.swing.JPanel Ventana_juego;
