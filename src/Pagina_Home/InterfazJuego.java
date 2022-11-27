@@ -342,6 +342,7 @@ public class InterfazJuego extends javax.swing.JFrame {
     private void Boton_comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_comprarActionPerformed
         // TODO add your handling code here:
         this.Confirmacion_compra.setVisible(true);
+        this.Confirmacion_compra.setEnabled(true);
         
     }//GEN-LAST:event_Boton_comprarActionPerformed
 
@@ -374,6 +375,7 @@ public class InterfazJuego extends javax.swing.JFrame {
     private void Boton_confirmacion_compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_confirmacion_compraActionPerformed
         // TODO add your handling code here:
         this.Confirmacion_compra.setVisible(false);
+        this.Confirmacion_compra.setEnabled(false);
     }//GEN-LAST:event_Boton_confirmacion_compraActionPerformed
     
     
