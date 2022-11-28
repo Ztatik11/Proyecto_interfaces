@@ -4,6 +4,10 @@
  */
 package Pagina_Home;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author JoseManuelRodriguezC
@@ -15,9 +19,13 @@ public class InterfazJuego extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public InterfazJuego() {
+    public InterfazJuego() throws SQLException {
         initComponents();
         this.Confirmacion_compra.setVisible(false);
+        this.Confirmacion_compra.setEnabled(false);
+        this.panel_excepcion_compra.setVisible(false);
+        this.panel_excepcion_compra.setEnabled(false);
+        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
     }
 
     /**
@@ -30,6 +38,12 @@ public class InterfazJuego extends javax.swing.JFrame {
     private void initComponents() {
 
         Ventana_juego = new javax.swing.JPanel();
+        panel_excepcion_compra = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        Boton_inicio_sesion_compra1 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        Boton_registro_compra = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
         Confirmacion_compra = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         Boton_confirmacion_compra = new javax.swing.JButton();
@@ -59,9 +73,78 @@ public class InterfazJuego extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MangoGames");
         setIconImages(null);
-        setMaximumSize(new java.awt.Dimension(880, 560));
 
         Ventana_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panel_excepcion_compra.setBackground(new java.awt.Color(178, 89, 249));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel8.setText("Debes iniciar sesion");
+
+        Boton_inicio_sesion_compra1.setBackground(new java.awt.Color(0, 153, 255));
+        Boton_inicio_sesion_compra1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Boton_inicio_sesion_compra1.setForeground(new java.awt.Color(255, 255, 255));
+        Boton_inicio_sesion_compra1.setText("INICIAR SESIÓN");
+        Boton_inicio_sesion_compra1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_inicio_sesion_compra1ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel14.setText("Registrarte");
+
+        Boton_registro_compra.setBackground(new java.awt.Color(0, 153, 255));
+        Boton_registro_compra.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Boton_registro_compra.setForeground(new java.awt.Color(255, 255, 255));
+        Boton_registro_compra.setText("REGISTRARSE");
+        Boton_registro_compra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_registro_compraActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("O");
+
+        javax.swing.GroupLayout panel_excepcion_compraLayout = new javax.swing.GroupLayout(panel_excepcion_compra);
+        panel_excepcion_compra.setLayout(panel_excepcion_compraLayout);
+        panel_excepcion_compraLayout.setHorizontalGroup(
+            panel_excepcion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_excepcion_compraLayout.createSequentialGroup()
+                .addGroup(panel_excepcion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_excepcion_compraLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel8))
+                    .addGroup(panel_excepcion_compraLayout.createSequentialGroup()
+                        .addGap(282, 282, 282)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_excepcion_compraLayout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(Boton_inicio_sesion_compra1))
+                    .addGroup(panel_excepcion_compraLayout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addGroup(panel_excepcion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Boton_registro_compra)
+                            .addComponent(jLabel14))))
+                .addContainerGap(167, Short.MAX_VALUE))
+        );
+        panel_excepcion_compraLayout.setVerticalGroup(
+            panel_excepcion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_excepcion_compraLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Boton_inicio_sesion_compra1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Boton_registro_compra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        Ventana_juego.add(panel_excepcion_compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 140, 620, 360));
 
         Confirmacion_compra.setBackground(new java.awt.Color(178, 89, 249));
 
@@ -348,6 +431,8 @@ public class InterfazJuego extends javax.swing.JFrame {
            this.Confirmacion_compra.setEnabled(true);
         }else{
             //NECESITAS INICIAR SESION O REGISTRARTE
+            this.panel_excepcion_compra.setVisible(true);
+            this.panel_excepcion_compra.setEnabled(true);
         }
         
         
@@ -362,19 +447,34 @@ public class InterfazJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_loginMouseClicked
 
     private void Boton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_loginActionPerformed
-       inicio_sesion a = new inicio_sesion();
+       inicio_sesion a = null;
+        try {
+            a = new inicio_sesion();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
        a.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_Boton_loginActionPerformed
 
     private void Boton_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_registroActionPerformed
-       registro b = new registro();
+       registro b = null;
+        try {
+            b = new registro();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
        b.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_Boton_registroActionPerformed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
-       homeInterface c = new homeInterface();
+       homeInterface c = null;
+        try {
+            c = new homeInterface();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
        c.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MousePressed
@@ -384,6 +484,30 @@ public class InterfazJuego extends javax.swing.JFrame {
         this.Confirmacion_compra.setVisible(false);
         this.Confirmacion_compra.setEnabled(false);
     }//GEN-LAST:event_Boton_confirmacion_compraActionPerformed
+
+    private void Boton_inicio_sesion_compra1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_inicio_sesion_compra1ActionPerformed
+        // TODO add your handling code here:
+        inicio_sesion a = null;
+        try {
+            a = new inicio_sesion();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       a.setVisible(true);
+       this.setVisible(false);
+        
+    }//GEN-LAST:event_Boton_inicio_sesion_compra1ActionPerformed
+
+    private void Boton_registro_compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_registro_compraActionPerformed
+        // TODO add your handling code here:
+        registro b = null;
+        try {
+            b = new registro();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       b.setVisible(true);
+    }//GEN-LAST:event_Boton_registro_compraActionPerformed
     
     
     /**@param args the command line arguments
@@ -418,7 +542,11 @@ public class InterfazJuego extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazJuego().setVisible(true);
+                try {
+                    new InterfazJuego().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -427,8 +555,10 @@ public class InterfazJuego extends javax.swing.JFrame {
     private javax.swing.JPanel Banner;
     private javax.swing.JButton Boton_comprar;
     private javax.swing.JButton Boton_confirmacion_compra;
+    private javax.swing.JButton Boton_inicio_sesion_compra1;
     private javax.swing.JButton Boton_login;
     private javax.swing.JButton Boton_registro;
+    private javax.swing.JButton Boton_registro_compra;
     public javax.swing.JPanel Confirmacion_compra;
     private javax.swing.JPanel Imagenes_precio;
     private javax.swing.JPanel Informacion_juego;
@@ -440,14 +570,18 @@ public class InterfazJuego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSlider jSlider1;
+    public javax.swing.JPanel panel_excepcion_compra;
     private javax.swing.JTextField searchBox;
     private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables

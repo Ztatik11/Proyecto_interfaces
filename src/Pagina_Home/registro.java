@@ -8,6 +8,9 @@ package Pagina_Home;
  *
  * @author JoseManuelRodriguezC
  */
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 public class registro extends javax.swing.JFrame {
@@ -15,9 +18,10 @@ public class registro extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public registro() {
+    public registro() throws SQLException {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
+        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
     }
 
     /**
@@ -415,7 +419,12 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_claveActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-       inicio_sesion a = new inicio_sesion();
+       inicio_sesion a = null;
+        try {
+            a = new inicio_sesion();
+        } catch (SQLException ex) {
+            Logger.getLogger(registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
        a.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jButton12ActionPerformed
@@ -433,7 +442,12 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_residenciaActionPerformed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
-        homeInterface c = new homeInterface();
+        homeInterface c = null;
+        try {
+            c = new homeInterface();
+        } catch (SQLException ex) {
+            Logger.getLogger(registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
        c.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MousePressed
@@ -470,7 +484,11 @@ public class registro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new registro().setVisible(true);
+                try {
+                    new registro().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(registro.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

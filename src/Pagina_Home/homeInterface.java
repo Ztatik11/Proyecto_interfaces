@@ -8,18 +8,22 @@ package Pagina_Home;
  *
  * @author JoseManuelRodriguezC
  */
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class homeInterface extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public homeInterface() {
+    public homeInterface() throws SQLException {
         initComponents();
         menu.setVisible(false);
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
+        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
     }
 
     /**
@@ -399,7 +403,12 @@ public class homeInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
-        InterfazJuego d = new InterfazJuego();
+        InterfazJuego d = null;
+        try {
+            d = new InterfazJuego();
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
         d.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2MousePressed
@@ -409,19 +418,34 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
-    homeInterface c = new homeInterface();
+    homeInterface c = null;
+        try {
+            c = new homeInterface();
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
        c.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MousePressed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        inicio_sesion a = new inicio_sesion();
+        inicio_sesion a = null;
+        try {
+            a = new inicio_sesion();
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
         a.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        registro b = new registro();
+        registro b = null;
+        try {
+            b = new registro();
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
         b.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_registerButtonActionPerformed
@@ -544,7 +568,11 @@ public class homeInterface extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new homeInterface().setVisible(true);
+                try {
+                    new homeInterface().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

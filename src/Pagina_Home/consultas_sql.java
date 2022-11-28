@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 
 
 /**
@@ -56,4 +58,52 @@ public class consultas_sql {
        st_=this.connection_.createStatement();
        st_.executeUpdate("create table if not exists " + nombre_tabla + "(" + atributos + ")");
     }
+    
+    public void insertar_una_nueva_fila_en_una_tabla(String tabla, String atributos, String sentencia_atributos,
+			Connection connection_) {
+
+		try {
+			Statement st_ = connection_.createStatement();
+			System.out.println("insert into " + tabla + " (" + atributos + ") values (" + sentencia_atributos + ")");
+			st_.executeUpdate("insert into " + tabla + " (" + atributos + ") values (" + sentencia_atributos + ")");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+    
+    public ResultSet realizar_consulta(String query, Connection connection_) throws SQLException {
+
+       Statement _st = connection_.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+       System.out.println(query);
+       ResultSet _rs = _st.executeQuery(query);
+
+       return _rs;
+    }
+    
+    public String leer_resultset_string(ResultSet _rs, String atributo) throws SQLException {
+	_rs.beforeFirst();
+	String valorpedido = null;
+	while (_rs.next()) {
+
+		valorpedido = _rs.getString(atributo);
+
+	}
+	return valorpedido;
+    }
+    
+    public static int leer_resultset_int(ResultSet _rs, String atributo) throws SQLException {
+	_rs.beforeFirst();
+	int valorpedido = 0;
+	while (_rs.next()) {
+
+		valorpedido = _rs.getInt(atributo);
+
+	}
+	return valorpedido;
+    }
+    
 }
+
+

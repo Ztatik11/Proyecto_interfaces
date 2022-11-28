@@ -1,5 +1,9 @@
 package Pagina_Home;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -15,8 +19,9 @@ public class inicio_sesion extends javax.swing.JFrame {
     /**
      * Creates new form inicio_sesion
      */
-    public inicio_sesion() {
+    public inicio_sesion() throws SQLException {
         initComponents();
+        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
     }
 
     /**
@@ -308,13 +313,23 @@ public class inicio_sesion extends javax.swing.JFrame {
     }//GEN-LAST:event_clave_inicioActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-       registro b = new registro();
+       registro b = null;
+        try {
+            b = new registro();
+        } catch (SQLException ex) {
+            Logger.getLogger(inicio_sesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
        b.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
-        homeInterface c = new homeInterface();
+        homeInterface c = null;
+        try {
+            c = new homeInterface();
+        } catch (SQLException ex) {
+            Logger.getLogger(inicio_sesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
        c.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MousePressed
@@ -355,7 +370,11 @@ public class inicio_sesion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new inicio_sesion().setVisible(true);
+                try {
+                    new inicio_sesion().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(inicio_sesion.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
