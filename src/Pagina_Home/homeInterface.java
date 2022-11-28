@@ -17,7 +17,7 @@ public class homeInterface extends javax.swing.JFrame {
      */
     public homeInterface() {
         initComponents();
-        
+        menu.setVisible(false);
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
     }
@@ -38,18 +38,24 @@ public class homeInterface extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         jPanel3 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
+        J1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        G1 = new javax.swing.JLabel();
+        J2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        G2 = new javax.swing.JLabel();
+        J3 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
+        G3 = new javax.swing.JLabel();
+        J4 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        G4 = new javax.swing.JLabel();
+        J5 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        G5 = new javax.swing.JLabel();
+        J6 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        G6 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
@@ -92,41 +98,196 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 711, -1));
 
+        J1.setBackground(new java.awt.Color(255, 255, 255));
+
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton2MousePressed(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 71, 135, 100));
+
+        G1.setText("DOOM");
+
+        javax.swing.GroupLayout J1Layout = new javax.swing.GroupLayout(J1);
+        J1.setLayout(J1Layout);
+        J1Layout.setHorizontalGroup(
+            J1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(J1Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addGroup(J1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J1Layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J1Layout.createSequentialGroup()
+                        .addComponent(G1)
+                        .addGap(70, 70, 70))))
+        );
+        J1Layout.setVerticalGroup(
+            J1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(J1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(G1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(J1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 170, 140));
+
+        J2.setBackground(new java.awt.Color(255, 255, 255));
+
+        G2.setText("PEPA PIG 2");
+
+        javax.swing.GroupLayout J2Layout = new javax.swing.GroupLayout(J2);
+        J2.setLayout(J2Layout);
+        J2Layout.setHorizontalGroup(
+            J2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(J2Layout.createSequentialGroup()
+                .addGroup(J2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(J2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(J2Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(G2)))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        J2Layout.setVerticalGroup(
+            J2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(J2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(G2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(J2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, 140));
+
+        J3.setBackground(new java.awt.Color(255, 255, 255));
+
+        G3.setText("Pokemon 25");
+
+        javax.swing.GroupLayout J3Layout = new javax.swing.GroupLayout(J3);
+        J3.setLayout(J3Layout);
+        J3Layout.setHorizontalGroup(
+            J3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(J3Layout.createSequentialGroup()
+                .addGroup(J3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(J3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(J3Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(G3)))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        J3Layout.setVerticalGroup(
+            J3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(J3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(G3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(J3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 160, 140));
+
+        J4.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 248, 135, 100));
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 71, 135, 100));
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 248, 135, 100));
-        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(528, 71, 135, 100));
-        jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(528, 248, 135, 100));
 
-        jLabel1.setText("JUEGO1");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 177, -1, -1));
+        G4.setText("Torrente 6");
 
-        jLabel2.setText("JUEGO1");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 354, -1, -1));
+        javax.swing.GroupLayout J4Layout = new javax.swing.GroupLayout(J4);
+        J4.setLayout(J4Layout);
+        J4Layout.setHorizontalGroup(
+            J4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(J4Layout.createSequentialGroup()
+                .addGroup(J4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(J4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(J4Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(G4)))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        J4Layout.setVerticalGroup(
+            J4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(J4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(G4)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
 
-        jLabel3.setText("JUEGO1");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 354, -1, -1));
+        jPanel3.add(J4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 160, -1));
 
-        jLabel6.setText("JUEGO1");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(349, 177, -1, -1));
+        J5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel7.setText("JUEGO1");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 177, -1, -1));
+        G5.setText("Mango 2");
 
-        jLabel8.setText("JUEGO1");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 354, -1, -1));
+        javax.swing.GroupLayout J5Layout = new javax.swing.GroupLayout(J5);
+        J5.setLayout(J5Layout);
+        J5Layout.setHorizontalGroup(
+            J5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(J5Layout.createSequentialGroup()
+                .addContainerGap(9, Short.MAX_VALUE)
+                .addGroup(J5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J5Layout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J5Layout.createSequentialGroup()
+                        .addComponent(G5)
+                        .addGap(53, 53, 53))))
+        );
+        J5Layout.setVerticalGroup(
+            J5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(J5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(G5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(J5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 150, 130));
+
+        J6.setBackground(new java.awt.Color(255, 255, 255));
+
+        G6.setText("EldenRing");
+
+        javax.swing.GroupLayout J6Layout = new javax.swing.GroupLayout(J6);
+        J6.setLayout(J6Layout);
+        J6Layout.setHorizontalGroup(
+            J6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(J6Layout.createSequentialGroup()
+                .addContainerGap(9, Short.MAX_VALUE)
+                .addGroup(J6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J6Layout.createSequentialGroup()
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J6Layout.createSequentialGroup()
+                        .addComponent(G6)
+                        .addGap(47, 47, 47))))
+        );
+        J6Layout.setVerticalGroup(
+            J6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(J6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(G6))
+        );
+
+        jPanel3.add(J6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 150, 130));
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
@@ -187,6 +348,11 @@ public class homeInterface extends javax.swing.JFrame {
         searchButton.setBackground(new java.awt.Color(0, 153, 255));
         searchButton.setForeground(new java.awt.Color(255, 255, 255));
         searchButton.setText("SEARCH");
+        searchButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchButtonMouseClicked(evt);
+            }
+        });
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
@@ -273,6 +439,67 @@ public class homeInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuButtonActionPerformed
 
+    private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
+        String game1=G1.getText();
+        String game2=G2.getText();
+        String game3=G3.getText();
+        String game4=G4.getText();
+        String game5=G5.getText();
+        String game6=G6.getText();
+        
+        String busqueda=searchBox.getText();
+         if(busqueda.equalsIgnoreCase(game1)){
+            J2.setVisible(false);
+            J3.setVisible(false);
+            J4.setVisible(false);
+            J5.setVisible(false);
+            J6.setVisible(false);
+            J1.setVisible(true);
+        }if(busqueda.equalsIgnoreCase(game2)){
+            J1.setVisible(false);
+            J3.setVisible(false);
+            J4.setVisible(false);
+            J5.setVisible(false);
+            J6.setVisible(false);
+            J2.setVisible(true);
+         }if(busqueda.equalsIgnoreCase(game3)){
+             J1.setVisible(false);
+             J2.setVisible(false);
+             J4.setVisible(false);
+             J5.setVisible(false);
+             J6.setVisible(false);
+             J3.setVisible(true);
+         }if(busqueda.equalsIgnoreCase(game4)){
+             J1.setVisible(false);
+             J2.setVisible(false);
+             J5.setVisible(false);
+             J6.setVisible(false);
+             J3.setVisible(false);
+             J4.setVisible(true);
+         }if(busqueda.equalsIgnoreCase(game5)){
+             J1.setVisible(false);
+             J2.setVisible(false);
+             J6.setVisible(false);
+             J4.setVisible(false);
+             J3.setVisible(false);
+             J5.setVisible(true);
+         }if(busqueda.equalsIgnoreCase(game6)){
+             J1.setVisible(false);
+             J2.setVisible(false);
+             J3.setVisible(false);
+             J4.setVisible(false);
+             J5.setVisible(false);
+             J6.setVisible(true);
+         }if(busqueda.equalsIgnoreCase("")){
+             J1.setVisible(true);
+             J2.setVisible(true);
+             J3.setVisible(true);
+             J4.setVisible(true);
+             J5.setVisible(true);
+             J6.setVisible(true);
+         }
+    }//GEN-LAST:event_searchButtonMouseClicked
+
         
     /**
      * @param args the command line arguments
@@ -313,6 +540,18 @@ public class homeInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel G1;
+    private javax.swing.JLabel G2;
+    private javax.swing.JLabel G3;
+    private javax.swing.JLabel G4;
+    private javax.swing.JLabel G5;
+    private javax.swing.JLabel G6;
+    private javax.swing.JPanel J1;
+    private javax.swing.JPanel J2;
+    private javax.swing.JPanel J3;
+    private javax.swing.JPanel J4;
+    private javax.swing.JPanel J5;
+    private javax.swing.JPanel J6;
     private javax.swing.JPanel content;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -320,14 +559,8 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

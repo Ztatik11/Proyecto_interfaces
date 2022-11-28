@@ -17,7 +17,7 @@ public class InterfazJuego extends javax.swing.JFrame {
      */
     public InterfazJuego() {
         initComponents();
-        
+        this.Confirmacion_compra.setVisible(false);
     }
 
     /**
@@ -341,6 +341,8 @@ public class InterfazJuego extends javax.swing.JFrame {
 
     private void Boton_comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_comprarActionPerformed
         // TODO add your handling code here:
+        this.Confirmacion_compra.setVisible(true); //Lo he puesto a true para que se active al pulsar de momento, al ejecutar he puesto que sea invisible(YONLEE)
+        
         if(this.usuario!=null){
            this.Confirmacion_compra.setVisible(true);
            this.Confirmacion_compra.setEnabled(true);
