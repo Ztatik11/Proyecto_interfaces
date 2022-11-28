@@ -358,6 +358,11 @@ public class homeInterface extends javax.swing.JFrame {
                 searchButtonActionPerformed(evt);
             }
         });
+        searchButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchButtonKeyPressed(evt);
+            }
+        });
         jPanel6.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(784, 83, -1, 30));
 
         searchBox.addActionListener(new java.awt.event.ActionListener() {
@@ -404,7 +409,9 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
-
+    homeInterface c = new homeInterface();
+       c.setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_jLabel4MousePressed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
@@ -499,6 +506,9 @@ public class homeInterface extends javax.swing.JFrame {
              J6.setVisible(true);
          }
     }//GEN-LAST:event_searchButtonMouseClicked
+
+    private void searchButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchButtonKeyPressed
+    }//GEN-LAST:event_searchButtonKeyPressed
 
         
     /**
