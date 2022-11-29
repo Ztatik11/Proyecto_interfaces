@@ -12,11 +12,20 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
+import org.netbeans.validation.api.ui.swing.ValidationPanel;
 
 public class registro extends javax.swing.JFrame {
-
+    String usuario_;
+    String nombre_;
+    String apellidos_;
+    String correo_;
+    String residencia_;
+    String clave_;
+    consultas_sql conexion_db;
     /**
      * Creates new form NewJFrame
      */
@@ -29,16 +38,27 @@ public class registro extends javax.swing.JFrame {
         ValidationGroup Campo_Validador_clave = Validador_clave.getValidationGroup();
         Campo_Validador_usuario.add(usuario,StringValidators.NO_WHITESPACE);
         Campo_Validador_usuario.add(usuario,StringValidators.REQUIRE_NON_EMPTY_STRING);
-        Campo_Validador_nombre.add(nombre,StringValidators.CHARACTER_SET_NAME);
+     /*   Campo_Validador_nombre.add(nombre,StringValidators.CHARACTER_SET_NAME);
         Campo_Validador_nombre.add(nombre,StringValidators.REQUIRE_NON_EMPTY_STRING);
         Campo_Validador_apellido.add(apellidos,StringValidators.CHARACTER_SET_NAME);
         Campo_Validador_correo.add(correo_electronico,StringValidators.EMAIL_ADDRESS);
-        Campo_Validador_correo.add(correo_electronico,StringValidators.REQUIRE_NON_EMPTY_STRING);
+        //Campo_Validador_correo.add(correo_electronico,StringValidators.REQUIRE_NON_EMPTY_STRING);
         Campo_Validador_clave.add(clave,StringValidators.NO_WHITESPACE);
-        Campo_Validador_clave.add(clave,StringValidators.REQUIRE_NON_EMPTY_STRING);
+        //Campo_Validador_clave.add(clave,StringValidators.REQUIRE_NON_EMPTY_STRING);
+      */
         
+        Validador_usuario.addChangeListener(new ChangeListener() {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+          if(Validador_usuario.getProblem()==null){
+              registro.setEnabled(true);
+          }else{
+              registro.setEnabled(false);
+          }
+        }
+      });
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
-        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
+        this.conexion_db = new consultas_sql("mango_games","root","root");
         
     }
 
@@ -261,6 +281,7 @@ public class registro extends javax.swing.JFrame {
         });
 
         registro.setText("Registrarse");
+        registro.setEnabled(false);
         registro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registroActionPerformed(evt);
@@ -444,6 +465,9 @@ public class registro extends javax.swing.JFrame {
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
         // TODO add your handling code here:
+        System.out.println(this.usuario.getText());
+        this.usuario_=this.usuario.getText();
+        
     }//GEN-LAST:event_usuarioActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
@@ -498,6 +522,7 @@ public class registro extends javax.swing.JFrame {
 
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
         // TODO add your handling code here:
+        //conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Nombre,Apellidos,Email,clave,administrador", sentencia_atributos, connection_);
     }//GEN-LAST:event_registroActionPerformed
     
     /**
@@ -566,7 +591,7 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombre;
-    private javax.swing.JButton registro;
+    public javax.swing.JButton registro;
     private javax.swing.JComboBox<String> residencia;
     private javax.swing.JTextField searchBox;
     private javax.swing.JButton searchButton;
