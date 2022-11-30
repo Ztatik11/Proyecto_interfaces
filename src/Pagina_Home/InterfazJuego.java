@@ -4,19 +4,28 @@
  */
 package Pagina_Home;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author JoseManuelRodriguezC
  */
 
 public class InterfazJuego extends javax.swing.JFrame {
-
+    boolean sesion_iniciada=false;
+    String usuario = null;
     /**
      * Creates new form NewJFrame
      */
-    public InterfazJuego() {
+    public InterfazJuego() throws SQLException {
         initComponents();
-        
+        this.Confirmacion_compra.setVisible(false);
+        this.Confirmacion_compra.setEnabled(false);
+        this.panel_excepcion_compra.setVisible(false);
+        this.panel_excepcion_compra.setEnabled(false);
+        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
     }
 
     /**
@@ -28,22 +37,32 @@ public class InterfazJuego extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        Ventana_juego = new javax.swing.JPanel();
+        panel_excepcion_compra = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        Boton_inicio_sesion_compra1 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        Boton_registro_compra = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        Confirmacion_compra = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        Boton_confirmacion_compra = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        Banner = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         Boton_login = new javax.swing.JButton();
         Boton_registro = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         searchBox = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        informacion_juego = new javax.swing.JPanel();
+        Imagenes_precio = new javax.swing.JPanel();
+        Boton_comprar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSlider1 = new javax.swing.JSlider();
+        jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        Informacion_juego = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -54,11 +73,129 @@ public class InterfazJuego extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MangoGames");
         setIconImages(null);
-        setMaximumSize(new java.awt.Dimension(880, 560));
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Ventana_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(0, 153, 255));
+        panel_excepcion_compra.setBackground(new java.awt.Color(178, 89, 249));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel8.setText("Debes iniciar sesion");
+
+        Boton_inicio_sesion_compra1.setBackground(new java.awt.Color(0, 153, 255));
+        Boton_inicio_sesion_compra1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Boton_inicio_sesion_compra1.setForeground(new java.awt.Color(255, 255, 255));
+        Boton_inicio_sesion_compra1.setText("INICIAR SESIÓN");
+        Boton_inicio_sesion_compra1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_inicio_sesion_compra1ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel14.setText("Registrarte");
+
+        Boton_registro_compra.setBackground(new java.awt.Color(0, 153, 255));
+        Boton_registro_compra.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Boton_registro_compra.setForeground(new java.awt.Color(255, 255, 255));
+        Boton_registro_compra.setText("REGISTRARSE");
+        Boton_registro_compra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_registro_compraActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("O");
+
+        javax.swing.GroupLayout panel_excepcion_compraLayout = new javax.swing.GroupLayout(panel_excepcion_compra);
+        panel_excepcion_compra.setLayout(panel_excepcion_compraLayout);
+        panel_excepcion_compraLayout.setHorizontalGroup(
+            panel_excepcion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_excepcion_compraLayout.createSequentialGroup()
+                .addGroup(panel_excepcion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_excepcion_compraLayout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel8))
+                    .addGroup(panel_excepcion_compraLayout.createSequentialGroup()
+                        .addGap(282, 282, 282)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_excepcion_compraLayout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(Boton_inicio_sesion_compra1))
+                    .addGroup(panel_excepcion_compraLayout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addGroup(panel_excepcion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Boton_registro_compra)
+                            .addComponent(jLabel14))))
+                .addContainerGap(167, Short.MAX_VALUE))
+        );
+        panel_excepcion_compraLayout.setVerticalGroup(
+            panel_excepcion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_excepcion_compraLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Boton_inicio_sesion_compra1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Boton_registro_compra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        Ventana_juego.add(panel_excepcion_compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 140, 620, 360));
+
+        Confirmacion_compra.setBackground(new java.awt.Color(178, 89, 249));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setText("¡COMPRA REALIZADA!");
+
+        Boton_confirmacion_compra.setBackground(new java.awt.Color(0, 153, 255));
+        Boton_confirmacion_compra.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Boton_confirmacion_compra.setForeground(new java.awt.Color(255, 255, 255));
+        Boton_confirmacion_compra.setText("OK");
+        Boton_confirmacion_compra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_confirmacion_compraActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Smile.png"))); // NOI18N
+        jLabel7.setText("jLabel7");
+
+        javax.swing.GroupLayout Confirmacion_compraLayout = new javax.swing.GroupLayout(Confirmacion_compra);
+        Confirmacion_compra.setLayout(Confirmacion_compraLayout);
+        Confirmacion_compraLayout.setHorizontalGroup(
+            Confirmacion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Confirmacion_compraLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Boton_confirmacion_compra)
+                .addGap(264, 264, 264))
+            .addGroup(Confirmacion_compraLayout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addGroup(Confirmacion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Confirmacion_compraLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel2))
+                .addContainerGap(120, Short.MAX_VALUE))
+        );
+        Confirmacion_compraLayout.setVerticalGroup(
+            Confirmacion_compraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Confirmacion_compraLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Boton_confirmacion_compra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
+        );
+
+        Ventana_juego.add(Confirmacion_compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 140, 620, 360));
+
+        Banner.setBackground(new java.awt.Color(0, 153, 255));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -114,67 +251,65 @@ public class InterfazJuego extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout BannerLayout = new javax.swing.GroupLayout(Banner);
+        Banner.setLayout(BannerLayout);
+        BannerLayout.setHorizontalGroup(
+            BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BannerLayout.createSequentialGroup()
                 .addGap(142, 142, 142)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel4)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BannerLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Boton_login)
                         .addGap(11, 11, 11)
                         .addComponent(Boton_registro)
                         .addGap(21, 21, 21))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGroup(BannerLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(searchButton)
                         .addContainerGap(22, Short.MAX_VALUE))))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        BannerLayout.setVerticalGroup(
+            BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BannerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BannerLayout.createSequentialGroup()
+                        .addGroup(BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Boton_login, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Boton_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(searchBox)
                             .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                         .addGap(27, 27, 27))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BannerLayout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BannerLayout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(15, 15, 15))))
         );
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 140));
+        Ventana_juego.add(Banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 140));
 
-        jPanel5.setBackground(new java.awt.Color(0, 102, 204));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        informacion_juego.setBackground(new java.awt.Color(0, 102, 204));
+        informacion_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        Imagenes_precio.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setText("0       1       2       3       4       5");
-
-        jButton1.setBackground(new java.awt.Color(0, 153, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Comprar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Boton_comprar.setBackground(new java.awt.Color(0, 153, 255));
+        Boton_comprar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Boton_comprar.setForeground(new java.awt.Color(255, 255, 255));
+        Boton_comprar.setText("Comprar");
+        Boton_comprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Boton_comprarActionPerformed(evt);
             }
         });
 
@@ -185,6 +320,8 @@ public class InterfazJuego extends javax.swing.JFrame {
         jSlider1.setBackground(new java.awt.Color(255, 51, 0));
         jSlider1.setForeground(new java.awt.Color(0, 153, 255));
 
+        jLabel6.setText("0       1       2       3       4       5");
+
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dum.jpg"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,85 +329,85 @@ public class InterfazJuego extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout Imagenes_precioLayout = new javax.swing.GroupLayout(Imagenes_precio);
+        Imagenes_precio.setLayout(Imagenes_precioLayout);
+        Imagenes_precioLayout.setHorizontalGroup(
+            Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Imagenes_precioLayout.createSequentialGroup()
+                .addGroup(Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Imagenes_precioLayout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(Imagenes_precioLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(85, 85, 85)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(Imagenes_precioLayout.createSequentialGroup()
                         .addGap(155, 155, 155)
-                        .addComponent(jButton1)))
+                        .addComponent(Boton_comprar)))
                 .addGap(0, 58, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Imagenes_precioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        Imagenes_precioLayout.setVerticalGroup(
+            Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Imagenes_precioLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Imagenes_precioLayout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Boton_comprar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(Imagenes_precioLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        jPanel5.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 460, 430));
+        informacion_juego.add(Imagenes_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 460, 430));
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Informacion_juego.setBackground(new java.awt.Color(102, 204, 255));
+        Informacion_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setText("que consiste en ___________________");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 78, -1, -1));
+        Informacion_juego.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 78, -1, -1));
 
         jLabel9.setText("Juego tipo _____ basado en ________");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 44, -1, -1));
+        Informacion_juego.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 44, -1, -1));
 
         jLabel11.setText("Desarrollado por: _________________________");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 267, -1, -1));
+        Informacion_juego.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 267, -1, -1));
 
         jLabel12.setText("Producido por: ___________________________");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 165, -1, -1));
+        Informacion_juego.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 165, -1, -1));
 
         jLabel13.setText("Nº de jugadores: _________________________");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 199, -1, -1));
+        Informacion_juego.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 199, -1, -1));
 
         jLabel3.setText("Juego tipo _______ que se basa en_____________");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 233, -1, -1));
+        Informacion_juego.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 233, -1, -1));
 
-        jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 420, 438));
+        informacion_juego.add(Informacion_juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 420, 438));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 880, 420));
+        Ventana_juego.add(informacion_juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 880, 420));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Ventana_juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Ventana_juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -285,9 +422,21 @@ public class InterfazJuego extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchBoxActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Boton_comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_comprarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.Confirmacion_compra.setVisible(true); //Lo he puesto a true para que se active al pulsar de momento, al ejecutar he puesto que sea invisible(YONLEE)
+        
+        if(this.usuario!=null){
+           this.Confirmacion_compra.setVisible(true);
+           this.Confirmacion_compra.setEnabled(true);
+        }else{
+            //NECESITAS INICIAR SESION O REGISTRARTE
+            this.panel_excepcion_compra.setVisible(true);
+            this.panel_excepcion_compra.setEnabled(true);
+        }
+        
+        
+    }//GEN-LAST:event_Boton_comprarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -298,22 +447,67 @@ public class InterfazJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_loginMouseClicked
 
     private void Boton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_loginActionPerformed
-       inicio_sesion a = new inicio_sesion();
+       inicio_sesion a = null;
+        try {
+            a = new inicio_sesion();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
        a.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_Boton_loginActionPerformed
 
     private void Boton_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_registroActionPerformed
-       registro b = new registro();
+       registro b = null;
+        try {
+            b = new registro();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
        b.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_Boton_registroActionPerformed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
-       homeInterface c = new homeInterface();
+       homeInterface c = null;
+        try {
+            c = new homeInterface();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
        c.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MousePressed
+
+    private void Boton_confirmacion_compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_confirmacion_compraActionPerformed
+        // TODO add your handling code here:
+        this.Confirmacion_compra.setVisible(false);
+        this.Confirmacion_compra.setEnabled(false);
+    }//GEN-LAST:event_Boton_confirmacion_compraActionPerformed
+
+    private void Boton_inicio_sesion_compra1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_inicio_sesion_compra1ActionPerformed
+        // TODO add your handling code here:
+        inicio_sesion a = null;
+        try {
+            a = new inicio_sesion();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       a.setVisible(true);
+       this.setVisible(false);
+        
+    }//GEN-LAST:event_Boton_inicio_sesion_compra1ActionPerformed
+
+    private void Boton_registro_compraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_registro_compraActionPerformed
+        // TODO add your handling code here:
+        registro b = null;
+        try {
+            b = new registro();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       b.setVisible(true);
+    }//GEN-LAST:event_Boton_registro_compraActionPerformed
     
     
     /**@param args the command line arguments
@@ -348,32 +542,46 @@ public class InterfazJuego extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazJuego().setVisible(true);
+                try {
+                    new InterfazJuego().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Banner;
+    private javax.swing.JButton Boton_comprar;
+    private javax.swing.JButton Boton_confirmacion_compra;
+    private javax.swing.JButton Boton_inicio_sesion_compra1;
     private javax.swing.JButton Boton_login;
     private javax.swing.JButton Boton_registro;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Boton_registro_compra;
+    public javax.swing.JPanel Confirmacion_compra;
+    private javax.swing.JPanel Imagenes_precio;
+    private javax.swing.JPanel Informacion_juego;
+    private javax.swing.JPanel Ventana_juego;
+    private javax.swing.JPanel informacion_juego;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JSlider jSlider1;
+    public javax.swing.JPanel panel_excepcion_compra;
     private javax.swing.JTextField searchBox;
     private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables

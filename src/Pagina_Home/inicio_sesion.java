@@ -1,5 +1,10 @@
 package Pagina_Home;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,12 +15,13 @@ package Pagina_Home;
  * @author AlvaroCarrascoGarcia
  */
 public class inicio_sesion extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form inicio_sesion
      */
-    public inicio_sesion() {
+    public inicio_sesion() throws SQLException {
         initComponents();
+        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
     }
 
     /**
@@ -45,7 +51,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        boton_inicion_sesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -193,7 +199,12 @@ public class inicio_sesion extends javax.swing.JFrame {
         jLabel6.setAutoscrolls(true);
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton3.setText("INICIAR SESIÓN");
+        boton_inicion_sesion.setText("INICIAR SESIÓN");
+        boton_inicion_sesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_inicion_sesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -225,7 +236,7 @@ public class inicio_sesion extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(231, 231, 231)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
+                            .addComponent(boton_inicion_sesion)
                             .addComponent(jButton2))))
                 .addContainerGap(127, Short.MAX_VALUE))
         );
@@ -247,7 +258,7 @@ public class inicio_sesion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(clave_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
-                .addComponent(jButton3)
+                .addComponent(boton_inicion_sesion)
                 .addGap(35, 35, 35)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -302,16 +313,32 @@ public class inicio_sesion extends javax.swing.JFrame {
     }//GEN-LAST:event_clave_inicioActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-       registro b = new registro();
+       registro b = null;
+        try {
+            b = new registro();
+        } catch (SQLException ex) {
+            Logger.getLogger(inicio_sesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
        b.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
-        homeInterface c = new homeInterface();
+        homeInterface c = null;
+        try {
+            c = new homeInterface();
+        } catch (SQLException ex) {
+            Logger.getLogger(inicio_sesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
        c.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MousePressed
+
+    private void boton_inicion_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_inicion_sesionActionPerformed
+        // TODO add your handling code here:
+        this.usuario_correo.getText();
+        this.clave_inicio.getPassword();
+    }//GEN-LAST:event_boton_inicion_sesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,16 +370,20 @@ public class inicio_sesion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new inicio_sesion().setVisible(true);
+                try {
+                    new inicio_sesion().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(inicio_sesion.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton boton_inicion_sesion;
     private javax.swing.JPasswordField clave_inicio;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
