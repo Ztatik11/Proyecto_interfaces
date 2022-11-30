@@ -8,6 +8,7 @@ package Pagina_Home;
  *
  * @author JoseManuelRodriguezC
  */
+import static Pagina_Home.consultas_sql.parsear_cadena;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -522,13 +523,14 @@ public class registro extends javax.swing.JFrame {
 
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
         // TODO add your handling code here:
-        String usuario_ = usuario.getText();
-        String nombre_= nombre.getText();
-        String apellido_= apellidos.getText();
-        String email_= correo_electronico.getText();
-        String comunidad_= residencia.getToolTipText();
-        String clave_= clave.getToolTipText();
-        conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,clave,administrador", (usuario_+","+nombre_+","+apellido_+","+email_+","+comunidad_+","+clave_+",false"));
+        char [] clave_array = clave.getPassword();
+        String pass = "";
+        
+        for (int j = 0; j < clave_array.length; j++) {
+            pass+=clave_array[j];
+        }
+        String [] datos_usuario = {usuario.getText(),nombre.getText(),apellidos.getText(),correo_electronico.getText(),residencia.getSelectedItem().toString(),pass};
+        conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador",this.conexion_db.parsear_atributos(datos_usuario)+",false" );
     }//GEN-LAST:event_registroActionPerformed
     
     /**

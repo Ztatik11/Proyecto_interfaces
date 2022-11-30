@@ -23,7 +23,7 @@ public class homeMain extends JFrame {
     }
     
     public static void creacion_tablas(consultas_sql conexion_db) throws SQLException{
-       conexion_db.creacion_tabla( "usuarios", "ID int NOT NULL AUTO_INCREMENT,Usuario char(100),Nombre char(100),Apellidos char(200),Email char(200),clave char(30),administrador boolean,primary key(ID)");
+       conexion_db.creacion_tabla( "usuarios", "ID int NOT NULL AUTO_INCREMENT,Usuario char(100),Nombre char(100),Apellidos char(200),Email char(200),residencia char(50),clave char(30),administrador boolean,primary key(ID)");
        conexion_db.creacion_tabla( "juegos", "ID int NOT NULL AUTO_INCREMENT,Titulo char(100),Descripcion char(200),Precio int,Nota int,Genero char(100),Desarrolladora char(100),Numero_jugadores int,primary key(ID)");
        conexion_db.creacion_tabla( "compras", "ID_usuario int,ID_juego int,Constraint fk_ID_usuario foreign key (ID_usuario) references usuarios(ID),Constraint fk_ID_juego foreign key (ID_juego) references juegos(ID)");
        conexion_db.creacion_tabla( "imagenes", "ID int NOT NULL AUTO_INCREMENT,Nombre char(100),Imagen char(100),ID_juego int,Constraint fk_ID_juego_imagenes foreign key (ID_juego) references juegos(ID),primary key(ID)");
