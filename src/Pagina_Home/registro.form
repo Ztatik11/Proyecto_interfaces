@@ -264,7 +264,7 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="clave" min="-2" pref="125" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="terminos_condiciones" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
@@ -334,7 +334,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="Validador_clave" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                              <Component id="terminos_condiciones" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="registro" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -549,13 +549,16 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmacion_claveActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                    <Component class="javax.swing.JCheckBox" name="terminos_condiciones">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Aceptar nuestros terminos y condiciones"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="terminos_condicionesActionPerformed"/>
                       </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                     <Component class="org.netbeans.validation.api.ui.swing.ValidationPanel" name="Validador_usuario">
                     </Component>

@@ -38,19 +38,20 @@ public class registro extends javax.swing.JFrame {
         ValidationGroup Campo_Validador_clave = Validador_clave.getValidationGroup();
         Campo_Validador_usuario.add(usuario,StringValidators.NO_WHITESPACE);
         Campo_Validador_usuario.add(usuario,StringValidators.REQUIRE_NON_EMPTY_STRING);
-     /*   Campo_Validador_nombre.add(nombre,StringValidators.CHARACTER_SET_NAME);
+        /*
+        Campo_Validador_nombre.add(nombre,StringValidators.CHARACTER_SET_NAME);
         Campo_Validador_nombre.add(nombre,StringValidators.REQUIRE_NON_EMPTY_STRING);
         Campo_Validador_apellido.add(apellidos,StringValidators.CHARACTER_SET_NAME);
         Campo_Validador_correo.add(correo_electronico,StringValidators.EMAIL_ADDRESS);
-        //Campo_Validador_correo.add(correo_electronico,StringValidators.REQUIRE_NON_EMPTY_STRING);
+        Campo_Validador_correo.add(correo_electronico,StringValidators.REQUIRE_NON_EMPTY_STRING);
         Campo_Validador_clave.add(clave,StringValidators.NO_WHITESPACE);
-        //Campo_Validador_clave.add(clave,StringValidators.REQUIRE_NON_EMPTY_STRING);
-      */
+        Campo_Validador_clave.add(clave,StringValidators.REQUIRE_NON_EMPTY_STRING);
+        */
         
         Validador_usuario.addChangeListener(new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
-          if(Validador_usuario.getProblem()==null){
+          if(Validador_usuario.getProblem() == null && terminos_condiciones.isEnabled()==true){
               registro.setEnabled(true);
           }else{
               registro.setEnabled(false);
@@ -59,8 +60,7 @@ public class registro extends javax.swing.JFrame {
       });
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
         this.conexion_db = new consultas_sql("mango_games","root","root");
-        
-    }
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,7 +98,7 @@ public class registro extends javax.swing.JFrame {
         residencia = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         confirmacion_clave = new javax.swing.JPasswordField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        terminos_condiciones = new javax.swing.JCheckBox();
         Validador_usuario = new org.netbeans.validation.api.ui.swing.ValidationPanel();
         Validador_nombre = new org.netbeans.validation.api.ui.swing.ValidationPanel();
         Validador_apellidos = new org.netbeans.validation.api.ui.swing.ValidationPanel();
@@ -312,10 +312,10 @@ public class registro extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setText("Aceptar nuestros terminos y condiciones");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        terminos_condiciones.setText("Aceptar nuestros terminos y condiciones");
+        terminos_condiciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                terminos_condicionesActionPerformed(evt);
             }
         });
 
@@ -359,7 +359,7 @@ public class registro extends javax.swing.JFrame {
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(clave, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jCheckBox1)
+                            .addComponent(terminos_condiciones)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -414,7 +414,7 @@ public class registro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Validador_clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(terminos_condiciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registro))
         );
@@ -501,9 +501,9 @@ public class registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_confirmacion_claveActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void terminos_condicionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminos_condicionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_terminos_condicionesActionPerformed
 
     private void residenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residenciaActionPerformed
         // TODO add your handling code here:
@@ -522,7 +522,13 @@ public class registro extends javax.swing.JFrame {
 
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
         // TODO add your handling code here:
-        //conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Nombre,Apellidos,Email,clave,administrador", sentencia_atributos, connection_);
+        String usuario_ = usuario.getText();
+        String nombre_= nombre.getText();
+        String apellido_= apellidos.getText();
+        String email_= correo_electronico.getText();
+        String comunidad_= residencia.getToolTipText();
+        String clave_= clave.getToolTipText();
+        conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,clave,administrador", (usuario_+","+nombre_+","+apellido_+","+email_+","+comunidad_+","+clave_+",false"));
     }//GEN-LAST:event_registroActionPerformed
     
     /**
@@ -573,7 +579,6 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JPasswordField confirmacion_clave;
     private javax.swing.JTextField correo_electronico;
     private javax.swing.JButton jButton12;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -595,6 +600,7 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> residencia;
     private javax.swing.JTextField searchBox;
     private javax.swing.JButton searchButton;
+    public javax.swing.JCheckBox terminos_condiciones;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }

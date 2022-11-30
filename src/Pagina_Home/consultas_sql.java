@@ -59,11 +59,10 @@ public class consultas_sql {
        st_.executeUpdate("create table if not exists " + nombre_tabla + "(" + atributos + ")");
     }
     
-    public void insertar_una_nueva_fila_en_una_tabla(String tabla, String atributos, String sentencia_atributos,
-			Connection connection_) {
+    public void insertar_una_nueva_fila_en_una_tabla(String tabla, String atributos, String sentencia_atributos) {
 
 		try {
-			Statement st_ = connection_.createStatement();
+			Statement st_ = this.connection_.createStatement();
 			System.out.println("insert into " + tabla + " (" + atributos + ") values (" + sentencia_atributos + ")");
 			st_.executeUpdate("insert into " + tabla + " (" + atributos + ") values (" + sentencia_atributos + ")");
 		} catch (SQLException e) {
@@ -73,9 +72,9 @@ public class consultas_sql {
 
 	}
     
-    public ResultSet realizar_consulta(String query, Connection connection_) throws SQLException {
+    public ResultSet realizar_consulta(String query) throws SQLException {
 
-       Statement _st = connection_.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+       Statement _st = this.connection_.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
        System.out.println(query);
        ResultSet _rs = _st.executeQuery(query);
 
