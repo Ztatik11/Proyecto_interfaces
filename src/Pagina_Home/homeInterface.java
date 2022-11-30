@@ -478,12 +478,23 @@ public class homeInterface extends javax.swing.JFrame {
            ArrayList<String> juegos = new ArrayList<String>();
             java.sql.ResultSet resultSet=conexion_db.realizar_consulta("SELECT * FROM juegos", conexion_db.getConnection_());
             
+            String busqueda=searchBox.getText();
             while (resultSet.next()) {
                juegos.add(resultSet.getString("Titulo"));
+            }
+            for(int i = 0; juegos.size()<i;i++){
+                if(busqueda.equalsIgnoreCase(juegos.get(i))){
+                    System.out.println(juegos.get(i));
+                    
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+        
+       /*
         String game1=G1.getText();
         String game2=G2.getText();
         String game3=G3.getText();
@@ -491,8 +502,7 @@ public class homeInterface extends javax.swing.JFrame {
         String game5=G5.getText();
         String game6=G6.getText();
         
-        String busqueda=searchBox.getText();
-         if(busqueda.equalsIgnoreCase(game1)){
+        if(busqueda.equalsIgnoreCase(game1)){
             J2.setVisible(false);
             J3.setVisible(false);
             J4.setVisible(false);
@@ -540,8 +550,7 @@ public class homeInterface extends javax.swing.JFrame {
              J3.setVisible(true);
              J4.setVisible(true);
              J5.setVisible(true);
-             J6.setVisible(true);
-         }
+             J6.setVisible(true);*/
     }//GEN-LAST:event_searchButtonMouseClicked
 
     private void searchButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchButtonKeyPressed
