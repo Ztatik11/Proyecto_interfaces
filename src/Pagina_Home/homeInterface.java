@@ -9,6 +9,7 @@ package Pagina_Home;
  * @author JoseManuelRodriguezC
  */
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 import java.util.logging.Level;
@@ -18,14 +19,16 @@ public class homeInterface extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
+    
     public homeInterface() throws SQLException {
         initComponents();
         menu.setVisible(false);
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
-        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -471,6 +474,16 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
+        try {
+           ArrayList<String> juegos = new ArrayList<String>();
+            java.sql.ResultSet resultSet=conexion_db.realizar_consulta("SELECT * FROM juegos", conexion_db.getConnection_());
+            
+            while (resultSet.next()) {
+               juegos.add(resultSet.getString("Titulo"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
         String game1=G1.getText();
         String game2=G2.getText();
         String game3=G3.getText();
