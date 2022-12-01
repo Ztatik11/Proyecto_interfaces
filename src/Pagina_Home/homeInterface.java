@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 public class homeInterface extends javax.swing.JFrame {
 
     /**
@@ -473,7 +474,16 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
-      try {
+                      
+                JLabel[] labelJuego = {
+        G1,
+        G2,
+        G3,
+        G4,
+        G5,
+        G6
+        };
+        try {
            ArrayList<String> juegos = new ArrayList<String>();
             java.sql.ResultSet resultSet=conexion_db.realizar_consulta("SELECT * FROM juegos");
             
@@ -484,73 +494,23 @@ public class homeInterface extends javax.swing.JFrame {
             }
             for(int i = 0; juegos.size()>i;i++){
                 if(busqueda.equalsIgnoreCase(juegos.get(i))){
-                    System.out.println(juegos.get(i));
-                }
+                                     for(int j=0;labelJuego.length>j;j++ ){
+                        if(juegos.get(i).equalsIgnoreCase(labelJuego[j].getText())==false){
+                            JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(false);     
+                        }
+                    }
+                }else{
+                for(int j=0;labelJuego.length>j;j++ ){
+                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                }}
             }
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-        
-       /*
-        String game1=G1.getText();
-        String game2=G2.getText();
-        String game3=G3.getText();
-        String game4=G4.getText();
-        String game5=G5.getText();
-        String game6=G6.getText();
-        
-        if(busqueda.equalsIgnoreCase(game1)){
-            J2.setVisible(false);
-            J3.setVisible(false);
-            J4.setVisible(false);
-            J5.setVisible(false);
-            J6.setVisible(false);
-            J1.setVisible(true);
-        }if(busqueda.equalsIgnoreCase(game2)){
-            J1.setVisible(false);
-            J3.setVisible(false);
-            J4.setVisible(false);
-            J5.setVisible(false);
-            J6.setVisible(false);
-            J2.setVisible(true);
-         }if(busqueda.equalsIgnoreCase(game3)){
-             J1.setVisible(false);
-             J2.setVisible(false);
-             J4.setVisible(false);
-             J5.setVisible(false);
-             J6.setVisible(false);
-             J3.setVisible(true);
-         }if(busqueda.equalsIgnoreCase(game4)){
-             J1.setVisible(false);
-             J2.setVisible(false);
-             J5.setVisible(false);
-             J6.setVisible(false);
-             J3.setVisible(false);
-             J4.setVisible(true);
-         }if(busqueda.equalsIgnoreCase(game5)){
-             J1.setVisible(false);
-             J2.setVisible(false);
-             J6.setVisible(false);
-             J4.setVisible(false);
-             J3.setVisible(false);
-             J5.setVisible(true);
-         }if(busqueda.equalsIgnoreCase(game6)){
-             J1.setVisible(false);
-             J2.setVisible(false);
-             J3.setVisible(false);
-             J4.setVisible(false);
-             J5.setVisible(false);
-             J6.setVisible(true);
-         }if(busqueda.equalsIgnoreCase("")){
-             J1.setVisible(true);
-             J2.setVisible(true);
-             J3.setVisible(true);
-             J4.setVisible(true);
-             J5.setVisible(true);
-             J6.setVisible(true);*/
-    
+
     }//GEN-LAST:event_searchButtonMouseClicked
 
     private void searchButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchButtonKeyPressed
