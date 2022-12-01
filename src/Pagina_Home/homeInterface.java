@@ -8,12 +8,14 @@ package Pagina_Home;
  *
  * @author JoseManuelRodriguezC
  */
+import java.awt.Component;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 public class homeInterface extends javax.swing.JFrame {
 
     /**
@@ -473,7 +475,17 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
-      try {
+        
+        JLabel[] labelJuego = {
+        G1,
+        G2,
+        G3,
+        G4,
+        G5,
+        G6
+        };
+        try {
+            
            ArrayList<String> juegos = new ArrayList<String>();
             java.sql.ResultSet resultSet=conexion_db.realizar_consulta("SELECT * FROM juegos");
             
@@ -484,7 +496,17 @@ public class homeInterface extends javax.swing.JFrame {
             }
             for(int i = 0; juegos.size()>i;i++){
                 if(busqueda.equalsIgnoreCase(juegos.get(i))){
-                    System.out.println(juegos.get(i));
+                    for(int j=0;labelJuego.length>j;j++ ){
+                        if(juegos.get(i).equalsIgnoreCase(labelJuego[j].getText())==false){
+                            JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(false);     
+                        }
+                    }
+                }else{
+                for(int j=0;labelJuego.length>j;j++ ){
+                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                }
                 }
             }
         } catch (SQLException ex) {
