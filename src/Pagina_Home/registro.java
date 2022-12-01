@@ -20,12 +20,7 @@ import org.netbeans.validation.api.ui.ValidationGroup;
 import org.netbeans.validation.api.ui.swing.ValidationPanel;
 
 public class registro extends javax.swing.JFrame {
-    String usuario_;
-    String nombre_;
-    String apellidos_;
-    String correo_;
-    String residencia_;
-    String clave_;
+    
     consultas_sql conexion_db;
     /**
      * Creates new form NewJFrame
@@ -449,7 +444,9 @@ public class registro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(616, 616, 616))
         );
 
         pack();
@@ -466,9 +463,6 @@ public class registro extends javax.swing.JFrame {
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
         // TODO add your handling code here:
-        System.out.println(this.usuario.getText());
-        this.usuario_=this.usuario.getText();
-        
     }//GEN-LAST:event_usuarioActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
