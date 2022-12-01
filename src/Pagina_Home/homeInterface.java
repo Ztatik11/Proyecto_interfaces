@@ -502,13 +502,14 @@ public class homeInterface extends javax.swing.JFrame {
                             juegoE.getParent().setVisible(false);     
                         }
                     }
-                }else{
-                for(int j=0;labelJuego.length>j;j++ ){
-                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                }
+                }if(busqueda.equalsIgnoreCase("")){
+                for(int j=0;labelJuego.length>j;j++ ){      
+                      JLabel juegoE=labelJuego[j];
+                      juegoE.getParent().setVisible(true);         
+                    }
                 }
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
