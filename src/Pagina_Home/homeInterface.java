@@ -9,6 +9,7 @@ package Pagina_Home;
  * @author JoseManuelRodriguezC
  */
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 import java.util.logging.Level;
@@ -18,12 +19,13 @@ public class homeInterface extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
     public homeInterface() throws SQLException {
         initComponents();
         menu.setVisible(false);
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
-        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
+        
     }
 
     /**
@@ -471,6 +473,27 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
+      try {
+           ArrayList<String> juegos = new ArrayList<String>();
+            java.sql.ResultSet resultSet=conexion_db.realizar_consulta("SELECT * FROM juegos");
+            
+            String busqueda=searchBox.getText();
+            while (resultSet.next()) {
+               juegos.add(resultSet.getString("Titulo"));
+               
+            }
+            for(int i = 0; juegos.size()>i;i++){
+                if(busqueda.equalsIgnoreCase(juegos.get(i))){
+                    System.out.println(juegos.get(i));
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+       /*
         String game1=G1.getText();
         String game2=G2.getText();
         String game3=G3.getText();
@@ -478,8 +501,7 @@ public class homeInterface extends javax.swing.JFrame {
         String game5=G5.getText();
         String game6=G6.getText();
         
-        String busqueda=searchBox.getText();
-         if(busqueda.equalsIgnoreCase(game1)){
+        if(busqueda.equalsIgnoreCase(game1)){
             J2.setVisible(false);
             J3.setVisible(false);
             J4.setVisible(false);
@@ -527,8 +549,8 @@ public class homeInterface extends javax.swing.JFrame {
              J3.setVisible(true);
              J4.setVisible(true);
              J5.setVisible(true);
-             J6.setVisible(true);
-         }
+             J6.setVisible(true);*/
+    
     }//GEN-LAST:event_searchButtonMouseClicked
 
     private void searchButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchButtonKeyPressed
