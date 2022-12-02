@@ -18,6 +18,7 @@ import javax.swing.event.ChangeListener;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
 import org.netbeans.validation.api.ui.swing.ValidationPanel;
+import org.openide.util.Exceptions;
 
 public class registro extends javax.swing.JFrame {
     
@@ -516,15 +517,25 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MousePressed
 
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
-        // TODO add your handling code here:
-        char [] clave_array = clave.getPassword();
-        String pass = "";
-        
-        for (int j = 0; j < clave_array.length; j++) {
-            pass+=clave_array[j];
+        try {
+            // TODO add your handling code here:
+            char [] clave_array = clave.getPassword();
+            String pass = "";
+            
+            for (int j = 0; j < clave_array.length; j++) {
+                pass+=clave_array[j];
+            }
+            String [] datos_usuario = {usuario.getText(),nombre.getText(),apellidos.getText(),correo_electronico.getText(),residencia.getSelectedItem().toString(),pass};
+            String usuario= datos_usuario[0];
+            usuario=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select usuario from usuarios where usuario=="+usuario), usuario);
+            if(usuario==null){
+                conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador",this.conexion_db.parsear_atributos(datos_usuario)+",false" );
+            }else{
+                System.out.println("Este usuario ya existe");
+            }
+        } catch (SQLException ex) {
+            Exceptions.printStackTrace(ex);
         }
-        String [] datos_usuario = {usuario.getText(),nombre.getText(),apellidos.getText(),correo_electronico.getText(),residencia.getSelectedItem().toString(),pass};
-        conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador",this.conexion_db.parsear_atributos(datos_usuario)+",false" );
     }//GEN-LAST:event_registroActionPerformed
     
     /**

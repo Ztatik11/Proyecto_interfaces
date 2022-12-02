@@ -11,6 +11,9 @@ package Pagina_Home;
 import static Pagina_Home.consultas_sql.parsear_cadena;
 import java.awt.Image;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -250,7 +253,6 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         registro1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.registro1.text")); // NOI18N
-        registro1.setEnabled(false);
         registro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registro1ActionPerformed(evt);
@@ -262,7 +264,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel19.setAutoscrolls(true);
         jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Otro Pais", "Andalucia", "Murcia", "Extremadura", "Castilla-la-Mancha", "Comunitat Valenciana", "Castilla y León", "Aragón", "Cataluña", "Navarra", "País Vasco", "La Rioja", "Galicia" }));
+        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Shooter", "Plataformas", "RPG", "Rol", "MOBA", "Survival", "Horror", "Accion", "Aventura" }));
         genero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generoActionPerformed(evt);
@@ -507,18 +509,22 @@ public class Registro_juegos extends javax.swing.JFrame {
 
     private void registro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registro1ActionPerformed
         // TODO add your handling code here:
-        String [] datos_juego = {titulo.getText(),descripcion.getText(),precio.getText(),nota.getText(),genero.getSelectedItem().toString(),numero_jugadores.getText()};
+        String [] datos_juego = {titulo.getText(),descripcion.getText(),precio.getText(),nota.getText(),genero.getSelectedItem().toString(),desarrolladora1.getText(),numero_jugadores.getText()};
         String Titulo= "'" + datos_juego[0] + "'";
         try {
-            Titulo=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select Titulo from juegos where Titulo=="+Titulo), Titulo);
+            Titulo=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select Titulo from juegos where Titulo="+Titulo), Titulo);
+            InputStream input = new FileInputStream(new File(txtruta.getText()));
+            if(Titulo==null){
+                conexion_db.insertar_una_nueva_fila_en_una_tabla("juegos", "Titulo,Descripcion,Precio,Nota,Genero,Desarrolladora,Numero_jugadores,Imagen",this.conexion_db.parsear_atributos(datos_juego)+",'"+input+"'");
+            }else{
+                //ESTA INTRODUCIDO EN LA BASE DE DATOS
+            }
         } catch (SQLException ex) {
             Exceptions.printStackTrace(ex);
+        } catch (FileNotFoundException ex) {
+            Exceptions.printStackTrace(ex);
         }
-        if(Titulo==null){
-            conexion_db.insertar_una_nueva_fila_en_una_tabla("juegos", "Titulo,Descripcion,Precio,Nota,Genero,Desarrolladora,Numero_jugadores",this.conexion_db.parsear_atributos(datos_juego)+",false" );
-        }else{
-            //ESTA INTRODUCIDO EN LA BASE DE DATOS
-        }
+        
     }//GEN-LAST:event_registro1ActionPerformed
 
     private void generoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoActionPerformed
