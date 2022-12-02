@@ -264,7 +264,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel19.setAutoscrolls(true);
         jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Shooter", "Plataformas", "RPG", "Rol", "MOBA", "Survival", "Horror", "Accion", "Aventura" }));
+        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "FPS", "Plataformas", "RPG", "Rol", "MOBA", "Survival", "Horror", "Accion", "Aventura", "Soulslike" }));
         genero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generoActionPerformed(evt);
@@ -514,6 +514,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         try {
             Titulo=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select Titulo from juegos where Titulo="+Titulo), Titulo);
             InputStream input = new FileInputStream(new File(txtruta.getText()));
+            
             if(Titulo==null){
                 conexion_db.insertar_una_nueva_fila_en_una_tabla("juegos", "Titulo,Descripcion,Precio,Nota,Genero,Desarrolladora,Numero_jugadores,Imagen",this.conexion_db.parsear_atributos(datos_juego)+",'"+input+"'");
             }else{
