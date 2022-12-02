@@ -4,9 +4,12 @@
  */
 package Pagina_Home;
 
+
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.openide.util.Exceptions;
 
 /**
  *
@@ -20,12 +23,18 @@ public class InterfazJuego extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public InterfazJuego() throws SQLException {
-        initComponents();
-        this.Confirmacion_compra.setVisible(false);
-        this.Confirmacion_compra.setEnabled(false);
-        this.panel_excepcion_compra.setVisible(false);
-        this.panel_excepcion_compra.setEnabled(false);
-        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
+             
+            
+            initComponents();
+            this.Confirmacion_compra.setVisible(false);
+            this.Confirmacion_compra.setEnabled(false);
+            this.panel_excepcion_compra.setVisible(false);
+            this.panel_excepcion_compra.setEnabled(false);
+            
+           
+            
+            consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
+        
     }
 
     /**

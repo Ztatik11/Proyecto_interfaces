@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c206795a-dc58-4790-8545-b370c107f938" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/csv/JuegosBaseDeDatos.txt" beforeDir="false" />
-    </list>
+    <list default="true" id="c206795a-dc58-4790-8545-b370c107f938" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +20,7 @@
     "RunOnceActivity.OpenDatabaseViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/swage/OneDrive/Documentos/NetBeansProjects/interfaces_main/src/csv/juegos.csv",
+    "last_opened_file_path": "C:/Users/JoseManuelRodriguezC/Documents/NetBeansProjects/src/csv/juegos.csv",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   },
   "keyToStringList": {
