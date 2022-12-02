@@ -397,9 +397,14 @@ public class inicio_sesion extends javax.swing.JFrame {
         String validClave = null;
         String clave = null;
         
+        char[] caracteresClave = this.clave_inicio.getPassword();
+            for(int i = 0; i< caracteresClave.length;i++){
+                clave = String.valueOf(caracteresClave);
+            }
+        
         try {
-            nom_usuario =this.conexion_db.realizar_consulta("Select Usuario from usuarios where Usuario = "+ "'" + this.usuario_correo.getText()+ "'");
-            correo_usuario=this.conexion_db.realizar_consulta("Select Email from usuarios where Email = "+ "'" + this.usuario_correo.getText()+ "'");
+            nom_usuario =this.conexion_db.realizar_consulta("Select Usuario from usuarios where Usuario =  '"  + this.usuario_correo.getText() + "'"/*+ " "' and clave = '" + clave+ "'"*/);
+            correo_usuario=this.conexion_db.realizar_consulta("Select Email from usuarios where Email = '"  + this.usuario_correo.getText() + "'"/* + "' and clave = '" + clave+*/ );
             
         } catch (SQLException ex) {
             this.ErrorUsuario.setVisible(true);
@@ -422,7 +427,7 @@ public class inicio_sesion extends javax.swing.JFrame {
             Exceptions.printStackTrace(ex);
         }
         
-        if (this.usuario_correo.getText().equalsIgnoreCase(validNom)){
+        if (this.usuario_correo.getText().equalsIgnoreCase(validEm)){
             this.ErrorUsuario.setVisible(false);
             correcto = true;
             usuario_correo.setText("");
@@ -430,6 +435,7 @@ public class inicio_sesion extends javax.swing.JFrame {
             try {
             claveEm =this.conexion_db.realizar_consulta("Select clave from usuarios where Email = " + "'" + validEm+ "'");
             } catch (SQLException ex) {
+                this.Errorclave.setVisible(true);
             Exceptions.printStackTrace(ex);
             }
             
@@ -439,18 +445,13 @@ public class inicio_sesion extends javax.swing.JFrame {
             }}catch (SQLException ex) {
             Exceptions.printStackTrace(ex);
             }
-            
-            char[] caracteresClave = this.clave_inicio.getPassword();
-            for(int i = 0; i< caracteresClave.length;i++){
-                clave = String.valueOf(caracteresClave);
-            }
-            
+           
             comprobarClave(validClave, clave);
            
             usuario_correo.setText("");
             clave_inicio.setText("");
         }
-        else if(this.usuario_correo.getText().equalsIgnoreCase(validEm)){
+        else if(this.usuario_correo.getText().equalsIgnoreCase(validNom)){
             this.ErrorUsuario.setVisible(false);
             correcto = true;
             usuario_correo.setText("");
@@ -469,15 +470,14 @@ public class inicio_sesion extends javax.swing.JFrame {
             Exceptions.printStackTrace(ex);
             }
             
-            char[] caracteresClave = this.clave_inicio.getPassword();
-            for(int i = 0; i< caracteresClave.length;i++){
-                clave = String.valueOf(caracteresClave);
-            }
             
             comprobarClave(validClave, clave);
            
             usuario_correo.setText("");
             clave_inicio.setText("");
+        }
+        if (correcto = false){
+            this.ErrorUsuario.setVisible(true);
         }
         else{
             usuario_correo.setText("");

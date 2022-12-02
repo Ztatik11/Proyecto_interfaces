@@ -4,8 +4,7 @@
  */
 package Pagina_Home;
 
-
-import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,25 +16,56 @@ import org.openide.util.Exceptions;
  */
 
 public class InterfazJuego extends javax.swing.JFrame {
+    consultas_sql conexion_db;
     boolean sesion_iniciada=false;
     String usuario = null;
-    /**
-     * Creates new form NewJFrame
-     */
+    int IDjuego;
+    
+    
     public InterfazJuego() throws SQLException {
-             
-            
-            initComponents();
-            this.Confirmacion_compra.setVisible(false);
-            this.Confirmacion_compra.setEnabled(false);
-            this.panel_excepcion_compra.setVisible(false);
-            this.panel_excepcion_compra.setEnabled(false);
-            
-           
-            
-            consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
+        initComponents();
+        this.Confirmacion_compra.setVisible(false);
+        this.Confirmacion_compra.setEnabled(false);
+        this.panel_excepcion_compra.setVisible(false);
+        this.panel_excepcion_compra.setEnabled(false);
+        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
+        this.conexion_db = new consultas_sql("mango_games","root","root");
         
+        java.sql.ResultSet DatosJuego;
+    
+        DatosJuego = this.conexion_db.realizar_consulta("Select * from juegos where ID = '" + IDjuego + "'");
+        
+        String Titulo;
+        String Descripcion;
+        double Precio;
+        double Nota;
+        String Genero1;
+        String Genero2;
+        String Desarrolladora;
+        int Njugadores;
+        InputStream Imagen;
+        
+        
+        try {
+        
+            while (DatosJuego.next()){
+            Titulo = (DatosJuego.getString("Titulo"));
+            Descripcion = (DatosJuego.getString("Descripcion"));
+            Precio = (DatosJuego.getDouble("Precio"));
+            Nota = (DatosJuego.getDouble("Nota"));
+            Genero1 = (DatosJuego.getString("Genero1"));
+            Genero2 = (DatosJuego.getString("Genero2"));
+            Desarrolladora = (DatosJuego.getString("Desarrolladora"));
+            Njugadores = (DatosJuego.getInt("Numero_jugadores"));
+            }
+            
+        } catch (SQLException ex) {
+            Exceptions.printStackTrace(ex);
+        }
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,17 +97,16 @@ public class InterfazJuego extends javax.swing.JFrame {
         informacion_juego = new javax.swing.JPanel();
         Imagenes_precio = new javax.swing.JPanel();
         Boton_comprar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        LabelPrecio = new javax.swing.JLabel();
         jSlider1 = new javax.swing.JSlider();
         jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        ImagenJuego = new javax.swing.JButton();
         Informacion_juego = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        LabelDescripcion = new javax.swing.JLabel();
+        LabelTitulo = new javax.swing.JLabel();
+        LabelGenero = new javax.swing.JLabel();
+        LabelDesarrolladora = new javax.swing.JLabel();
+        LabelNjugadores = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MangoGames");
@@ -322,19 +351,19 @@ public class InterfazJuego extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Precio:  99€ ");
+        LabelPrecio.setBackground(new java.awt.Color(255, 255, 255));
+        LabelPrecio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelPrecio.setText("Precio:");
 
         jSlider1.setBackground(new java.awt.Color(255, 51, 0));
         jSlider1.setForeground(new java.awt.Color(0, 153, 255));
 
         jLabel6.setText("0       1       2       3       4       5");
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dum.jpg"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ImagenJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dum.jpg"))); // NOI18N
+        ImagenJuego.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ImagenJuegoActionPerformed(evt);
             }
         });
 
@@ -347,15 +376,15 @@ public class InterfazJuego extends javax.swing.JFrame {
                     .addGroup(Imagenes_precioLayout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ImagenJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(Imagenes_precioLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(LabelPrecio)
                                 .addGap(85, 85, 85)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(Imagenes_precioLayout.createSequentialGroup()
                         .addGap(155, 155, 155)
                         .addComponent(Boton_comprar)))
-                .addGap(0, 58, Short.MAX_VALUE))
+                .addGap(0, 67, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Imagenes_precioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -365,7 +394,7 @@ public class InterfazJuego extends javax.swing.JFrame {
             Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Imagenes_precioLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ImagenJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Imagenes_precioLayout.createSequentialGroup()
@@ -377,7 +406,7 @@ public class InterfazJuego extends javax.swing.JFrame {
                         .addComponent(Boton_comprar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46))
                     .addGroup(Imagenes_precioLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(LabelPrecio)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -386,23 +415,20 @@ public class InterfazJuego extends javax.swing.JFrame {
         Informacion_juego.setBackground(new java.awt.Color(102, 204, 255));
         Informacion_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel10.setText("que consiste en ___________________");
-        Informacion_juego.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 78, -1, -1));
+        LabelDescripcion.setText("Descripcion");
+        Informacion_juego.add(LabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 78, -1, -1));
 
-        jLabel9.setText("Juego tipo _____ basado en ________");
-        Informacion_juego.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 44, -1, -1));
+        LabelTitulo.setText("Titulo");
+        Informacion_juego.add(LabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 44, -1, -1));
 
-        jLabel11.setText("Desarrollado por: _________________________");
-        Informacion_juego.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 267, -1, -1));
+        LabelGenero.setText("Genero");
+        Informacion_juego.add(LabelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 267, -1, -1));
 
-        jLabel12.setText("Producido por: ___________________________");
-        Informacion_juego.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 165, -1, -1));
+        LabelDesarrolladora.setText("Desarrolladora");
+        Informacion_juego.add(LabelDesarrolladora, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 165, -1, -1));
 
-        jLabel13.setText("Nº de jugadores: _________________________");
-        Informacion_juego.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 199, -1, -1));
-
-        jLabel3.setText("Juego tipo _______ que se basa en_____________");
-        Informacion_juego.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 233, -1, -1));
+        LabelNjugadores.setText("Nº de jugadores");
+        Informacion_juego.add(LabelNjugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 199, -1, -1));
 
         informacion_juego.add(Informacion_juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 420, 438));
 
@@ -447,9 +473,9 @@ public class InterfazJuego extends javax.swing.JFrame {
         
     }//GEN-LAST:event_Boton_comprarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ImagenJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImagenJuegoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ImagenJuegoActionPerformed
 
     private void Boton_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_loginMouseClicked
        
@@ -569,26 +595,25 @@ public class InterfazJuego extends javax.swing.JFrame {
     private javax.swing.JButton Boton_registro;
     private javax.swing.JButton Boton_registro_compra;
     public javax.swing.JPanel Confirmacion_compra;
+    private javax.swing.JButton ImagenJuego;
     private javax.swing.JPanel Imagenes_precio;
     private javax.swing.JPanel Informacion_juego;
+    private javax.swing.JLabel LabelDesarrolladora;
+    private javax.swing.JLabel LabelDescripcion;
+    private javax.swing.JLabel LabelGenero;
+    private javax.swing.JLabel LabelNjugadores;
+    private javax.swing.JLabel LabelPrecio;
+    private javax.swing.JLabel LabelTitulo;
     private javax.swing.JPanel Ventana_juego;
     private javax.swing.JPanel informacion_juego;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JSlider jSlider1;
     public javax.swing.JPanel panel_excepcion_compra;
     private javax.swing.JTextField searchBox;
