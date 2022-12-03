@@ -54,8 +54,6 @@ public class Registro_juegos extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
-        searchButton1 = new javax.swing.JButton();
-        searchBox1 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -113,21 +111,6 @@ public class Registro_juegos extends javax.swing.JFrame {
             }
         });
 
-        searchButton1.setBackground(new java.awt.Color(0, 153, 255));
-        searchButton1.setForeground(new java.awt.Color(255, 255, 255));
-        searchButton1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.searchButton1.text")); // NOI18N
-        searchButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButton1ActionPerformed(evt);
-            }
-        });
-
-        searchBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBox1ActionPerformed(evt);
-            }
-        });
-
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel13.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jLabel13.text")); // NOI18N
         jLabel13.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -141,17 +124,9 @@ public class Registro_juegos extends javax.swing.JFrame {
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jLabel10)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton13)
-                        .addGap(21, 21, 21))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(searchBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchButton1)
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                .addComponent(jButton13)
+                .addGap(21, 21, 21))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,11 +135,7 @@ public class Registro_juegos extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                            .addComponent(searchButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(27, 27, 27))
+                        .addGap(27, 114, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -264,7 +235,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel19.setAutoscrolls(true);
         jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "FPS", "Plataformas", "RPG", "Rol", "MOBA", "Survival", "Horror", "Accion", "Aventura", "Soulslike" }));
+        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Shooter", "Plataformas", "RPG", "Rol", "MOBA", "Survival", "Horror", "Accion", "Aventura" }));
         genero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generoActionPerformed(evt);
@@ -483,14 +454,6 @@ public class Registro_juegos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton13ActionPerformed
 
-    private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchButton1ActionPerformed
-
-    private void searchBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchBox1ActionPerformed
-
     private void tituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tituloActionPerformed
@@ -630,8 +593,6 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JTextField numero_jugadores;
     private javax.swing.JTextField precio;
     public javax.swing.JButton registro1;
-    private javax.swing.JTextField searchBox1;
-    private javax.swing.JButton searchButton1;
     private javax.swing.JButton seleccionar_imagen;
     private javax.swing.JTextField titulo;
     private javax.swing.JTextField txtruta;

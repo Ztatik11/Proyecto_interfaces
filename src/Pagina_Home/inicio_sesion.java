@@ -44,10 +44,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         botonRegistro = new javax.swing.JButton();
-        searchButton = new javax.swing.JButton();
-        searchBox = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        UserButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -90,32 +87,9 @@ public class inicio_sesion extends javax.swing.JFrame {
             }
         });
 
-        searchButton.setBackground(new java.awt.Color(0, 153, 255));
-        searchButton.setForeground(new java.awt.Color(255, 255, 255));
-        searchButton.setText("SEARCH");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
-            }
-        });
-
-        searchBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBoxActionPerformed(evt);
-            }
-        });
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel5.setText("jLabel5");
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
-
-        UserButton.setBackground(new java.awt.Color(0, 153, 255));
-        UserButton.setForeground(new java.awt.Color(255, 255, 255));
-        UserButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -126,19 +100,9 @@ public class inicio_sesion extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jLabel4)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(UserButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonRegistro)
-                        .addGap(21, 21, 21))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchButton)
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                .addComponent(botonRegistro)
+                .addGap(21, 21, 21))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,14 +110,8 @@ public class inicio_sesion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(UserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(56, 56, 56)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchBox, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                            .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(27, 27, 27))
+                        .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 114, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -334,14 +292,6 @@ public class inicio_sesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchButtonActionPerformed
-
-    private void searchBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchBoxActionPerformed
-
     private void usuario_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuario_correoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usuario_correoActionPerformed
@@ -484,10 +434,6 @@ public class inicio_sesion extends javax.swing.JFrame {
             clave_inicio.setText("");
         }              
     }//GEN-LAST:event_boton_inicion_sesionActionPerformed
-
-    private void UserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UserButtonActionPerformed
     
     
     /**
@@ -532,7 +478,6 @@ public class inicio_sesion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ErrorUsuario;
     private javax.swing.JLabel Errorclave;
-    private javax.swing.JButton UserButton;
     private javax.swing.JButton botonRegistro;
     private javax.swing.JButton boton_inicion_sesion;
     private javax.swing.JPasswordField clave_inicio;
@@ -549,8 +494,6 @@ public class inicio_sesion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JTextField searchBox;
-    private javax.swing.JButton searchButton;
     private javax.swing.JTextField usuario_correo;
     // End of variables declaration//GEN-END:variables
 
