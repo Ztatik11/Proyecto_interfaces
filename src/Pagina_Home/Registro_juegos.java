@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -36,6 +37,27 @@ public class Registro_juegos extends javax.swing.JFrame {
         initComponents();
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
         this.conexion_db = new consultas_sql("mango_games","root","root");
+        ValidationGroup Campo_Validador_titulo = Validador_titulo.getValidationGroup();
+        ValidationGroup Campo_Validador_descripcion = Validador_descripcion.getValidationGroup();
+        ValidationGroup Campo_Validador_nota = Validador_nota.getValidationGroup();
+        ValidationGroup Campo_Validador_precio = Validador_precio.getValidationGroup();
+        Campo_Validador_titulo.add(titulo,StringValidators.REQUIRE_NON_EMPTY_STRING);
+        Campo_Validador_descripcion.add(descripcion,StringValidators.REQUIRE_NON_EMPTY_STRING);
+        Campo_Validador_nota.add(nota,StringValidators.REQUIRE_NON_EMPTY_STRING,StringValidators.REQUIRE_VALID_INTEGER);
+        Campo_Validador_precio.add(precio,StringValidators.REQUIRE_NON_EMPTY_STRING,StringValidators.REQUIRE_VALID_NUMBER);
+        
+        Validador_titulo.addChangeListener(new ChangeListener() {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            
+          if(Validador_titulo.getProblem() == null && Validador_descripcion.getProblem() == null && Validador_nota.getProblem() == null && Validador_precio.getProblem() == null){
+              registro.setEnabled(true);
+          }else{
+              registro.setEnabled(false);
+          }
+        }
+      });
+        
     }
 
     /**
@@ -69,20 +91,20 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         nota = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        registro1 = new javax.swing.JButton();
+        registro = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         genero = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
-        Validador_usuario1 = new org.netbeans.validation.api.ui.swing.ValidationPanel();
-        Validador_nombre1 = new org.netbeans.validation.api.ui.swing.ValidationPanel();
-        Validador_apellidos1 = new org.netbeans.validation.api.ui.swing.ValidationPanel();
-        Validador_correo1 = new org.netbeans.validation.api.ui.swing.ValidationPanel();
         jLabel21 = new javax.swing.JLabel();
         numero_jugadores = new javax.swing.JTextField();
         txtruta = new javax.swing.JTextField();
         desarrolladora1 = new javax.swing.JTextField();
         imglabel = new javax.swing.JLabel();
         seleccionar_imagen = new javax.swing.JButton();
+        Validador_titulo = new org.netbeans.validation.api.ui.swing.ValidationPanel();
+        Validador_descripcion = new org.netbeans.validation.api.ui.swing.ValidationPanel();
+        Validador_precio = new org.netbeans.validation.api.ui.swing.ValidationPanel();
+        Validador_nota = new org.netbeans.validation.api.ui.swing.ValidationPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -223,10 +245,12 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel18.setAutoscrolls(true);
         jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        registro1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.registro1.text")); // NOI18N
-        registro1.addActionListener(new java.awt.event.ActionListener() {
+        registro.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.registro.text")); // NOI18N
+        registro.setActionCommand(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.registro.actionCommand")); // NOI18N
+        registro.setEnabled(false);
+        registro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registro1ActionPerformed(evt);
+                registroActionPerformed(evt);
             }
         });
 
@@ -260,6 +284,8 @@ public class Registro_juegos extends javax.swing.JFrame {
         });
 
         txtruta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtruta.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtruta.setEnabled(false);
         txtruta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtrutaActionPerformed(evt);
@@ -300,26 +326,26 @@ public class Registro_juegos extends javax.swing.JFrame {
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
                                     .addComponent(descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
-                                    .addComponent(Validador_nombre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Validador_usuario1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(Validador_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Validador_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Validador_apellidos1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Validador_precio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(precio, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)))
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel18)
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Validador_correo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(nota, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)))
-                            .addComponent(jLabel18))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nota, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Validador_nota, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 153, Short.MAX_VALUE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -328,14 +354,14 @@ public class Registro_juegos extends javax.swing.JFrame {
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addGap(185, 185, 185)
-                                .addComponent(registro1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(registro, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel21)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(seleccionar_imagen)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtruta, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addComponent(imglabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))))
             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,53 +373,54 @@ public class Registro_juegos extends javax.swing.JFrame {
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(seleccionar_imagen)
-                    .addComponent(txtruta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addComponent(registro1)
-                .addContainerGap())
-            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Validador_usuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Validador_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Validador_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Validador_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Validador_apellidos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Validador_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Validador_correo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel18)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(numero_jugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Validador_nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(imglabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel18)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(numero_jugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(imglabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(seleccionar_imagen)
+                            .addComponent(txtruta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
+                        .addComponent(registro)
+                        .addContainerGap())))
             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                     .addContainerGap(431, Short.MAX_VALUE)
@@ -470,7 +497,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_notaActionPerformed
 
-    private void registro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registro1ActionPerformed
+    private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
         // TODO add your handling code here:
         String [] datos_juego = {titulo.getText(),descripcion.getText(),precio.getText(),nota.getText(),genero.getSelectedItem().toString(),desarrolladora1.getText(),numero_jugadores.getText()};
         String Titulo= "'" + datos_juego[0] + "'";
@@ -489,7 +516,7 @@ public class Registro_juegos extends javax.swing.JFrame {
             Exceptions.printStackTrace(ex);
         }
         
-    }//GEN-LAST:event_registro1ActionPerformed
+    }//GEN-LAST:event_registroActionPerformed
 
     private void generoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoActionPerformed
         // TODO add your handling code here:
@@ -553,6 +580,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                Locale.setDefault(new Locale("es","ES"));
                 try {
                     new Registro_juegos().setVisible(true);
                 } catch (SQLException ex) {
@@ -563,10 +591,10 @@ public class Registro_juegos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_apellidos1;
-    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_correo1;
-    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_nombre1;
-    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_usuario1;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_descripcion;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_nota;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_precio;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_titulo;
     private javax.swing.JTextField desarrolladora1;
     private javax.swing.JTextField descripcion;
     private javax.swing.JComboBox<String> genero;
@@ -592,7 +620,7 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JTextField nota;
     private javax.swing.JTextField numero_jugadores;
     private javax.swing.JTextField precio;
-    public javax.swing.JButton registro1;
+    public javax.swing.JButton registro;
     private javax.swing.JButton seleccionar_imagen;
     private javax.swing.JTextField titulo;
     private javax.swing.JTextField txtruta;

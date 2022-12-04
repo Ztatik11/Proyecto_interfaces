@@ -10,6 +10,7 @@ package Pagina_Home;
  */
 import static Pagina_Home.consultas_sql.parsear_cadena;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -51,7 +52,7 @@ public class registro extends javax.swing.JFrame {
         @Override
         public void stateChanged(ChangeEvent e) {
             System.out.println(terminos_condiciones.isContentAreaFilled());
-          if(Validador_usuario.getProblem() == null && terminos_condiciones.isSelected()==true){
+          if(Validador_usuario.getProblem() == null && Validador_nombre.getProblem() == null && Validador_apellidos.getProblem() == null && Validador_correo.getProblem() == null && terminos_condiciones.isSelected()==true){
               registro.setEnabled(true);
           }else{
               registro.setEnabled(false);
@@ -533,6 +534,7 @@ public class registro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                Locale.setDefault(new Locale("es","ES"));
                 try {
                     new registro().setVisible(true);
                 } catch (SQLException ex) {
