@@ -1,5 +1,6 @@
 package Pagina_Home;
 
+import java.awt.event.ActionEvent;
 import static java.lang.Short.toString;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -24,7 +25,7 @@ public class inicio_sesion extends javax.swing.JFrame {
     public inicio_sesion() throws SQLException {
         initComponents();
         this.UserButton.setVisible(false);
-        this.UserButton.setText("");
+        this.UserButton.setText("Yonlee hijo de la grandisima puta");
         
         this.Errorclave.setVisible(false);
         this.ErrorUsuario.setVisible(false);
@@ -45,6 +46,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         botonRegistro = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        UserButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -91,6 +93,17 @@ public class inicio_sesion extends javax.swing.JFrame {
         jLabel5.setText("jLabel5");
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
 
+        UserButton.setBackground(new java.awt.Color(0, 153, 255));
+        UserButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        UserButton.setForeground(new java.awt.Color(255, 255, 255));
+        UserButton.setText("usuario");
+        UserButton.setToolTipText("");
+        UserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -98,9 +111,15 @@ public class inicio_sesion extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(164, 164, 164)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(UserButton)
+                        .addGap(18, 18, 18)))
                 .addComponent(botonRegistro)
                 .addGap(21, 21, 21))
         );
@@ -110,7 +129,9 @@ public class inicio_sesion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 114, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -434,6 +455,10 @@ public class inicio_sesion extends javax.swing.JFrame {
             clave_inicio.setText("");
         }              
     }//GEN-LAST:event_boton_inicion_sesionActionPerformed
+
+    private void UserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UserButtonActionPerformed
     
     
     /**
@@ -478,6 +503,7 @@ public class inicio_sesion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ErrorUsuario;
     private javax.swing.JLabel Errorclave;
+    private javax.swing.JButton UserButton;
     private javax.swing.JButton botonRegistro;
     private javax.swing.JButton boton_inicion_sesion;
     private javax.swing.JPasswordField clave_inicio;
