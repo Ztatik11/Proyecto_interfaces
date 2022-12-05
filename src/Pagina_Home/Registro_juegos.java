@@ -39,21 +39,19 @@ public class Registro_juegos extends javax.swing.JFrame {
         this.conexion_db = new consultas_sql("mango_games","root","root");
         ValidationGroup Campo_Validador_titulo = Validador_titulo.getValidationGroup();
         ValidationGroup Campo_Validador_descripcion = Validador_descripcion.getValidationGroup();
-        ValidationGroup Campo_Validador_nota = Validador_nota.getValidationGroup();
         ValidationGroup Campo_Validador_precio = Validador_precio.getValidationGroup();
         Campo_Validador_titulo.add(titulo,StringValidators.REQUIRE_NON_EMPTY_STRING);
         Campo_Validador_descripcion.add(descripcion,StringValidators.REQUIRE_NON_EMPTY_STRING);
-        Campo_Validador_nota.add(nota,StringValidators.REQUIRE_NON_EMPTY_STRING,StringValidators.REQUIRE_VALID_INTEGER);
         Campo_Validador_precio.add(precio,StringValidators.REQUIRE_NON_EMPTY_STRING,StringValidators.REQUIRE_VALID_NUMBER);
         
         Validador_titulo.addChangeListener(new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
             
-          if(Validador_titulo.getProblem() == null && Validador_descripcion.getProblem() == null && Validador_nota.getProblem() == null && Validador_precio.getProblem() == null){
-              registro.setEnabled(true);
+          if(Validador_titulo.getProblem() == null && Validador_descripcion.getProblem() == null && Validador_precio.getProblem() == null){
+              registro1.setEnabled(true);
           }else{
-              registro.setEnabled(false);
+              registro1.setEnabled(false);
           }
         }
       });
@@ -96,9 +94,9 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         genero = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
-        Validador_usuario1 = new org.netbeans.validation.api.ui.swing.ValidationPanel();
-        Validador_nombre1 = new org.netbeans.validation.api.ui.swing.ValidationPanel();
-        Validador_apellidos1 = new org.netbeans.validation.api.ui.swing.ValidationPanel();
+        Validador_titulo = new org.netbeans.validation.api.ui.swing.ValidationPanel();
+        Validador_descripcion = new org.netbeans.validation.api.ui.swing.ValidationPanel();
+        Validador_precio = new org.netbeans.validation.api.ui.swing.ValidationPanel();
         Validador_correo1 = new org.netbeans.validation.api.ui.swing.ValidationPanel();
         jLabel21 = new javax.swing.JLabel();
         txtruta = new javax.swing.JTextField();
@@ -360,13 +358,13 @@ public class Registro_juegos extends javax.swing.JFrame {
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
                                     .addComponent(descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
-                                    .addComponent(Validador_nombre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Validador_usuario1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(Validador_descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Validador_titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Validador_apellidos1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Validador_precio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(precio, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)))
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel19)
@@ -408,19 +406,19 @@ public class Registro_juegos extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Validador_usuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Validador_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Validador_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Validador_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Validador_apellidos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Validador_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
@@ -606,10 +604,10 @@ public class Registro_juegos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_apellidos1;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_correo1;
-    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_nombre1;
-    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_usuario1;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_descripcion;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_precio;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_titulo;
     private javax.swing.JTextField desarrolladora1;
     private javax.swing.JTextField descripcion;
     private javax.swing.JComboBox<String> genero;
