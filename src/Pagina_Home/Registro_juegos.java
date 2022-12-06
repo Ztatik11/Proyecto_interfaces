@@ -10,14 +10,19 @@ package Pagina_Home;
  */
 import static Pagina_Home.consultas_sql.parsear_cadena;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.event.ChangeEvent;
@@ -30,6 +35,7 @@ public class Registro_juegos extends javax.swing.JFrame {
     consultas_sql conexion_db;
     File ruta;
     Image img;
+    byte [] datos_img;
     /**
      * Creates new form Registro_juegos
      */
@@ -49,9 +55,9 @@ public class Registro_juegos extends javax.swing.JFrame {
         public void stateChanged(ChangeEvent e) {
             
           if(Validador_titulo.getProblem() == null && Validador_descripcion.getProblem() == null && Validador_precio.getProblem() == null){
-              registro1.setEnabled(true);
+              registro.setEnabled(true);
           }else{
-              registro1.setEnabled(false);
+              registro.setEnabled(false);
           }
         }
       });
@@ -88,7 +94,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         precio = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        registro1 = new javax.swing.JButton();
+        registro = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         genero = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
@@ -101,8 +107,8 @@ public class Registro_juegos extends javax.swing.JFrame {
         desarrolladora1 = new javax.swing.JTextField();
         imglabel = new javax.swing.JLabel();
         seleccionar_imagen = new javax.swing.JButton();
-        jugadores = new javax.swing.JComboBox<>();
         nota = new javax.swing.JComboBox<>();
+        jugadores = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -236,8 +242,9 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel18.setAutoscrolls(true);
         jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        registro1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.registro1.text")); // NOI18N
-        registro1.addActionListener(new java.awt.event.ActionListener() {
+        registro.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.registro.text")); // NOI18N
+        registro.setEnabled(false);
+        registro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registro1ActionPerformed(evt);
             }
@@ -266,6 +273,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel21.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtruta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtruta.setEnabled(false);
         txtruta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtrutaActionPerformed(evt);
@@ -288,14 +296,9 @@ public class Registro_juegos extends javax.swing.JFrame {
             }
         });
 
-        jugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "-" }));
-
         nota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        nota.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                notaActionPerformed(evt);
-            }
-        });
+
+        jugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "multi" }));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -309,7 +312,7 @@ public class Registro_juegos extends javax.swing.JFrame {
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addGap(185, 185, 185)
-                                .addComponent(registro1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(registro, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel21)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -368,7 +371,7 @@ public class Registro_juegos extends javax.swing.JFrame {
                     .addComponent(seleccionar_imagen)
                     .addComponent(txtruta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
-                .addComponent(registro1)
+                .addComponent(registro)
                 .addContainerGap())
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -481,26 +484,25 @@ public class Registro_juegos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_precioActionPerformed
 
-    private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
+    private void registro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registro1ActionPerformed
         // TODO add your handling code here:
         String [] datos_juego = {titulo.getText(),descripcion.getText(),precio.getText(),nota.getSelectedItem().toString(),genero.getSelectedItem().toString(),desarrolladora1.getText(),jugadores.getSelectedItem().toString()};
         String Titulo= "'" + datos_juego[0] + "'";
         try {
             Titulo=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select Titulo from juegos where Titulo="+Titulo), Titulo);
-            InputStream input = new FileInputStream(new File(txtruta.getText()));
+
+            
             
             if(Titulo==null){
-                conexion_db.insertar_una_nueva_fila_en_una_tabla("juegos", "Titulo,Descripcion,Precio,Nota,Genero,Desarrolladora,Numero_jugadores,Imagen",this.conexion_db.parsear_atributos(datos_juego)+",'"+input+"'");
+                conexion_db.insertar_una_nueva_fila_en_una_tabla("juegos", "Titulo,Descripcion,Precio,Nota,Genero,Desarrolladora,Numero_jugadores,Imagen",this.conexion_db.parsear_atributos(datos_juego)+",'"+Arrays.toString(datos_img)+"'");
             }else{
                 //ESTA INTRODUCIDO EN LA BASE DE DATOS
             }
         } catch (SQLException ex) {
             Exceptions.printStackTrace(ex);
-        } catch (FileNotFoundException ex) {
-            Exceptions.printStackTrace(ex);
         }
         
-    }//GEN-LAST:event_registroActionPerformed
+    }//GEN-LAST:event_registro1ActionPerformed
 
     private void generoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoActionPerformed
         // TODO add your handling code here:
@@ -522,17 +524,21 @@ public class Registro_juegos extends javax.swing.JFrame {
         carpeta.setCurrentDirectory(rutacarpeta);
         int ventana = carpeta.showOpenDialog(carpeta);
         if(ventana==JFileChooser.APPROVE_OPTION){
-            ruta=carpeta.getSelectedFile();
-            txtruta.setText(String.valueOf(ruta));
-            this.img=getToolkit().getImage(String.valueOf(txtruta.getText()));
-            img=img.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(), Image.SCALE_DEFAULT);
-            imglabel.setIcon(new ImageIcon(img));
+            try {
+                ruta=carpeta.getSelectedFile();
+                txtruta.setText(String.valueOf(ruta));
+                this.img=getToolkit().getImage(String.valueOf(txtruta.getText()));
+                BufferedImage bImage = ImageIO.read(new File(txtruta.getText()));
+                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                ImageIO.write(bImage, "jpg", bos );
+                this.datos_img = bos.toByteArray();
+                img=img.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(), Image.SCALE_DEFAULT);
+                imglabel.setIcon(new ImageIcon(img));
+            } catch (IOException ex) {
+                Exceptions.printStackTrace(ex);
+            }
         }
     }//GEN-LAST:event_seleccionar_imagenActionPerformed
-
-    private void notaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_notaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -604,7 +610,7 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jugadores;
     private javax.swing.JComboBox<String> nota;
     private javax.swing.JTextField precio;
-    public javax.swing.JButton registro1;
+    public javax.swing.JButton registro;
     private javax.swing.JButton seleccionar_imagen;
     private javax.swing.JTextField titulo;
     private javax.swing.JTextField txtruta;

@@ -4,6 +4,11 @@
  */
 package Pagina_Home;
 
+import java.awt.Image;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+
+
 /**
  *
  * @author DavidBejaranoLlano
@@ -14,14 +19,34 @@ public class Juego {
     private int ID;
     private String Titulo;
     private String Descripcion;
-    private float Precio;
-    private float Nota;
+    private String Precio;
+    private String Nota;
     private String Genero;
     private String Desarrolladora;
-    private int Numero_jugadores;
+    private String Numero_jugadores;
+    private Image imagen;
 
     //Constructor con el mismo nombre de la clase
-    public Juego(){}
+    public Juego(ArrayList <Object> datos){
+        this.Titulo = datos.get(1).toString();
+        this.Descripcion = datos.get(2).toString();
+        this.Precio = datos.get(3).toString();
+        this.Nota = datos.get(4).toString();
+        this.Genero = datos.get(5).toString();
+        this.Desarrolladora = datos.get(6).toString();
+        this.Numero_jugadores = datos.get(7).toString();
+        this.imagen = conversion_imagen(datos.get(8));
+    }
+    
+    
+    public Image conversion_imagen(Object imagen){
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        Image img = null;
+        //img = getToolkit().getDefaultToolkit().createImage(imagen);
+        //img = img.getScaledInstance(ID, ID, ID);
+        
+        return img;
+    } 
 
     public int getID() {
         return ID;
@@ -44,17 +69,17 @@ public class Juego {
         this.Descripcion = Descripcion;
     }
 
-    public float getPrecio() {
+    public String getPrecio() {
         return Precio;
     }
-    public void setPrecio(float Precio) {
+    public void setPrecio(String Precio) {
         this.Precio = Precio;
     }
 
-    public float getNota() {
+    public String getNota() {
         return Nota;
     }
-    public void setNota(float Nota) {
+    public void setNota(String Nota) {
         this.Nota = Nota;
     }
 
@@ -72,10 +97,10 @@ public class Juego {
         this.Desarrolladora = Desarrolladora;
     }
 
-    public int getNumero_jugadores() {
+    public String getNumero_jugadores() {
         return Numero_jugadores;
     }
-    public void setNumero_jugadores(int Numero_jugadores) {
+    public void setNumero_jugadores(String Numero_jugadores) {
         this.Numero_jugadores = Numero_jugadores;
     }
     
