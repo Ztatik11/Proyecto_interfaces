@@ -8,7 +8,9 @@ package Pagina_Home;
  *
  * @author JoseManuelRodriguezC
  */
+import static Pagina_Home.consultas_sql.parsear_cadena;
 import java.sql.SQLException;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -17,14 +19,10 @@ import javax.swing.event.ChangeListener;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
 import org.netbeans.validation.api.ui.swing.ValidationPanel;
+import org.openide.util.Exceptions;
 
 public class registro extends javax.swing.JFrame {
-    String usuario_;
-    String nombre_;
-    String apellidos_;
-    String correo_;
-    String residencia_;
-    String clave_;
+    
     consultas_sql conexion_db;
     /**
      * Creates new form NewJFrame
@@ -36,8 +34,10 @@ public class registro extends javax.swing.JFrame {
         ValidationGroup Campo_Validador_apellido = Validador_apellidos.getValidationGroup();
         ValidationGroup Campo_Validador_correo = Validador_correo.getValidationGroup();
         ValidationGroup Campo_Validador_clave = Validador_clave.getValidationGroup();
-        Campo_Validador_usuario.add(usuario,StringValidators.NO_WHITESPACE);
-        Campo_Validador_usuario.add(usuario,StringValidators.REQUIRE_NON_EMPTY_STRING);
+        Campo_Validador_usuario.add(usuario,StringValidators.NO_WHITESPACE,StringValidators.REQUIRE_NON_EMPTY_STRING);
+        Campo_Validador_nombre.add(nombre,StringValidators.REQUIRE_NON_EMPTY_STRING);
+        Campo_Validador_apellido.add(apellidos,StringValidators.REQUIRE_NON_EMPTY_STRING);
+        Campo_Validador_correo.add(correo_electronico,StringValidators.REQUIRE_NON_EMPTY_STRING,StringValidators.EMAIL_ADDRESS);
         /*
         Campo_Validador_nombre.add(nombre,StringValidators.CHARACTER_SET_NAME);
         Campo_Validador_nombre.add(nombre,StringValidators.REQUIRE_NON_EMPTY_STRING);
@@ -51,7 +51,8 @@ public class registro extends javax.swing.JFrame {
         Validador_usuario.addChangeListener(new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
-          if(Validador_usuario.getProblem() == null && terminos_condiciones.isEnabled()==true){
+            System.out.println(terminos_condiciones.isContentAreaFilled());
+          if(Validador_usuario.getProblem() == null && Validador_nombre.getProblem() == null && Validador_apellidos.getProblem() == null && Validador_correo.getProblem() == null && terminos_condiciones.isSelected()==true){
               registro.setEnabled(true);
           }else{
               registro.setEnabled(false);
@@ -75,8 +76,6 @@ public class registro extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
-        searchButton = new javax.swing.JButton();
-        searchBox = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -134,21 +133,6 @@ public class registro extends javax.swing.JFrame {
             }
         });
 
-        searchButton.setBackground(new java.awt.Color(0, 153, 255));
-        searchButton.setForeground(new java.awt.Color(255, 255, 255));
-        searchButton.setText("SEARCH");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
-            }
-        });
-
-        searchBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBoxActionPerformed(evt);
-            }
-        });
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel5.setText("jLabel5");
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -162,17 +146,9 @@ public class registro extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jLabel4)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton12)
-                        .addGap(21, 21, 21))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchButton)
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                .addComponent(jButton12)
+                .addGap(21, 21, 21))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,11 +157,7 @@ public class registro extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchBox, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                            .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(27, 27, 27))
+                        .addGap(27, 114, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -448,26 +420,17 @@ public class registro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(616, 616, 616))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchButtonActionPerformed
-
-    private void searchBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchBoxActionPerformed
-
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
         // TODO add your handling code here:
-        System.out.println(this.usuario.getText());
-        this.usuario_=this.usuario.getText();
-        
     }//GEN-LAST:event_usuarioActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
@@ -503,6 +466,7 @@ public class registro extends javax.swing.JFrame {
 
     private void terminos_condicionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminos_condicionesActionPerformed
         // TODO add your handling code here:
+        System.out.println(terminos_condiciones.isSelected());
     }//GEN-LAST:event_terminos_condicionesActionPerformed
 
     private void residenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_residenciaActionPerformed
@@ -521,14 +485,25 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MousePressed
 
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
-        // TODO add your handling code here:
-        String usuario_ = usuario.getText();
-        String nombre_= nombre.getText();
-        String apellido_= apellidos.getText();
-        String email_= correo_electronico.getText();
-        String comunidad_= residencia.getToolTipText();
-        String clave_= clave.getToolTipText();
-        conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,clave,administrador", (usuario_+","+nombre_+","+apellido_+","+email_+","+comunidad_+","+clave_+",false"));
+        try {
+            // TODO add your handling code here:
+            char [] clave_array = clave.getPassword();
+            String pass = "";
+            
+            for (int j = 0; j < clave_array.length; j++) {
+                pass+=clave_array[j];
+            }
+            String [] datos_usuario = {usuario.getText(),nombre.getText(),apellidos.getText(),correo_electronico.getText(),residencia.getSelectedItem().toString(),pass};
+            String usuario= datos_usuario[0];
+            usuario=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select usuario from usuarios where usuario=="+usuario), usuario);
+            if(usuario==null){
+                conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador",this.conexion_db.parsear_atributos(datos_usuario)+",false" );
+            }else{
+                System.out.println("Este usuario ya existe");
+            }
+        } catch (SQLException ex) {
+            Exceptions.printStackTrace(ex);
+        }
     }//GEN-LAST:event_registroActionPerformed
     
     /**
@@ -559,6 +534,7 @@ public class registro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                Locale.setDefault(new Locale("es","ES"));
                 try {
                     new registro().setVisible(true);
                 } catch (SQLException ex) {
@@ -598,8 +574,6 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JTextField nombre;
     public javax.swing.JButton registro;
     private javax.swing.JComboBox<String> residencia;
-    private javax.swing.JTextField searchBox;
-    private javax.swing.JButton searchButton;
     public javax.swing.JCheckBox terminos_condiciones;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables

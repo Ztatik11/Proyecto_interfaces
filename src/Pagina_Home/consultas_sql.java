@@ -40,6 +40,9 @@ public class consultas_sql {
                         System.out.println("Puñeta mala");
                         Statement creacion_base_datos = this.connection_.createStatement();
                         creacion_base_datos.executeUpdate("create database mango_games");
+                        this.connection_=null;
+                        this.connection_ = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db_,login_,password_);
+                        System.out.println("Conexion a base de datos " + db_ + " correcta.");
                         e.printStackTrace();
                     }
 	}
@@ -102,6 +105,36 @@ public class consultas_sql {
 	}
 	return valorpedido;
     }
+    
+    	public static String parsear_atributos(String[] atributos) {
+
+		String sentencia_atributos = "";
+
+		// Crea una sentencia compatible con MySQL
+		for (int j = 0; j < atributos.length; j++) {
+
+			atributos[j]=parsear_cadena(atributos[j]);
+
+			sentencia_atributos += atributos[j];
+			if (j != atributos.length - 1) {
+				sentencia_atributos += ",";
+			}
+
+		}
+		return sentencia_atributos;
+	}
+        
+        public static String parsear_cadena(String cadena) {
+		return (isParsable(cadena)) ? cadena : "'" + cadena + "'";
+	}
+        public static boolean isParsable(String input) {
+		try {
+			Integer.parseInt(input);
+			return true;
+		} catch (final NumberFormatException e) {
+			return false;
+		}
+	}
     
 }
 

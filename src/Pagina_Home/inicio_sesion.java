@@ -1,8 +1,11 @@
 package Pagina_Home;
 
+import java.awt.event.ActionEvent;
+import static java.lang.Short.toString;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.openide.util.Exceptions;
 
 
 /*
@@ -15,13 +18,18 @@ import java.util.logging.Logger;
  * @author AlvaroCarrascoGarcia
  */
 public class inicio_sesion extends javax.swing.JFrame {
-    
+    consultas_sql conexion_db;
     /**
      * Creates new form inicio_sesion
      */
     public inicio_sesion() throws SQLException {
         initComponents();
-        consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
+        this.UserButton.setVisible(false);
+        this.UserButton.setText("Yonlee hijo de la grandisima puta");
+        
+        this.Errorclave.setVisible(false);
+        this.ErrorUsuario.setVisible(false);
+         this.conexion_db = new consultas_sql("mango_games","root","root");
     }
 
     /**
@@ -36,10 +44,9 @@ public class inicio_sesion extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jButton12 = new javax.swing.JButton();
-        searchButton = new javax.swing.JButton();
-        searchBox = new javax.swing.JTextField();
+        botonRegistro = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        UserButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -52,6 +59,8 @@ public class inicio_sesion extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         boton_inicion_sesion = new javax.swing.JButton();
+        ErrorUsuario = new javax.swing.JLabel();
+        Errorclave = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,35 +78,31 @@ public class inicio_sesion extends javax.swing.JFrame {
             }
         });
 
-        jButton12.setBackground(new java.awt.Color(0, 153, 255));
-        jButton12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton12.setText("registro");
-        jButton12.setToolTipText("");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        botonRegistro.setBackground(new java.awt.Color(0, 153, 255));
+        botonRegistro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        botonRegistro.setText("registro");
+        botonRegistro.setToolTipText("");
+        botonRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-
-        searchButton.setBackground(new java.awt.Color(0, 153, 255));
-        searchButton.setForeground(new java.awt.Color(255, 255, 255));
-        searchButton.setText("SEARCH");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
-            }
-        });
-
-        searchBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBoxActionPerformed(evt);
+                botonRegistroActionPerformed(evt);
             }
         });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel5.setText("jLabel5");
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
+
+        UserButton.setBackground(new java.awt.Color(0, 153, 255));
+        UserButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        UserButton.setForeground(new java.awt.Color(255, 255, 255));
+        UserButton.setText("usuario");
+        UserButton.setToolTipText("");
+        UserButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -106,19 +111,17 @@ public class inicio_sesion extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(164, 164, 164)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel4)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton12)
-                        .addGap(21, 21, 21))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchButton)
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                        .addComponent(UserButton)
+                        .addGap(18, 18, 18)))
+                .addComponent(botonRegistro)
+                .addGap(21, 21, 21))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,12 +129,10 @@ public class inicio_sesion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchBox, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                            .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(27, 27, 27))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 114, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -206,19 +207,20 @@ public class inicio_sesion extends javax.swing.JFrame {
             }
         });
 
+        ErrorUsuario.setForeground(new java.awt.Color(255, 0, 0));
+        ErrorUsuario.setText("El usuario no se ha encontrado");
+
+        Errorclave.setForeground(new java.awt.Color(255, 0, 0));
+        Errorclave.setText("La contraseña es errónea");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(244, 244, 244))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(clave_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(181, 181, 181))))
+                .addComponent(clave_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(181, 181, 181))
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,6 +241,17 @@ public class inicio_sesion extends javax.swing.JFrame {
                             .addComponent(boton_inicion_sesion)
                             .addComponent(jButton2))))
                 .addContainerGap(127, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(Errorclave)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(ErrorUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(244, 244, 244))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,10 +267,14 @@ public class inicio_sesion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usuario_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ErrorUsuario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(clave_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGap(18, 18, 18)
+                .addComponent(Errorclave)
+                .addGap(24, 24, 24)
                 .addComponent(boton_inicion_sesion)
                 .addGap(35, 35, 35)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,14 +313,6 @@ public class inicio_sesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchButtonActionPerformed
-
-    private void searchBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchBoxActionPerformed
-
     private void usuario_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuario_correoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usuario_correoActionPerformed
@@ -312,7 +321,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_clave_inicioActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
        registro b = null;
         try {
             b = new registro();
@@ -321,7 +330,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         }
        b.setVisible(true);
        this.setVisible(false);
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_botonRegistroActionPerformed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
         homeInterface c = null;
@@ -333,13 +342,125 @@ public class inicio_sesion extends javax.swing.JFrame {
        c.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MousePressed
-
+ 
+    private void comprobarClave(String claveUser,String clave) {
+        
+        if(claveUser.equalsIgnoreCase(clave)){
+            boolean sesion_iniciada=true;
+            this.Errorclave.setVisible(false);
+            this.UserButton.setVisible(true);
+            this.botonRegistro.setVisible(false);
+        }
+        else if(!claveUser.equalsIgnoreCase(clave)){
+            this.Errorclave.setVisible(true);
+        }
+    }
+     
     private void boton_inicion_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_inicion_sesionActionPerformed
         // TODO add your handling code here:
-        this.usuario_correo.getText();
-        this.clave_inicio.getPassword();
+        
+        java.sql.ResultSet nom_usuario = null;
+        java.sql.ResultSet correo_usuario = null;
+        java.sql.ResultSet claveEm = null;
+        java.sql.ResultSet claveNom = null;
+        String validNom = null;
+        String validEm = null;
+        String validClave = null;
+        String clave = null;
+        
+        char[] caracteresClave = this.clave_inicio.getPassword();
+            for(int i = 0; i< caracteresClave.length;i++){
+                clave = String.valueOf(caracteresClave);
+            }
+        
+        try {
+            nom_usuario =this.conexion_db.realizar_consulta("Select Usuario from usuarios where Usuario =  '"  + this.usuario_correo.getText() + "'"/*+ " "' and clave = '" + clave+ "'"*/);
+            correo_usuario=this.conexion_db.realizar_consulta("Select Email from usuarios where Email = '"  + this.usuario_correo.getText() + "'"/* + "' and clave = '" + clave+*/ );
+            
+        } catch (SQLException ex) {
+            this.ErrorUsuario.setVisible(true);
+            Exceptions.printStackTrace(ex);
+        }
+        
+        boolean correcto = false;
+        
+        try {
+        
+            while (nom_usuario.next()){
+            validNom = (nom_usuario.getString("Usuario"));
+            }
+            
+            while (correo_usuario.next()){
+            validEm = (correo_usuario.getString("Email"));
+            }
+        
+        } catch (SQLException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+        
+        if (this.usuario_correo.getText().equalsIgnoreCase(validEm)){
+            this.ErrorUsuario.setVisible(false);
+            correcto = true;
+            usuario_correo.setText("");
+            
+            try {
+            claveEm =this.conexion_db.realizar_consulta("Select clave from usuarios where Email = " + "'" + validEm+ "'");
+            } catch (SQLException ex) {
+                this.Errorclave.setVisible(true);
+            Exceptions.printStackTrace(ex);
+            }
+            
+            try{
+            while (claveEm.next()){
+            validClave = claveEm.getString("clave");
+            }}catch (SQLException ex) {
+            Exceptions.printStackTrace(ex);
+            }
+           
+            comprobarClave(validClave, clave);
+           
+            usuario_correo.setText("");
+            clave_inicio.setText("");
+        }
+        else if(this.usuario_correo.getText().equalsIgnoreCase(validNom)){
+            this.ErrorUsuario.setVisible(false);
+            correcto = true;
+            usuario_correo.setText("");
+            
+            try {
+            claveNom =this.conexion_db.realizar_consulta("Select clave from usuarios where usuario = " + "'" + validNom+ "'");
+            } catch (SQLException ex) {
+                this.Errorclave.setVisible(true);
+                Exceptions.printStackTrace(ex);
+            }
+            
+            try{
+            while (claveNom.next()){
+            validClave = claveNom.getString("clave");
+            }}catch (SQLException ex) {
+            Exceptions.printStackTrace(ex);
+            }
+            
+            
+            comprobarClave(validClave, clave);
+           
+            usuario_correo.setText("");
+            clave_inicio.setText("");
+        }
+        if (correcto = false){
+            this.ErrorUsuario.setVisible(true);
+        }
+        else{
+            usuario_correo.setText("");
+            clave_inicio.setText("");
+        }              
     }//GEN-LAST:event_boton_inicion_sesionActionPerformed
 
+    private void UserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UserButtonActionPerformed
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -380,9 +501,12 @@ public class inicio_sesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ErrorUsuario;
+    private javax.swing.JLabel Errorclave;
+    private javax.swing.JButton UserButton;
+    private javax.swing.JButton botonRegistro;
     private javax.swing.JButton boton_inicion_sesion;
     private javax.swing.JPasswordField clave_inicio;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -396,9 +520,12 @@ public class inicio_sesion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JTextField searchBox;
-    private javax.swing.JButton searchButton;
     private javax.swing.JTextField usuario_correo;
     // End of variables declaration//GEN-END:variables
+
+    
+
+    
+
 
 }
