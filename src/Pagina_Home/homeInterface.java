@@ -15,17 +15,30 @@ import javax.swing.ImageIcon;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+
 public class homeInterface extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame
-     */
+    ArrayList<Object> datosJuego = new ArrayList<Object>();
+     ArrayList<Juego> juegos = new ArrayList<Juego>();
     consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
+    java.sql.ResultSet resultSet=conexion_db.realizar_consulta("SELECT * FROM juegos");
+    
+   
+    
     public homeInterface() throws SQLException {
         initComponents();
         menu.setVisible(false);
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
+        
+         while (resultSet.next()) {
+               datosJuego.add(resultSet);
+            }
+         
+         for(int i=0; datosJuego.size()>i; i++){
+          Juego juego = new Juego(datosJuego); //Esto peta
+          juegos.add(juego);
+         }
         
     }
 
@@ -772,36 +785,26 @@ public class homeInterface extends javax.swing.JFrame {
         G5,
         G6
         };
-        try {
-           ArrayList<String> juegos = new ArrayList<String>();
-            java.sql.ResultSet resultSet=conexion_db.realizar_consulta("SELECT * FROM juegos");
-            
-            String busqueda=searchBox.getText();
-            while (resultSet.next()) {
-               juegos.add(resultSet.getString("Titulo"));
-               
-            }
-            for(int i = 0; juegos.size()>i;i++){
-                if(busqueda.equalsIgnoreCase(juegos.get(i))){
-                                     for(int j=0;labelJuego.length>j;j++ ){
-                        if(juegos.get(i).equalsIgnoreCase(labelJuego[j].getText())==false){
-                            JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(false);     
-                        }else{
-                         JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true); 
+                String busqueda=searchBox.getText();
+                for(int i = 0; juegos.size()>i;i++){
+                    if(busqueda.equalsIgnoreCase(juegos.get(i).getTitulo())){
+                        for(int j=0;labelJuego.length>j;j++ ){
+                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
+                                JLabel juegoE=labelJuego[j];
+                                juegoE.getParent().setVisible(false);
+                            }else{
+                                JLabel juegoE=labelJuego[j];
+                                juegoE.getParent().setVisible(true);
+                            } 
                         }
                     }
                 }
-            }if(busqueda.equalsIgnoreCase("")){
-                for(int j=0;labelJuego.length>j;j++ ){      
-                      JLabel juegoE=labelJuego[j];
-                      juegoE.getParent().setVisible(true);         
+                if(busqueda.equalsIgnoreCase("")){
+                    for(int j=0;labelJuego.length>j;j++ ){
+                        JLabel juegoE=labelJuego[j];
+                        juegoE.getParent().setVisible(true);         
                     }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                }
         
 
     }//GEN-LAST:event_searchButtonMouseClicked
