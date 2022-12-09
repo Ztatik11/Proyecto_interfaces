@@ -24,29 +24,19 @@ public class Juego {
     private String Genero;
     private String Desarrolladora;
     private String Numero_jugadores;
-    private Image imagen;
+    private String imagen;
 
     //Constructor con el mismo nombre de la clase
-    public Juego(ArrayList <Object> datos){
-        this.Titulo = datos.get(1).toString();
-        this.Descripcion = datos.get(2).toString();
-        this.Precio = datos.get(3).toString();
-        this.Nota = datos.get(4).toString();
-        this.Genero = datos.get(5).toString();
-        this.Desarrolladora = datos.get(6).toString();
-        this.Numero_jugadores = datos.get(7).toString();
-        this.imagen = conversion_imagen(datos.get(8));
+    public Juego(ArrayList <String> datos){
+        this.Titulo = datos.get(1);
+        this.Descripcion = datos.get(2);
+        this.Precio = datos.get(3);
+        this.Nota = datos.get(4);
+        this.Genero = datos.get(5);
+        this.Desarrolladora = datos.get(6);
+        this.Numero_jugadores = datos.get(7);
+        this.imagen = datos.get(8);
     }
-    
-    
-    public Image conversion_imagen(Object imagen){
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        Image img = null;
-        //img = getToolkit().getDefaultToolkit().createImage(imagen);
-        //img = img.getScaledInstance(ID, ID, ID);
-        
-        return img;
-    } 
 
     public int getID() {
         return ID;

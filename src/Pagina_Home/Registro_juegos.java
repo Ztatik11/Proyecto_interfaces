@@ -17,6 +17,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Locale;
@@ -41,8 +42,11 @@ public class Registro_juegos extends javax.swing.JFrame {
      */
     public Registro_juegos() throws SQLException {
         initComponents();
-        this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
         this.conexion_db = new consultas_sql("mango_games","root","root");
+        ResultSet juegos = conexion_db.realizar_consulta("select * from juegos");
+        System.out.println(juegos);
+        this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
+        
         ValidationGroup Campo_Validador_titulo = Validador_titulo.getValidationGroup();
         ValidationGroup Campo_Validador_descripcion = Validador_descripcion.getValidationGroup();
         ValidationGroup Campo_Validador_precio = Validador_precio.getValidationGroup();
@@ -508,10 +512,10 @@ public class Registro_juegos extends javax.swing.JFrame {
                 txtruta.setText(String.valueOf(ruta));
                 this.img=getToolkit().getImage(String.valueOf(txtruta.getText()));
                 BufferedImage bImage = ImageIO.read(new File(txtruta.getText()));
-                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+             /* ByteArrayOutputStream bos = new ByteArrayOutputStream();
                 ImageIO.write(bImage, "jpg", bos );
                 this.datos_img = bos.toByteArray();
-                img=img.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(), Image.SCALE_DEFAULT);
+             */ this.img=this.img.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(), Image.SCALE_DEFAULT);
                 imglabel.setIcon(new ImageIcon(img));
             } catch (IOException ex) {
                 Exceptions.printStackTrace(ex);
@@ -521,12 +525,12 @@ public class Registro_juegos extends javax.swing.JFrame {
 
     private void registro_juegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registro_juegoActionPerformed
        // TODO add your handling code here:
-        String [] datos_juego = {titulo.getText(),descripcion.getText(),precio.getText(),nota.getSelectedItem().toString(),genero.getSelectedItem().toString(),desarrolladora1.getText(),jugadores.getSelectedItem().toString()};
+        String [] datos_juego = {titulo.getText(),descripcion.getText(),precio.getText(),nota.getSelectedItem().toString(),genero.getSelectedItem().toString(),desarrolladora1.getText(),jugadores.getSelectedItem().toString(),txtruta.getText()};
         String Titulo= "'" + datos_juego[0] + "'";
         try {
             Titulo=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select Titulo from juegos where Titulo="+Titulo), Titulo);
             if(Titulo==null){
-                conexion_db.insertar_una_nueva_fila_en_una_tabla("juegos", "Titulo,Descripcion,Precio,Nota,Genero,Desarrolladora,Numero_jugadores,Imagen",this.conexion_db.parsear_atributos(datos_juego)+",'"+Arrays.toString(datos_img)+"'");
+                conexion_db.insertar_una_nueva_fila_en_una_tabla("juegos", "Titulo,Descripcion,Precio,Nota,Genero,Desarrolladora,Numero_jugadores,Imagen",this.conexion_db.parsear_atributos(datos_juego));
             }else{
                 //ESTA INTRODUCIDO EN LA BASE DE DATOS
             }

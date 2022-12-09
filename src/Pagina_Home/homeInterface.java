@@ -8,6 +8,7 @@ package Pagina_Home;
  *
  * @author JoseManuelRodriguezC
  */
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -18,8 +19,8 @@ import javax.swing.JLabel;
 
 public class homeInterface extends javax.swing.JFrame {
 
-    ArrayList<Object> datosJuego = new ArrayList<Object>();
-     ArrayList<Juego> juegos = new ArrayList<Juego>();
+    ArrayList<String> datosJuego = new ArrayList<String>();
+    ArrayList<Juego> juegos = new ArrayList<Juego>();
     consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
     java.sql.ResultSet resultSet=conexion_db.realizar_consulta("SELECT * FROM juegos");
     
@@ -30,16 +31,19 @@ public class homeInterface extends javax.swing.JFrame {
         menu.setVisible(false);
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
+        //Se utiliza para terminar conseguir el numero de columnas del result set
+        ResultSetMetaData rsmd = resultSet.getMetaData();
+        int totalColumnas = rsmd.getColumnCount();
         
-         while (resultSet.next()) {
-               datosJuego.add(resultSet);
-            }
-         
-         for(int i=0; datosJuego.size()>i; i++){
-          Juego juego = new Juego(datosJuego); //Esto peta
-          juegos.add(juego);
-         }
-        
+        while (resultSet.next()) {
+            //Pilla todos los atributos de cada registro
+            for(int i=0; totalColumnas>i; i++){
+               datosJuego.add(resultSet.getString(i));
+           }
+            //Crea el onjeto juego y lo introduce en el array de objetos juegos
+            juegos.add(new Juego(datosJuego));
+            datosJuego.clear();
+        }
     }
 
     /**
