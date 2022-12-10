@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c206795a-dc58-4790-8545-b370c107f938" name="Changes" comment="" />
+    <list default="true" id="c206795a-dc58-4790-8545-b370c107f938" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/dab69256-03e5-41a4-88a8-222f79b8b6e5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/dab69256-03e5-41a4-88a8-222f79b8b6e5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/dab69256-03e5-41a4-88a8-222f79b8b6e5/storage_v2/_src_/schema/mango_games.BAD-DQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/dab69256-03e5-41a4-88a8-222f79b8b6e5/storage_v2/_src_/schema/mango_games.BAD-DQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pagina_Home/homeInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pagina_Home/homeInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pagina_Home/homeMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pagina_Home/homeMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/csv/Juegos.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/csv/Juegos.csv" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +44,7 @@
     "RunOnceActivity.OpenDatabaseViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/JoseManuelRodriguezC/Documents/NetBeansProjects/src/csv/juegos.csv",
+    "last_opened_file_path": "C:/Users/swage/OneDrive/Documentos/NetBeansProjects/interfaces-main/src/csv/Juegos.csv",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   },
   "keyToStringList": {

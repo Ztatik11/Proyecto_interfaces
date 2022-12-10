@@ -37,7 +37,7 @@ public class homeInterface extends javax.swing.JFrame {
         
         while (resultSet.next()) {
             //Pilla todos los atributos de cada registro
-            for(int i=0; totalColumnas>i; i++){
+            for(int i=1; totalColumnas>=i; i++){
                datosJuego.add(resultSet.getString(i));
            }
             //Crea el onjeto juego y lo introduce en el array de objetos juegos
@@ -122,6 +122,8 @@ public class homeInterface extends javax.swing.JFrame {
         menu.setLayout(new java.awt.GridBagLayout());
 
         jScrollPane1.setBackground(new java.awt.Color(0, 102, 204));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setToolTipText("");
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -890,7 +892,6 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JButton criaturas;
     private javax.swing.JButton estrategia;
     private javax.swing.JButton fPS;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -901,8 +902,6 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
@@ -928,6 +927,5 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JTextField searchBox;
     private javax.swing.JButton searchButton;
     private javax.swing.JButton soulsLike;
-    private javax.swing.JButton soulsLike1;
     // End of variables declaration//GEN-END:variables
 }
