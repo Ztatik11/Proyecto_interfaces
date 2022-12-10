@@ -24,7 +24,6 @@ public class homeInterface extends javax.swing.JFrame {
     consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
     java.sql.ResultSet resultSet=conexion_db.realizar_consulta("SELECT * FROM juegos");
     
-   
     
     public homeInterface() throws SQLException {
         initComponents();
@@ -34,6 +33,7 @@ public class homeInterface extends javax.swing.JFrame {
         //Se utiliza para terminar conseguir el numero de columnas del result set
         ResultSetMetaData rsmd = resultSet.getMetaData();
         int totalColumnas = rsmd.getColumnCount();
+        
         
         while (resultSet.next()) {
             //Pilla todos los atributos de cada registro
@@ -182,6 +182,16 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(0, 102, 204));
 
         mOBA.setText("MOBA");
+        mOBA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mOBAMouseClicked(evt);
+            }
+        });
+        mOBA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mOBAActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -203,6 +213,11 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(0, 102, 204));
 
         estrategia.setText("Estrategia");
+        estrategia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                estrategiaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -224,6 +239,11 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(0, 102, 204));
 
         rPG.setText("RPG");
+        rPG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rPGActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -245,6 +265,11 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(0, 102, 204));
 
         soulsLike.setText("SoulsLike");
+        soulsLike.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                soulsLikeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -266,6 +291,11 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(0, 102, 204));
 
         aventura.setText("Aventura");
+        aventura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aventuraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -286,7 +316,18 @@ public class homeInterface extends javax.swing.JFrame {
 
         jPanel14.setBackground(new java.awt.Color(0, 102, 204));
 
-        accion.setText("Acción");
+        accion.setText("Accion");
+        accion.setToolTipText("");
+        accion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                accionMouseClicked(evt);
+            }
+        });
+        accion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -782,15 +823,15 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
-                      
-                JLabel[] labelJuego = {
+             
+        JLabel[] labelJuego = {
         G1,
         G2,
         G3,
         G4,
         G5,
         G6
-        };
+        };          
                 String busqueda=searchBox.getText();
                 for(int i = 0; juegos.size()>i;i++){
                     if(busqueda.equalsIgnoreCase(juegos.get(i).getTitulo())){
@@ -819,16 +860,230 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonKeyPressed
 
     private void fPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fPSActionPerformed
-        // TODO add your handling code here:
+           JLabel[] labelJuego = {
+        G1,
+        G2,
+        G3,
+        G4,
+        G5,
+        G6
+        };
+        for(int i = 0; juegos.size()>i;i++){
+                    if(this.fPS.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
+                        for(int j=0;labelJuego.length>j;j++ ){
+                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
+                                JLabel juegoE=labelJuego[j];
+                                juegoE.getParent().setVisible(false);
+                                }else{
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                            }
+                            }
+                        }
+                    }
     }//GEN-LAST:event_fPSActionPerformed
 
     private void plataformasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plataformasActionPerformed
-        // TODO add your handling code here:
+     JLabel[] labelJuego = {
+        G1,
+        G2,
+        G3,
+        G4,
+        G5,
+        G6
+        };
+        for(int i = 0; juegos.size()>i;i++){
+                    if(this.plataformas.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
+                        for(int j=0;labelJuego.length>j;j++ ){
+                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
+                                JLabel juegoE=labelJuego[j];
+                                juegoE.getParent().setVisible(false);
+                                }else{
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                            }
+                            }
+                        }
+                    }
     }//GEN-LAST:event_plataformasActionPerformed
 
     private void criaturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criaturasActionPerformed
-        // TODO add your handling code here:
+        JLabel[] labelJuego = {
+        G1,
+        G2,
+        G3,
+        G4,
+        G5,
+        G6
+        };
+        for(int i = 0; juegos.size()>i;i++){
+                    if(this.criaturas.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
+                        for(int j=0;labelJuego.length>j;j++ ){
+                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
+                                JLabel juegoE=labelJuego[j];
+                                juegoE.getParent().setVisible(false);
+                                }else{
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                            }
+                            }
+                        }
+                    }
     }//GEN-LAST:event_criaturasActionPerformed
+
+    private void mOBAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mOBAMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mOBAMouseClicked
+
+    private void mOBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mOBAActionPerformed
+       JLabel[] labelJuego = {
+        G1,
+        G2,
+        G3,
+        G4,
+        G5,
+        G6
+        };
+        for(int i = 0; juegos.size()>i;i++){
+                    if(this.mOBA.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
+                        for(int j=0;labelJuego.length>j;j++ ){
+                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
+                                JLabel juegoE=labelJuego[j];
+                                juegoE.getParent().setVisible(false);
+                                }else{
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                            }
+                            }
+                        }
+                    }
+    }//GEN-LAST:event_mOBAActionPerformed
+
+    private void estrategiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estrategiaActionPerformed
+       JLabel[] labelJuego = {
+        G1,
+        G2,
+        G3,
+        G4,
+        G5,
+        G6
+        };
+        for(int i = 0; juegos.size()>i;i++){
+                    if(this.estrategia.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
+                        for(int j=0;labelJuego.length>j;j++ ){
+                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
+                                JLabel juegoE=labelJuego[j];
+                                juegoE.getParent().setVisible(false);
+                                }else{
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                            }
+                            }
+                        }
+                    }
+    }//GEN-LAST:event_estrategiaActionPerformed
+
+    private void rPGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rPGActionPerformed
+      JLabel[] labelJuego = {
+        G1,
+        G2,
+        G3,
+        G4,
+        G5,
+        G6
+        };
+        for(int i = 0; juegos.size()>i;i++){
+                    if(this.rPG.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
+                        for(int j=0;labelJuego.length>j;j++ ){
+                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
+                                JLabel juegoE=labelJuego[j];
+                                juegoE.getParent().setVisible(false);
+                                }else{
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                            }
+                            }
+                        }
+                    }
+    }//GEN-LAST:event_rPGActionPerformed
+
+    private void soulsLikeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soulsLikeActionPerformed
+        JLabel[] labelJuego = {
+        G1,
+        G2,
+        G3,
+        G4,
+        G5,
+        G6
+        };
+        for(int i = 0; juegos.size()>i;i++){
+                    if(this.soulsLike.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
+                        for(int j=0;labelJuego.length>j;j++ ){
+                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
+                                JLabel juegoE=labelJuego[j];
+                                juegoE.getParent().setVisible(false);
+                                }else{
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                            }
+                            }
+                        }
+                    }
+    }//GEN-LAST:event_soulsLikeActionPerformed
+
+    private void aventuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aventuraActionPerformed
+        JLabel[] labelJuego = {
+        G1,
+        G2,
+        G3,
+        G4,
+        G5,
+        G6
+        };
+        for(int i = 0; juegos.size()>i;i++){
+                    if(this.aventura.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
+                        for(int j=0;labelJuego.length>j;j++ ){
+                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
+                                JLabel juegoE=labelJuego[j];
+                                juegoE.getParent().setVisible(false);
+                                }else{
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                            }
+                            }
+                        }
+                    }
+    }//GEN-LAST:event_aventuraActionPerformed
+
+    private void accionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accionActionPerformed
+        JLabel[] labelJuego = {
+        G1,
+        G2,
+        G3,
+        G4,
+        G5,
+        G6
+        };
+        for(int i = 0; juegos.size()>i;i++){
+                    if(this.accion.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
+                        System.out.println(this.accion.getText());
+                        System.out.println(juegos.get(i).getGenero());
+                        for(int j=0;labelJuego.length>j;j++ ){
+                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
+                                JLabel juegoE=labelJuego[j];
+                                juegoE.getParent().setVisible(false);
+                                }else{
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                            }
+                            }
+                        }
+                    }
+    }//GEN-LAST:event_accionActionPerformed
+
+    private void accionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accionMouseClicked
 
         
     /**
@@ -874,7 +1129,7 @@ public class homeInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel G1;
+    public javax.swing.JLabel G1;
     private javax.swing.JLabel G2;
     private javax.swing.JLabel G3;
     private javax.swing.JLabel G4;
@@ -925,7 +1180,7 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JButton rPG;
     private javax.swing.JButton registerButton;
     private javax.swing.JTextField searchBox;
-    private javax.swing.JButton searchButton;
+    public javax.swing.JButton searchButton;
     private javax.swing.JButton soulsLike;
     // End of variables declaration//GEN-END:variables
 }
