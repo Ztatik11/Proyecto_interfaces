@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c206795a-dc58-4790-8545-b370c107f938" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$11.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$12.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Pagina_Home/homeInterface.form" afterDir="false" />

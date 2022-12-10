@@ -317,12 +317,6 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(0, 102, 204));
 
         accion.setText("Accion");
-        accion.setToolTipText("");
-        accion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                accionMouseClicked(evt);
-            }
-        });
         accion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accionActionPerformed(evt);
@@ -880,7 +874,7 @@ public class homeInterface extends javax.swing.JFrame {
                             }
                             }
                         }
-                    }
+        }
     }//GEN-LAST:event_fPSActionPerformed
 
     private void plataformasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plataformasActionPerformed
@@ -927,8 +921,12 @@ public class homeInterface extends javax.swing.JFrame {
                             juegoE.getParent().setVisible(true);
                             }
                             }
-                        }
-                    }
+                        }else{
+                        for(int j=0;labelJuego.length>j;j++ ){
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                             }
+                    }}
     }//GEN-LAST:event_criaturasActionPerformed
 
     private void mOBAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mOBAMouseClicked
@@ -979,7 +977,11 @@ public class homeInterface extends javax.swing.JFrame {
                             juegoE.getParent().setVisible(true);
                             }
                             }
-                        }
+                        }else{
+                        for(int j=0;labelJuego.length>j;j++ ){
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                             }}
                     }
     }//GEN-LAST:event_estrategiaActionPerformed
 
@@ -1003,7 +1005,11 @@ public class homeInterface extends javax.swing.JFrame {
                             juegoE.getParent().setVisible(true);
                             }
                             }
-                        }
+                        }else{
+                        for(int j=0;labelJuego.length>j;j++ ){
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                             }}
                     }
     }//GEN-LAST:event_rPGActionPerformed
 
@@ -1051,12 +1057,16 @@ public class homeInterface extends javax.swing.JFrame {
                             juegoE.getParent().setVisible(true);
                             }
                             }
-                        }
+                        }else{
+                        for(int j=0;labelJuego.length>j;j++ ){
+                                JLabel juegoE=labelJuego[j];
+                            juegoE.getParent().setVisible(true);
+                             }}
                     }
     }//GEN-LAST:event_aventuraActionPerformed
 
     private void accionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accionActionPerformed
-        JLabel[] labelJuego = {
+       JLabel[] labelJuego = {
         G1,
         G2,
         G3,
@@ -1066,8 +1076,6 @@ public class homeInterface extends javax.swing.JFrame {
         };
         for(int i = 0; juegos.size()>i;i++){
                     if(this.accion.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
-                        System.out.println(this.accion.getText());
-                        System.out.println(juegos.get(i).getGenero());
                         for(int j=0;labelJuego.length>j;j++ ){
                             if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
                                 JLabel juegoE=labelJuego[j];
@@ -1080,10 +1088,6 @@ public class homeInterface extends javax.swing.JFrame {
                         }
                     }
     }//GEN-LAST:event_accionActionPerformed
-
-    private void accionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accionMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_accionMouseClicked
 
         
     /**
