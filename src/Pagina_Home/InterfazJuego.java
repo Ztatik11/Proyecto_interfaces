@@ -35,14 +35,14 @@ public class InterfazJuego extends javax.swing.JFrame {
     
         DatosJuego = this.conexion_db.realizar_consulta("Select * from juegos where ID = '" + IDjuego + "'");
         
-        String Titulo;
-        String Descripcion;
-        double Precio;
-        double Nota;
-        String Genero1;
-        String Genero2;
-        String Desarrolladora;
-        int Njugadores;
+        String Titulo = "";
+        String Descripcion = "";
+        double Precio = 0;
+        double Nota = 0;
+        String Genero1 = "";
+        String Genero2 = "";
+        String Desarrolladora = "";
+        int Njugadores = 0;
         InputStream Imagen;
         
         
@@ -62,6 +62,15 @@ public class InterfazJuego extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Exceptions.printStackTrace(ex);
         }
+        
+        this.ImagenJuego.setIcon(null);
+        this.LabelTitulo.setText(Titulo);
+        this.LabelDescripcion.setText(Descripcion);
+        this.LabelDesarrolladora.setText(Desarrolladora);
+        this.LabelPrecio.setText(String.valueOf(Precio) + "€");
+        this.LabelNota.setText(String.valueOf(Nota));
+        this.LabelNjugadores.setText(String.valueOf(Njugadores));
+        this.LabelGenero.setText(Genero1 + "/" + Genero2);
     }
     
     
@@ -98,8 +107,7 @@ public class InterfazJuego extends javax.swing.JFrame {
         Imagenes_precio = new javax.swing.JPanel();
         Boton_comprar = new javax.swing.JButton();
         LabelPrecio = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
-        jLabel6 = new javax.swing.JLabel();
+        LabelNota = new javax.swing.JLabel();
         ImagenJuego = new javax.swing.JButton();
         Informacion_juego = new javax.swing.JPanel();
         LabelDescripcion = new javax.swing.JLabel();
@@ -355,10 +363,7 @@ public class InterfazJuego extends javax.swing.JFrame {
         LabelPrecio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LabelPrecio.setText("Precio:");
 
-        jSlider1.setBackground(new java.awt.Color(255, 51, 0));
-        jSlider1.setForeground(new java.awt.Color(0, 153, 255));
-
-        jLabel6.setText("0       1       2       3       4       5");
+        LabelNota.setText("10/10");
 
         ImagenJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dum.jpg"))); // NOI18N
         ImagenJuego.addActionListener(new java.awt.event.ActionListener() {
@@ -380,15 +385,11 @@ public class InterfazJuego extends javax.swing.JFrame {
                             .addGroup(Imagenes_precioLayout.createSequentialGroup()
                                 .addComponent(LabelPrecio)
                                 .addGap(85, 85, 85)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(LabelNota, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(Imagenes_precioLayout.createSequentialGroup()
                         .addGap(155, 155, 155)
                         .addComponent(Boton_comprar)))
                 .addGap(0, 67, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Imagenes_precioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71))
         );
         Imagenes_precioLayout.setVerticalGroup(
             Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,10 +400,8 @@ public class InterfazJuego extends javax.swing.JFrame {
                 .addGroup(Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Imagenes_precioLayout.createSequentialGroup()
                         .addGap(7, 7, 7)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addComponent(LabelNota)
+                        .addGap(54, 54, 54)
                         .addComponent(Boton_comprar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46))
                     .addGroup(Imagenes_precioLayout.createSequentialGroup()
@@ -602,6 +601,7 @@ public class InterfazJuego extends javax.swing.JFrame {
     private javax.swing.JLabel LabelDescripcion;
     private javax.swing.JLabel LabelGenero;
     private javax.swing.JLabel LabelNjugadores;
+    private javax.swing.JLabel LabelNota;
     private javax.swing.JLabel LabelPrecio;
     private javax.swing.JLabel LabelTitulo;
     private javax.swing.JPanel Ventana_juego;
@@ -611,10 +611,8 @@ public class InterfazJuego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JSlider jSlider1;
     public javax.swing.JPanel panel_excepcion_compra;
     private javax.swing.JTextField searchBox;
     private javax.swing.JButton searchButton;

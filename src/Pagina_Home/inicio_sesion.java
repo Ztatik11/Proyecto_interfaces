@@ -25,7 +25,7 @@ public class inicio_sesion extends javax.swing.JFrame {
     public inicio_sesion() throws SQLException {
         initComponents();
         this.UserButton.setVisible(false);
-        this.UserButton.setText("Yonlee hijo de la grandisima puta");
+        this.UserButton.setText("");
         
         this.Errorclave.setVisible(false);
         this.ErrorUsuario.setVisible(false);
@@ -343,11 +343,12 @@ public class inicio_sesion extends javax.swing.JFrame {
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MousePressed
  
-    private void comprobarClave(String claveUser,String clave) {
+    private void comprobarClave(String claveUser,String clave, String validNom) {
         
         if(claveUser.equalsIgnoreCase(clave)){
             boolean sesion_iniciada=true;
             this.Errorclave.setVisible(false);
+            this.UserButton.setText(validNom);
             this.UserButton.setVisible(true);
             this.botonRegistro.setVisible(false);
         }
@@ -374,8 +375,17 @@ public class inicio_sesion extends javax.swing.JFrame {
             }
         
         try {
-            nom_usuario =this.conexion_db.realizar_consulta("Select Usuario from usuarios where Usuario =  '"  + this.usuario_correo.getText() + "'"/*+ " "' and clave = '" + clave+ "'"*/);
-            correo_usuario=this.conexion_db.realizar_consulta("Select Email from usuarios where Email = '"  + this.usuario_correo.getText() + "'"/* + "' and clave = '" + clave+*/ );
+            nom_usuario =this.conexion_db.realizar_consulta("Select Usuario from usuarios where Usuario =  '"  + this.usuario_correo.getText() + "'");
+            
+            while (nom_usuario.next()){
+            validNom = (nom_usuario.getString("Usuario"));
+            }
+            
+            correo_usuario=this.conexion_db.realizar_consulta("Select Email from usuarios where Email = '"  + this.usuario_correo.getText() + "'");
+            
+            while (correo_usuario.next()){
+            validEm = (correo_usuario.getString("Email"));
+            }
             
         } catch (SQLException ex) {
             this.ErrorUsuario.setVisible(true);
@@ -383,20 +393,6 @@ public class inicio_sesion extends javax.swing.JFrame {
         }
         
         boolean correcto = false;
-        
-        try {
-        
-            while (nom_usuario.next()){
-            validNom = (nom_usuario.getString("Usuario"));
-            }
-            
-            while (correo_usuario.next()){
-            validEm = (correo_usuario.getString("Email"));
-            }
-        
-        } catch (SQLException ex) {
-            Exceptions.printStackTrace(ex);
-        }
         
         if (this.usuario_correo.getText().equalsIgnoreCase(validEm)){
             this.ErrorUsuario.setVisible(false);
@@ -417,7 +413,7 @@ public class inicio_sesion extends javax.swing.JFrame {
             Exceptions.printStackTrace(ex);
             }
            
-            comprobarClave(validClave, clave);
+            comprobarClave(validClave, clave, validNom);
            
             usuario_correo.setText("");
             clave_inicio.setText("");
@@ -442,12 +438,12 @@ public class inicio_sesion extends javax.swing.JFrame {
             }
             
             
-            comprobarClave(validClave, clave);
+            comprobarClave(validClave, clave,validNom);
            
             usuario_correo.setText("");
             clave_inicio.setText("");
         }
-        if (correcto = false){
+        if (correcto == false){
             this.ErrorUsuario.setVisible(true);
         }
         else{
