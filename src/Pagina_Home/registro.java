@@ -73,6 +73,9 @@ public class registro extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        panel_excepcion_juego = new javax.swing.JPanel();
+        Boton_ventana_emergente = new javax.swing.JButton();
+        txt_ventana_emergente = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
@@ -109,6 +112,47 @@ public class registro extends javax.swing.JFrame {
         setIconImages(null);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panel_excepcion_juego.setBackground(new java.awt.Color(178, 89, 249));
+
+        Boton_ventana_emergente.setBackground(new java.awt.Color(0, 153, 255));
+        Boton_ventana_emergente.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Boton_ventana_emergente.setForeground(new java.awt.Color(255, 255, 255));
+        Boton_ventana_emergente.setText(org.openide.util.NbBundle.getMessage(registro.class, "Registro_juegos.Boton_ventana_emergente.text")); // NOI18N
+        Boton_ventana_emergente.setOpaque(true);
+        Boton_ventana_emergente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_ventana_emergenteActionPerformed(evt);
+            }
+        });
+
+        txt_ventana_emergente.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        txt_ventana_emergente.setText(org.openide.util.NbBundle.getMessage(registro.class, "Registro_juegos.txt_ventana_emergente.text")); // NOI18N
+
+        javax.swing.GroupLayout panel_excepcion_juegoLayout = new javax.swing.GroupLayout(panel_excepcion_juego);
+        panel_excepcion_juego.setLayout(panel_excepcion_juegoLayout);
+        panel_excepcion_juegoLayout.setHorizontalGroup(
+            panel_excepcion_juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_excepcion_juegoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Boton_ventana_emergente)
+                .addGap(273, 273, 273))
+            .addGroup(panel_excepcion_juegoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txt_ventana_emergente, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(7, Short.MAX_VALUE))
+        );
+        panel_excepcion_juegoLayout.setVerticalGroup(
+            panel_excepcion_juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_excepcion_juegoLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(txt_ventana_emergente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addComponent(Boton_ventana_emergente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(panel_excepcion_juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 230, 590, 290));
 
         jPanel6.setBackground(new java.awt.Color(0, 153, 255));
 
@@ -498,13 +542,21 @@ public class registro extends javax.swing.JFrame {
             usuario=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select usuario from usuarios where usuario=="+usuario), usuario);
             if(usuario==null){
                 conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador",this.conexion_db.parsear_atributos(datos_usuario)+",false" );
+            this.txt_ventana_emergente.setText("¡USUARIO REGISTRADO!");
+            this.panel_excepcion_juego.setVisible(true);
             }else{
-                System.out.println("Este usuario ya existe");
+                this.txt_ventana_emergente.setText("EL USUARIO YA ESTABA REGISTRADO");
+                this.panel_excepcion_juego.setVisible(true);
             }
         } catch (SQLException ex) {
             Exceptions.printStackTrace(ex);
         }
     }//GEN-LAST:event_registroActionPerformed
+
+    private void Boton_ventana_emergenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_ventana_emergenteActionPerformed
+        // TODO add your handling code here:
+        this.panel_excepcion_juego.setVisible(false);
+    }//GEN-LAST:event_Boton_ventana_emergenteActionPerformed
     
     /**
      * @param args the command line arguments
@@ -545,6 +597,7 @@ public class registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Boton_ventana_emergente;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_apellidos;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_clave;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_correo;
@@ -572,9 +625,11 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombre;
+    public javax.swing.JPanel panel_excepcion_juego;
     public javax.swing.JButton registro;
     private javax.swing.JComboBox<String> residencia;
     public javax.swing.JCheckBox terminos_condiciones;
+    private javax.swing.JLabel txt_ventana_emergente;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }
