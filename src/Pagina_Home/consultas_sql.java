@@ -4,12 +4,19 @@
  */
 package Pagina_Home;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
 
 
 /**
@@ -65,6 +72,7 @@ public class consultas_sql {
     public void insertar_una_nueva_fila_en_una_tabla(String tabla, String atributos, String sentencia_atributos) {
 
 		try {
+                        System.out.println("insert into " + tabla + " (" + atributos + ") values (" + sentencia_atributos + ")");
 			Statement st_ = this.connection_.createStatement();
 			System.out.println("insert into " + tabla + " (" + atributos + ") values (" + sentencia_atributos + ")");
 			st_.executeUpdate("insert into " + tabla + " (" + atributos + ") values (" + sentencia_atributos + ")");
@@ -73,7 +81,21 @@ public class consultas_sql {
 			e.printStackTrace();
 		}
 
-	}
+    }
+    
+    public void insertar_fichero_csv(ArrayList<String[]> csv, String tabla, String atributos, boolean tiene_cabacera) throws SQLException {
+		if (tiene_cabacera == true) {
+			csv.remove(0);
+		}
+
+		for (String[] juego : csv) {
+                    if(realizar_consulta("select * from Juegos where juego='"+juego[0]+"'")==null){
+                        insertar_una_nueva_fila_en_una_tabla(tabla, atributos, parsear_atributos(juego));
+                    }
+			
+		}
+		System.out.println("DATOS DE "+ tabla +" INSERTADOS");
+    }
     
     public ResultSet realizar_consulta(String query) throws SQLException {
 
@@ -105,6 +127,35 @@ public class consultas_sql {
 	}
 	return valorpedido;
     }
+    
+    public static ArrayList<String[]> leer_csv(String fichero_leer) throws IOException {
+		String linea;
+		String[] datos;
+		ArrayList<String[]> lista = new ArrayList<String[]>();
+		try {
+			File texto = new File(fichero_leer);
+			BufferedReader lectura_fichero = new BufferedReader(
+			new InputStreamReader(new FileInputStream(texto), "utf-8"));
+			while ((linea = lectura_fichero.readLine()) != null) {
+				// Dividir la linea leida por el caractaer ";"
+				datos = linea.split(";");
+				lista.add(datos);
+
+			}
+			return lista;
+
+		} catch (FileNotFoundException fn) {
+			ArrayList<String[]> vacio = new ArrayList<>();
+			System.out.println("No se encuentra el archivo");
+			return vacio;
+
+		} catch (IOException e) {
+			ArrayList<String[]> vacio = new ArrayList<>();
+			System.out.println("Error de lectura_escritura");
+			return vacio;
+		}
+
+	}
     
     	public static String parsear_atributos(String[] atributos) {
 

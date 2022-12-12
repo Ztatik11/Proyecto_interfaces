@@ -4,6 +4,7 @@
  */
 package Pagina_Home;
 import java.awt.Image;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,16 +13,26 @@ import javax.swing.JFrame;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class homeMain extends JFrame {
 
     
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         
         consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
         creacion_tablas(conexion_db);
-        
-         
+        ArrayList<String[]> juegos = conexion_db.leer_csv("C:\\Users\\yorks\\Desktop\\Workspace netbeans\\proyecto_interfaces\\src\\csv\\Juegos.csv");
+        conexion_db.insertar_fichero_csv(juegos,"juegos","Titulo,Descripcion,Precio,Nota,Genero,Desarrolladora,Numero_jugadores,Imagen", false);
+        homeInterface a = null;
+        try {
+            a = new homeInterface();
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        a.setVisible(true);
     }
     
     public static void creacion_tablas(consultas_sql conexion_db) throws SQLException{
