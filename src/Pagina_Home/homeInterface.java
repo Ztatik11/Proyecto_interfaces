@@ -54,6 +54,39 @@ public class homeInterface extends javax.swing.JFrame {
             datosJuego.clear();
         }
     }
+    
+    
+    public void busquedaCategorias(String categoria){
+    this.search.clear();
+    
+        JLabel[] labelJuego = {
+        G1,
+        G2,
+        G3,
+        G4,
+        G5,
+        G6
+        };
+        for(int j=0;labelJuego.length>j;j++ ){
+            labelJuego[j].setText("");
+        } 
+        
+        for(int i = 0; juegos.size()>i;i++){
+            if(categoria.equalsIgnoreCase(juegos.get(i).getGenero())){
+                search.add(juegos.get(i)); 
+            }
+        }
+        for(int j=0;search.size()>j;j++ ){
+               labelJuego[j].setText(search.get(j).getTitulo());
+        }
+        for(int j=0;labelJuego.length>j;j++ ){
+            if(labelJuego[j].getText().equalsIgnoreCase("")){
+                labelJuego[j].getParent().setVisible(false);
+            }else{
+                labelJuego[j].getParent().setVisible(true);
+            }
+        } 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -574,14 +607,13 @@ public class homeInterface extends javax.swing.JFrame {
         J5Layout.setHorizontalGroup(
             J5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(J5Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
-                .addGroup(J5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J5Layout.createSequentialGroup()
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J5Layout.createSequentialGroup()
-                        .addComponent(G5)
-                        .addGap(44, 44, 44))))
+                .addContainerGap(106, Short.MAX_VALUE)
+                .addComponent(G5)
+                .addGap(44, 44, 44))
+            .addGroup(J5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         J5Layout.setVerticalGroup(
             J5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -602,14 +634,13 @@ public class homeInterface extends javax.swing.JFrame {
         J6Layout.setHorizontalGroup(
             J6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(J6Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
-                .addGroup(J6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J6Layout.createSequentialGroup()
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J6Layout.createSequentialGroup()
-                        .addComponent(G6)
-                        .addGap(23, 23, 23))))
+                .addContainerGap(127, Short.MAX_VALUE)
+                .addComponent(G6)
+                .addGap(23, 23, 23))
+            .addGroup(J6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         J6Layout.setVerticalGroup(
             J6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -846,83 +877,15 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonKeyPressed
 
     private void fPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fPSActionPerformed
-        this.search.clear();
-        JLabel[] labelJuego = {
-        G1,
-        G2,
-        G3,
-        G4,
-        G5,
-        G6
-        };
-        for(int i = 0; juegos.size()>i;i++){
-            if(this.fPS.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
-                search.add(juegos.get(i)); 
-            }
-        }
-        for(int j=0;search.size()>j;j++ ){
-               labelJuego[j].setText(search.get(j).getTitulo());
-        }
-        for(int j=0;labelJuego.length>j;j++ ){
-            if(labelJuego[j].getText().equalsIgnoreCase("")){
-                labelJuego[j].getParent().setVisible(false);
-            }else{
-                labelJuego[j].getParent().setVisible(true);
-            }
-        } 
-        
+        busquedaCategorias(this.fPS.getText());
     }//GEN-LAST:event_fPSActionPerformed
 
     private void plataformasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plataformasActionPerformed
-     JLabel[] labelJuego = {
-        G1,
-        G2,
-        G3,
-        G4,
-        G5,
-        G6
-        };
-        for(int i = 0; juegos.size()>i;i++){
-                    if(this.plataformas.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
-                        for(int j=0;labelJuego.length>j;j++ ){
-                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
-                                JLabel juegoE=labelJuego[j];
-                                juegoE.getParent().setVisible(false);
-                                }else{
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                            }
-                            }
-                        }
-                    }
+        busquedaCategorias(this.plataformas.getText());
     }//GEN-LAST:event_plataformasActionPerformed
 
     private void criaturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criaturasActionPerformed
-        JLabel[] labelJuego = {
-        G1,
-        G2,
-        G3,
-        G4,
-        G5,
-        G6
-        };
-        for(int i = 0; juegos.size()>i;i++){
-                    if(this.criaturas.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
-                        for(int j=0;labelJuego.length>j;j++ ){
-                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
-                                JLabel juegoE=labelJuego[j];
-                                juegoE.getParent().setVisible(false);
-                                }else{
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                            }
-                            }
-                        }else{
-                        for(int j=0;labelJuego.length>j;j++ ){
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                             }
-                    }}
+        busquedaCategorias(this.criaturas.getText());
     }//GEN-LAST:event_criaturasActionPerformed
 
     private void mOBAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mOBAMouseClicked
@@ -930,159 +893,27 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_mOBAMouseClicked
 
     private void mOBAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mOBAActionPerformed
-       JLabel[] labelJuego = {
-        G1,
-        G2,
-        G3,
-        G4,
-        G5,
-        G6
-        };
-        for(int i = 0; juegos.size()>i;i++){
-                    if(this.mOBA.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
-                        for(int j=0;labelJuego.length>j;j++ ){
-                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
-                                JLabel juegoE=labelJuego[j];
-                                juegoE.getParent().setVisible(false);
-                                }else{
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                            }
-                            }
-                        }
-                    }
+       busquedaCategorias(this.mOBA.getText());
     }//GEN-LAST:event_mOBAActionPerformed
 
     private void estrategiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estrategiaActionPerformed
-       JLabel[] labelJuego = {
-        G1,
-        G2,
-        G3,
-        G4,
-        G5,
-        G6
-        };
-        for(int i = 0; juegos.size()>i;i++){
-                    if(this.estrategia.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
-                        for(int j=0;labelJuego.length>j;j++ ){
-                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
-                                JLabel juegoE=labelJuego[j];
-                                juegoE.getParent().setVisible(false);
-                                }else{
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                            }
-                            }
-                        }else{
-                        for(int j=0;labelJuego.length>j;j++ ){
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                             }}
-                    }
+       busquedaCategorias(this.estrategia.getText());
     }//GEN-LAST:event_estrategiaActionPerformed
 
     private void rPGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rPGActionPerformed
-      JLabel[] labelJuego = {
-        G1,
-        G2,
-        G3,
-        G4,
-        G5,
-        G6
-        };
-        for(int i = 0; juegos.size()>i;i++){
-                    if(this.rPG.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
-                        for(int j=0;labelJuego.length>j;j++ ){
-                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
-                                JLabel juegoE=labelJuego[j];
-                                juegoE.getParent().setVisible(false);
-                                }else{
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                            }
-                            }
-                        }else{
-                        for(int j=0;labelJuego.length>j;j++ ){
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                             }}
-                    }
+       busquedaCategorias(this.rPG.getText());
     }//GEN-LAST:event_rPGActionPerformed
 
     private void soulsLikeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soulsLikeActionPerformed
-        JLabel[] labelJuego = {
-        G1,
-        G2,
-        G3,
-        G4,
-        G5,
-        G6
-        };
-        for(int i = 0; juegos.size()>i;i++){
-                    if(this.soulsLike.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
-                        for(int j=0;labelJuego.length>j;j++ ){
-                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
-                                JLabel juegoE=labelJuego[j];
-                                juegoE.getParent().setVisible(false);
-                                }else{
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                            }
-                            }
-                        }
-                    }
+        busquedaCategorias(this.soulsLike.getText());
     }//GEN-LAST:event_soulsLikeActionPerformed
 
     private void aventuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aventuraActionPerformed
-        JLabel[] labelJuego = {
-        G1,
-        G2,
-        G3,
-        G4,
-        G5,
-        G6
-        };
-        for(int i = 0; juegos.size()>i;i++){
-                    if(this.aventura.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
-                        for(int j=0;labelJuego.length>j;j++ ){
-                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
-                                JLabel juegoE=labelJuego[j];
-                                juegoE.getParent().setVisible(false);
-                                }else{
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                            }
-                            }
-                        }else{
-                        for(int j=0;labelJuego.length>j;j++ ){
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                             }}
-                    }
+        busquedaCategorias(this.aventura.getText());
     }//GEN-LAST:event_aventuraActionPerformed
 
     private void accionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accionActionPerformed
-       JLabel[] labelJuego = {
-        G1,
-        G2,
-        G3,
-        G4,
-        G5,
-        G6
-        };
-        for(int i = 0; juegos.size()>i;i++){
-                    if(this.accion.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
-                        for(int j=0;labelJuego.length>j;j++ ){
-                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
-                                JLabel juegoE=labelJuego[j];
-                                juegoE.getParent().setVisible(false);
-                                }else{
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                            }
-                            }
-                        }
-                    }
+        busquedaCategorias(this.accion.getText());
     }//GEN-LAST:event_accionActionPerformed
 
         
