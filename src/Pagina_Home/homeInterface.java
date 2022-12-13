@@ -8,6 +8,7 @@ package Pagina_Home;
  *
  * @author JoseManuelRodriguezC
  */
+
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,11 +24,19 @@ public class homeInterface extends javax.swing.JFrame {
     ArrayList<Juego> juegos = new ArrayList<Juego>();
     consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
     java.sql.ResultSet resultSet=conexion_db.realizar_consulta("SELECT * FROM juegos");
+    ArrayList<Juego> search = new ArrayList<Juego>();
     
     
     public homeInterface() throws SQLException {
         initComponents();
         menu.setVisible(false);
+        this.J1.setVisible(false);
+        this.J2.setVisible(false);
+        this.J3.setVisible(false);
+        this.J4.setVisible(false);
+        this.J5.setVisible(false);
+        this.J6.setVisible(false);
+                
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
         //Se utiliza para terminar conseguir el numero de columnas del result set
@@ -443,8 +452,6 @@ public class homeInterface extends javax.swing.JFrame {
             }
         });
 
-        G1.setText("Doom");
-
         javax.swing.GroupLayout J1Layout = new javax.swing.GroupLayout(J1);
         J1.setLayout(J1Layout);
         J1Layout.setHorizontalGroup(
@@ -473,8 +480,6 @@ public class homeInterface extends javax.swing.JFrame {
 
         J2.setBackground(new java.awt.Color(255, 255, 255));
 
-        G2.setText("League of legends");
-
         javax.swing.GroupLayout J2Layout = new javax.swing.GroupLayout(J2);
         J2.setLayout(J2Layout);
         J2Layout.setHorizontalGroup(
@@ -501,8 +506,6 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel16.add(J2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, 140));
 
         J3.setBackground(new java.awt.Color(255, 255, 255));
-
-        G3.setText("Elden Ring");
 
         javax.swing.GroupLayout J3Layout = new javax.swing.GroupLayout(J3);
         J3.setLayout(J3Layout);
@@ -538,8 +541,6 @@ public class homeInterface extends javax.swing.JFrame {
             }
         });
 
-        G4.setText("Crash Bandicoot");
-
         javax.swing.GroupLayout J4Layout = new javax.swing.GroupLayout(J4);
         J4.setLayout(J4Layout);
         J4Layout.setHorizontalGroup(
@@ -567,8 +568,6 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel16.add(J4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 160, -1));
 
         J5.setBackground(new java.awt.Color(255, 255, 255));
-
-        G5.setText("Spiderman");
 
         javax.swing.GroupLayout J5Layout = new javax.swing.GroupLayout(J5);
         J5.setLayout(J5Layout);
@@ -598,8 +597,6 @@ public class homeInterface extends javax.swing.JFrame {
 
         J6.setBackground(new java.awt.Color(255, 255, 255));
 
-        G6.setText("Pokemon Escarlata");
-
         javax.swing.GroupLayout J6Layout = new javax.swing.GroupLayout(J6);
         J6.setLayout(J6Layout);
         J6Layout.setHorizontalGroup(
@@ -619,7 +616,7 @@ public class homeInterface extends javax.swing.JFrame {
             .addGroup(J6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(G6))
         );
 
@@ -817,7 +814,7 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
-             
+        this.search.clear();
         JLabel[] labelJuego = {
         G1,
         G2,
@@ -826,27 +823,22 @@ public class homeInterface extends javax.swing.JFrame {
         G5,
         G6
         };          
+
+        
                 String busqueda=searchBox.getText();
                 for(int i = 0; juegos.size()>i;i++){
                     if(busqueda.equalsIgnoreCase(juegos.get(i).getTitulo())){
-                        for(int j=0;labelJuego.length>j;j++ ){
-                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
-                                JLabel juegoE=labelJuego[j];
-                                juegoE.getParent().setVisible(false);
-                            }else{
-                                JLabel juegoE=labelJuego[j];
-                                juegoE.getParent().setVisible(true);
-                            } 
-                        }
+                        search.add(juegos.get(i)); 
                     }
                 }
-                if(busqueda.equalsIgnoreCase("")){
-                    for(int j=0;labelJuego.length>j;j++ ){
-                        JLabel juegoE=labelJuego[j];
-                        juegoE.getParent().setVisible(true);         
-                    }
+                for(int j=0;search.size()>j;j++ ){
+                   labelJuego[j].setText(search.get(j).getTitulo());
                 }
-        
+                for(int j=0;labelJuego.length>j;j++ ){
+                   if(labelJuego[j].getText().equalsIgnoreCase("")){
+                       labelJuego[j].getParent().setVisible(false);
+                   }
+                }
 
     }//GEN-LAST:event_searchButtonMouseClicked
 
@@ -854,7 +846,8 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonKeyPressed
 
     private void fPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fPSActionPerformed
-           JLabel[] labelJuego = {
+        this.search.clear();
+        JLabel[] labelJuego = {
         G1,
         G2,
         G3,
@@ -863,18 +856,21 @@ public class homeInterface extends javax.swing.JFrame {
         G6
         };
         for(int i = 0; juegos.size()>i;i++){
-                    if(this.fPS.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
-                        for(int j=0;labelJuego.length>j;j++ ){
-                            if(juegos.get(i).getTitulo().equalsIgnoreCase(labelJuego[j].getText())==false){
-                                JLabel juegoE=labelJuego[j];
-                                juegoE.getParent().setVisible(false);
-                                }else{
-                                JLabel juegoE=labelJuego[j];
-                            juegoE.getParent().setVisible(true);
-                            }
-                            }
-                        }
+            if(this.fPS.getText().equalsIgnoreCase(juegos.get(i).getGenero())){
+                search.add(juegos.get(i)); 
+            }
         }
+        for(int j=0;search.size()>j;j++ ){
+               labelJuego[j].setText(search.get(j).getTitulo());
+        }
+        for(int j=0;labelJuego.length>j;j++ ){
+            if(labelJuego[j].getText().equalsIgnoreCase("")){
+                labelJuego[j].getParent().setVisible(false);
+            }else{
+                labelJuego[j].getParent().setVisible(true);
+            }
+        } 
+        
     }//GEN-LAST:event_fPSActionPerformed
 
     private void plataformasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plataformasActionPerformed

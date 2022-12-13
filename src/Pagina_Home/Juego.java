@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Juego {
     
     //Atributos de la clase
-    private int ID;
+    private String ID;
     private String Titulo;
     private String Descripcion;
     private String Precio;
@@ -28,6 +28,7 @@ public class Juego {
 
     //Constructor con el mismo nombre de la clase
     public Juego(ArrayList <String> datos){
+        this.ID = datos.get(0);
         this.Titulo = datos.get(1);
         this.Descripcion = datos.get(2);
         this.Precio = datos.get(3);
@@ -38,10 +39,10 @@ public class Juego {
         this.imagen = datos.get(8);
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 

@@ -579,9 +579,6 @@
                               </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="G1">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Doom"/>
-                              </Properties>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                               </AuxValues>
@@ -631,9 +628,6 @@
                             <Component class="javax.swing.JButton" name="jButton4">
                             </Component>
                             <Component class="javax.swing.JLabel" name="G2">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="League of legends"/>
-                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -683,9 +677,6 @@
                             <Component class="javax.swing.JButton" name="jButton6">
                             </Component>
                             <Component class="javax.swing.JLabel" name="G3">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Elden Ring"/>
-                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -738,9 +729,6 @@
                               </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="G4">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Crash Bandicoot"/>
-                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -790,9 +778,6 @@
                             <Component class="javax.swing.JButton" name="jButton5">
                             </Component>
                             <Component class="javax.swing.JLabel" name="G5">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Spiderman"/>
-                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -831,7 +816,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jButton7" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <EmptySpace pref="8" max="32767" attributes="0"/>
+                                      <EmptySpace pref="24" max="32767" attributes="0"/>
                                       <Component id="G6" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -841,9 +826,6 @@
                             <Component class="javax.swing.JButton" name="jButton7">
                             </Component>
                             <Component class="javax.swing.JLabel" name="G6">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Pokemon Escarlata"/>
-                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
