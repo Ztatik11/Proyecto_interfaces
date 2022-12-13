@@ -560,10 +560,8 @@ public class Registro_juegos extends javax.swing.JFrame {
                 txtruta.setText(String.valueOf(ruta));
                 this.img=getToolkit().getImage(String.valueOf(txtruta.getText()));
                 BufferedImage bImage = ImageIO.read(new File(txtruta.getText()));
-             /* ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                ImageIO.write(bImage, "jpg", bos );
-                this.datos_img = bos.toByteArray();
-             */ this.img=this.img.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(), Image.SCALE_DEFAULT);
+             
+                this.img=this.img.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(), Image.SCALE_DEFAULT);
                 imglabel.setIcon(new ImageIcon(img));
             } catch (IOException ex) {
                 Exceptions.printStackTrace(ex);
