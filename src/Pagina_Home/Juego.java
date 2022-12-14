@@ -94,7 +94,12 @@ public class Juego {
     public void setNumero_jugadores(String Numero_jugadores) {
         this.Numero_jugadores = Numero_jugadores;
     }
-    
-    
+ 
+    public String getImagen() {
+        return imagen;
+    }
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
     
 }

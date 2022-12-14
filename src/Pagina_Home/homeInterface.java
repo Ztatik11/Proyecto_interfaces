@@ -9,6 +9,7 @@ package Pagina_Home;
  * @author JoseManuelRodriguezC
  */
 
+import java.awt.Image;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import javax.swing.ImageIcon;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class homeInterface extends javax.swing.JFrame {
@@ -29,6 +31,7 @@ public class homeInterface extends javax.swing.JFrame {
     
     public homeInterface() throws SQLException {
         initComponents();
+        sinResult.setVisible(false);
         menu.setVisible(false);
         this.J1.setVisible(false);
         this.J2.setVisible(false);
@@ -56,7 +59,8 @@ public class homeInterface extends javax.swing.JFrame {
     }
     
     
-    public void busquedaCategorias(String categoria){
+    
+   public void busquedaCategorias(String categoria){
     this.search.clear();
     
         JLabel[] labelJuego = {
@@ -67,26 +71,47 @@ public class homeInterface extends javax.swing.JFrame {
         G5,
         G6
         };
+        JButton[] imagenJuego = {
+        B1,
+        B2,
+        B3,
+        B4,
+        B5,
+        B6
+        };
         for(int j=0;labelJuego.length>j;j++ ){
             labelJuego[j].setText("");
-        } 
+        }
         
         for(int i = 0; juegos.size()>i;i++){
             if(categoria.equalsIgnoreCase(juegos.get(i).getGenero())){
-                search.add(juegos.get(i)); 
+                search.add(juegos.get(i));
+            }else{
+            for(int j=0;labelJuego.length>j;j++ ){
+                System.out.println("entra");
+                labelJuego[j].getParent().setVisible(false);
+                sinResult.setVisible(true);
+            }
             }
         }
         for(int j=0;search.size()>j;j++ ){
                labelJuego[j].setText(search.get(j).getTitulo());
+               Image img=getToolkit().getImage(search.get(j).getImagen());
+               img=img.getScaledInstance(B1.getWidth(), B1.getHeight(), Image.SCALE_DEFAULT);
+               imagenJuego[j].setIcon(new ImageIcon(img));
         }
         for(int j=0;labelJuego.length>j;j++ ){
             if(labelJuego[j].getText().equalsIgnoreCase("")){
                 labelJuego[j].getParent().setVisible(false);
             }else{
                 labelJuego[j].getParent().setVisible(true);
+                sinResult.setVisible(false);
             }
-        } 
+        }
     }
+
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -126,23 +151,24 @@ public class homeInterface extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel16 = new javax.swing.JPanel();
         J1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        B1 = new javax.swing.JButton();
         G1 = new javax.swing.JLabel();
         J2 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        B2 = new javax.swing.JButton();
         G2 = new javax.swing.JLabel();
         J3 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
+        B3 = new javax.swing.JButton();
         G3 = new javax.swing.JLabel();
         J4 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        B4 = new javax.swing.JButton();
         G4 = new javax.swing.JLabel();
         J5 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
+        B5 = new javax.swing.JButton();
         G5 = new javax.swing.JLabel();
         J6 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
+        B6 = new javax.swing.JButton();
         G6 = new javax.swing.JLabel();
+        sinResult = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
@@ -479,9 +505,9 @@ public class homeInterface extends javax.swing.JFrame {
 
         J1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        B1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton2MousePressed(evt);
+                B1MousePressed(evt);
             }
         });
 
@@ -493,7 +519,7 @@ public class homeInterface extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(J1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J1Layout.createSequentialGroup()
                         .addComponent(G1)
@@ -503,7 +529,7 @@ public class homeInterface extends javax.swing.JFrame {
             J1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(J1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(B1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(G1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -519,7 +545,7 @@ public class homeInterface extends javax.swing.JFrame {
             J2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(J2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, J2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -530,7 +556,7 @@ public class homeInterface extends javax.swing.JFrame {
             J2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(J2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(B2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(G2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -548,7 +574,7 @@ public class homeInterface extends javax.swing.JFrame {
                 .addGroup(J3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(J3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(J3Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(G3)))
@@ -558,7 +584,7 @@ public class homeInterface extends javax.swing.JFrame {
             J3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(J3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(B3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(G3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -568,9 +594,9 @@ public class homeInterface extends javax.swing.JFrame {
 
         J4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        B4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                B4ActionPerformed(evt);
             }
         });
 
@@ -582,7 +608,7 @@ public class homeInterface extends javax.swing.JFrame {
                 .addGroup(J4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(J4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(B4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(J4Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(G4)))
@@ -592,7 +618,7 @@ public class homeInterface extends javax.swing.JFrame {
             J4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(J4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(B4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(G4)
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -612,14 +638,14 @@ public class homeInterface extends javax.swing.JFrame {
                 .addGap(44, 44, 44))
             .addGroup(J5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(B5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         J5Layout.setVerticalGroup(
             J5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(J5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(B5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(G5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -639,19 +665,23 @@ public class homeInterface extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
             .addGroup(J6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(B6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         J6Layout.setVerticalGroup(
             J6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(J6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(B6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(G6))
         );
 
         jPanel16.add(J6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 150, 130));
+
+        sinResult.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        sinResult.setText("NO SE HAN ENCONTRADO RESULTADOS");
+        jPanel16.add(sinResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 460, 40));
 
         jScrollPane2.setViewportView(jPanel16);
 
@@ -776,7 +806,7 @@ public class homeInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
+    private void B1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B1MousePressed
         InterfazJuego d = null;
         try {
             d = new InterfazJuego();
@@ -785,11 +815,11 @@ public class homeInterface extends javax.swing.JFrame {
         }
         d.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2MousePressed
+    }//GEN-LAST:event_B1MousePressed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void B4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_B4ActionPerformed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
     homeInterface c = null;
@@ -853,24 +883,45 @@ public class homeInterface extends javax.swing.JFrame {
         G4,
         G5,
         G6
-        };          
-
+        };
+        
+        JButton[] imagenJuego = {
+        B1,
+        B2,
+        B3,
+        B4,
+        B5,
+        B6
+        };
         
                 String busqueda=searchBox.getText();
                 for(int i = 0; juegos.size()>i;i++){
+                    System.out.println(busqueda+"=="+juegos.get(i).getTitulo());
                     if(busqueda.equalsIgnoreCase(juegos.get(i).getTitulo())){
-                        search.add(juegos.get(i)); 
+                        search.add(juegos.get(i));
                     }
                 }
                 for(int j=0;search.size()>j;j++ ){
                    labelJuego[j].setText(search.get(j).getTitulo());
+                   Image img=getToolkit().getImage(search.get(j).getImagen());
+                   img=img.getScaledInstance(B1.getWidth(), B1.getHeight(), Image.SCALE_DEFAULT);
+                   imagenJuego[j].setIcon(new ImageIcon(img));
                 }
                 for(int j=0;labelJuego.length>j;j++ ){
-                   if(labelJuego[j].getText().equalsIgnoreCase("")){
-                       labelJuego[j].getParent().setVisible(false);
-                   }
+                    if(labelJuego[j].getText().equalsIgnoreCase("")){
+                        labelJuego[j].getParent().setVisible(false);
+                    }else{
+                        labelJuego[j].getParent().setVisible(true);
                 }
-
+                }
+                if(search.size()==0){
+                    for(int j=0;labelJuego.length>j;j++ ){
+                    labelJuego[j].getParent().setVisible(false);
+                    }
+                        sinResult.setVisible(true);      
+                }else{
+                        sinResult.setVisible(false);
+                }
     }//GEN-LAST:event_searchButtonMouseClicked
 
     private void searchButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchButtonKeyPressed
@@ -960,6 +1011,12 @@ public class homeInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B1;
+    private javax.swing.JButton B2;
+    private javax.swing.JButton B3;
+    private javax.swing.JButton B4;
+    private javax.swing.JButton B5;
+    private javax.swing.JButton B6;
     public javax.swing.JLabel G1;
     private javax.swing.JLabel G2;
     private javax.swing.JLabel G3;
@@ -978,12 +1035,6 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JButton criaturas;
     private javax.swing.JButton estrategia;
     private javax.swing.JButton fPS;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
@@ -1012,6 +1063,7 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JButton registerButton;
     private javax.swing.JTextField searchBox;
     public javax.swing.JButton searchButton;
+    private javax.swing.JLabel sinResult;
     private javax.swing.JButton soulsLike;
     // End of variables declaration//GEN-END:variables
 }
