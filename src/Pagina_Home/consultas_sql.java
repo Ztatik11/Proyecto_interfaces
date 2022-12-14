@@ -89,7 +89,7 @@ public class consultas_sql {
 		}
 
 		for (String[] juego : csv) {
-                    if(realizar_consulta("select * from Juegos where juego='"+juego[0]+"'")==null){
+                    if(realizar_consulta("select * from juegos where Titulo='"+juego[0]+"'")==null){
                         insertar_una_nueva_fila_en_una_tabla(tabla, atributos, parsear_atributos(juego));
                     }
 			
