@@ -10,6 +10,8 @@ package Pagina_Home;
  */
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ import javax.swing.ImageIcon;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -31,7 +34,6 @@ public class homeInterface extends javax.swing.JFrame {
     
     public homeInterface() throws SQLException {
         initComponents();
-        sinResult.setVisible(false);
         menu.setVisible(false);
         this.J1.setVisible(false);
         this.J2.setVisible(false);
@@ -59,8 +61,7 @@ public class homeInterface extends javax.swing.JFrame {
     }
     
     
-    
-   public void busquedaCategorias(String categoria){
+    public void busquedaCategorias(String categoria){
     this.search.clear();
     
         JLabel[] labelJuego = {
@@ -81,17 +82,11 @@ public class homeInterface extends javax.swing.JFrame {
         };
         for(int j=0;labelJuego.length>j;j++ ){
             labelJuego[j].setText("");
-        }
+        } 
         
         for(int i = 0; juegos.size()>i;i++){
             if(categoria.equalsIgnoreCase(juegos.get(i).getGenero())){
-                search.add(juegos.get(i));
-            }else{
-            for(int j=0;labelJuego.length>j;j++ ){
-                System.out.println("entra");
-                labelJuego[j].getParent().setVisible(false);
-                sinResult.setVisible(true);
-            }
+                search.add(juegos.get(i)); 
             }
         }
         for(int j=0;search.size()>j;j++ ){
@@ -105,13 +100,9 @@ public class homeInterface extends javax.swing.JFrame {
                 labelJuego[j].getParent().setVisible(false);
             }else{
                 labelJuego[j].getParent().setVisible(true);
-                sinResult.setVisible(false);
             }
-        }
+        } 
     }
-
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -168,7 +159,6 @@ public class homeInterface extends javax.swing.JFrame {
         J6 = new javax.swing.JPanel();
         B6 = new javax.swing.JButton();
         G6 = new javax.swing.JLabel();
-        sinResult = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
@@ -539,6 +529,12 @@ public class homeInterface extends javax.swing.JFrame {
 
         J2.setBackground(new java.awt.Color(255, 255, 255));
 
+        B2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout J2Layout = new javax.swing.GroupLayout(J2);
         J2.setLayout(J2Layout);
         J2Layout.setHorizontalGroup(
@@ -565,6 +561,12 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel16.add(J2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, 140));
 
         J3.setBackground(new java.awt.Color(255, 255, 255));
+
+        B3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout J3Layout = new javax.swing.GroupLayout(J3);
         J3.setLayout(J3Layout);
@@ -628,6 +630,12 @@ public class homeInterface extends javax.swing.JFrame {
 
         J5.setBackground(new java.awt.Color(255, 255, 255));
 
+        B5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout J5Layout = new javax.swing.GroupLayout(J5);
         J5.setLayout(J5Layout);
         J5Layout.setHorizontalGroup(
@@ -655,6 +663,12 @@ public class homeInterface extends javax.swing.JFrame {
 
         J6.setBackground(new java.awt.Color(255, 255, 255));
 
+        B6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout J6Layout = new javax.swing.GroupLayout(J6);
         J6.setLayout(J6Layout);
         J6Layout.setHorizontalGroup(
@@ -678,10 +692,6 @@ public class homeInterface extends javax.swing.JFrame {
         );
 
         jPanel16.add(J6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 150, 130));
-
-        sinResult.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        sinResult.setText("NO SE HAN ENCONTRADO RESULTADOS");
-        jPanel16.add(sinResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 460, 40));
 
         jScrollPane2.setViewportView(jPanel16);
 
@@ -809,7 +819,7 @@ public class homeInterface extends javax.swing.JFrame {
     private void B1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B1MousePressed
         InterfazJuego d = null;
         try {
-            d = new InterfazJuego();
+            d = new InterfazJuego(search.get(0));
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -819,6 +829,14 @@ public class homeInterface extends javax.swing.JFrame {
 
     private void B4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4ActionPerformed
         // TODO add your handling code here:
+        InterfazJuego d = null;
+        try {
+            d = new InterfazJuego(search.get(3));
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        d.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_B4ActionPerformed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
@@ -898,7 +916,7 @@ public class homeInterface extends javax.swing.JFrame {
                 for(int i = 0; juegos.size()>i;i++){
                     System.out.println(busqueda+"=="+juegos.get(i).getTitulo());
                     if(busqueda.equalsIgnoreCase(juegos.get(i).getTitulo())){
-                        search.add(juegos.get(i));
+                        search.add(juegos.get(i)); 
                     }
                 }
                 for(int j=0;search.size()>j;j++ ){
@@ -913,15 +931,8 @@ public class homeInterface extends javax.swing.JFrame {
                     }else{
                         labelJuego[j].getParent().setVisible(true);
                 }
-                }
-                if(search.size()==0){
-                    for(int j=0;labelJuego.length>j;j++ ){
-                    labelJuego[j].getParent().setVisible(false);
-                    }
-                        sinResult.setVisible(true);      
-                }else{
-                        sinResult.setVisible(false);
-                }
+        } 
+
     }//GEN-LAST:event_searchButtonMouseClicked
 
     private void searchButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchButtonKeyPressed
@@ -966,6 +977,53 @@ public class homeInterface extends javax.swing.JFrame {
     private void accionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accionActionPerformed
         busquedaCategorias(this.accion.getText());
     }//GEN-LAST:event_accionActionPerformed
+
+    private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
+        InterfazJuego d = null;
+        try {
+            d = new InterfazJuego(search.get(1));
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        d.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_B2ActionPerformed
+
+    private void B3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3ActionPerformed
+        // TODO add your handling code here:
+        InterfazJuego d = null;
+        try {
+            d = new InterfazJuego(search.get(2));
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        d.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_B3ActionPerformed
+
+    private void B5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5ActionPerformed
+        // TODO add your handling code here:
+        InterfazJuego d = null;
+        try {
+            d = new InterfazJuego(search.get(4));
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        d.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_B5ActionPerformed
+
+    private void B6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B6ActionPerformed
+        // TODO add your handling code here:
+        InterfazJuego d = null;
+        try {
+            d = new InterfazJuego(search.get(5));
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        d.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_B6ActionPerformed
 
         
     /**
@@ -1063,7 +1121,6 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JButton registerButton;
     private javax.swing.JTextField searchBox;
     public javax.swing.JButton searchButton;
-    private javax.swing.JLabel sinResult;
     private javax.swing.JButton soulsLike;
     // End of variables declaration//GEN-END:variables
 }
