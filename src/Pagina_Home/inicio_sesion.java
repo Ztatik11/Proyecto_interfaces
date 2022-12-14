@@ -24,9 +24,9 @@ public class inicio_sesion extends javax.swing.JFrame {
      */
     public inicio_sesion() throws SQLException {
         initComponents();
-        this.UserButton.setVisible(false);
-        this.UserButton.setText("");
-        
+        this.UserLabel.setVisible(false);
+        this.UserLabel.setText("");
+        this.ajustes.setVisible(false);
         this.Errorclave.setVisible(false);
         this.ErrorUsuario.setVisible(false);
          this.conexion_db = new consultas_sql("mango_games","root","root");
@@ -46,8 +46,9 @@ public class inicio_sesion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         botonRegistro = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        UserButton = new javax.swing.JButton();
         menuButton = new javax.swing.JButton();
+        ajustes = new javax.swing.JComboBox<>();
+        UserLabel = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -94,19 +95,17 @@ public class inicio_sesion extends javax.swing.JFrame {
         jLabel5.setText("jLabel5");
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        UserButton.setBackground(new java.awt.Color(0, 153, 255));
-        UserButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        UserButton.setForeground(new java.awt.Color(255, 255, 255));
-        UserButton.setText("usuario");
-        UserButton.setToolTipText("");
-        UserButton.addActionListener(new java.awt.event.ActionListener() {
+        menuButton.setBackground(new java.awt.Color(0, 153, 255));
+        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+
+        ajustes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ajustes", "Administracion", "Cerrar sesion" }));
+        ajustes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserButtonActionPerformed(evt);
+                ajustesActionPerformed(evt);
             }
         });
 
-        menuButton.setBackground(new java.awt.Color(0, 153, 255));
-        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+        UserLabel.setText("Bienvenido mirey");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -124,7 +123,9 @@ public class inicio_sesion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(UserButton)
+                        .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ajustes, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addComponent(botonRegistro)
                 .addGap(21, 21, 21))
@@ -137,8 +138,9 @@ public class inicio_sesion extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(UserButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 114, Short.MAX_VALUE))
+                            .addComponent(ajustes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UserLabel))
+                        .addGap(27, 112, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -358,8 +360,9 @@ public class inicio_sesion extends javax.swing.JFrame {
         if(claveUser.equalsIgnoreCase(clave)){
             boolean sesion_iniciada=true;
             this.Errorclave.setVisible(false);
-            this.UserButton.setText(validNom);
-            this.UserButton.setVisible(true);
+            this.UserLabel.setText("Bienvenido "+validNom);
+            this.UserLabel.setVisible(true);
+            this.ajustes.setVisible(true);
             this.botonRegistro.setVisible(false);
         }
         else if(!claveUser.equalsIgnoreCase(clave)){
@@ -462,9 +465,9 @@ public class inicio_sesion extends javax.swing.JFrame {
         }              
     }//GEN-LAST:event_boton_inicion_sesionActionPerformed
 
-    private void UserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserButtonActionPerformed
+    private void ajustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UserButtonActionPerformed
+    }//GEN-LAST:event_ajustesActionPerformed
     
     
     /**
@@ -509,7 +512,8 @@ public class inicio_sesion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ErrorUsuario;
     private javax.swing.JLabel Errorclave;
-    private javax.swing.JButton UserButton;
+    private javax.swing.JLabel UserLabel;
+    private javax.swing.JComboBox<String> ajustes;
     private javax.swing.JButton botonRegistro;
     private javax.swing.JButton boton_inicion_sesion;
     private javax.swing.JPasswordField clave_inicio;
