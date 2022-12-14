@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import org.openide.util.Exceptions;
 
 public class homeInterface extends javax.swing.JFrame {
 
@@ -809,9 +810,9 @@ public class homeInterface extends javax.swing.JFrame {
     private void B1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B1MousePressed
         InterfazJuego d = null;
         try {
-            d = new InterfazJuego();
+            d = new InterfazJuego(this.search.get(0));
         } catch (SQLException ex) {
-            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+            Exceptions.printStackTrace(ex);
         }
         d.setVisible(true);
         this.setVisible(false);
