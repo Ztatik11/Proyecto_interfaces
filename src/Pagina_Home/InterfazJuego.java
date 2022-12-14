@@ -35,7 +35,9 @@ public class InterfazJuego extends javax.swing.JFrame {
         consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
         this.conexion_db = new consultas_sql("mango_games","root","root");
         this.juego = juego;
-        
+        this.LabelDescripcion.setEditable(false);
+        this.LabelDescripcion.setLineWrap(true);
+        this.LabelDescripcion.setWrapStyleWord(true);
         
         this.ImagenJuego.setIcon((new ImageIcon(convertir_imagen())));
         this.LabelTitulo.setText(this.juego.getTitulo());
@@ -62,40 +64,40 @@ public class InterfazJuego extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Ventana_juego = new javax.swing.JPanel();
         panel_excepcion_compra = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         Boton_inicio_sesion_compra1 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         Boton_registro_compra = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        Confirmacion_compra = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        Boton_confirmacion_compra = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        Ventana_juego = new javax.swing.JPanel();
         Banner = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         Boton_login = new javax.swing.JButton();
         Boton_registro = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        menuButton = new javax.swing.JButton();
         informacion_juego = new javax.swing.JPanel();
         Imagenes_precio = new javax.swing.JPanel();
         Boton_comprar = new javax.swing.JButton();
         LabelPrecio = new javax.swing.JLabel();
-        LabelNota = new javax.swing.JLabel();
         ImagenJuego = new javax.swing.JButton();
+        LabelNota = new javax.swing.JLabel();
         Informacion_juego = new javax.swing.JPanel();
         LabelTitulo = new javax.swing.JLabel();
-        LabelDescripcion = new javax.swing.JLabel();
         LabelGenero = new javax.swing.JLabel();
         LabelDesarrolladora = new javax.swing.JLabel();
         LabelNjugadores = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        LabelDescripcion = new javax.swing.JTextArea();
+        Confirmacion_compra = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        Boton_confirmacion_compra = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MangoGames");
         setIconImages(null);
-
-        Ventana_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel_excepcion_compra.setBackground(new java.awt.Color(178, 89, 249));
 
@@ -165,7 +167,177 @@ public class InterfazJuego extends javax.swing.JFrame {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        Ventana_juego.add(panel_excepcion_compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 140, 620, 360));
+        Ventana_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Banner.setBackground(new java.awt.Color(0, 153, 255));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("MANGO GAMES");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel4MousePressed(evt);
+            }
+        });
+
+        Boton_login.setBackground(new java.awt.Color(0, 153, 255));
+        Boton_login.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Boton_login.setForeground(new java.awt.Color(255, 255, 255));
+        Boton_login.setText("login");
+        Boton_login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Boton_loginMouseClicked(evt);
+            }
+        });
+        Boton_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_loginActionPerformed(evt);
+            }
+        });
+
+        Boton_registro.setBackground(new java.awt.Color(0, 153, 255));
+        Boton_registro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Boton_registro.setForeground(new java.awt.Color(255, 255, 255));
+        Boton_registro.setText("register");
+        Boton_registro.setToolTipText("");
+        Boton_registro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_registroActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
+        jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
+
+        menuButton.setBackground(new java.awt.Color(0, 153, 255));
+        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+
+        javax.swing.GroupLayout BannerLayout = new javax.swing.GroupLayout(Banner);
+        Banner.setLayout(BannerLayout);
+        BannerLayout.setHorizontalGroup(
+            BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BannerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(menuButton)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addComponent(Boton_login)
+                .addGap(11, 11, 11)
+                .addComponent(Boton_registro)
+                .addGap(21, 21, 21))
+        );
+        BannerLayout.setVerticalGroup(
+            BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BannerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BannerLayout.createSequentialGroup()
+                        .addGroup(BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Boton_login, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Boton_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 114, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BannerLayout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BannerLayout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BannerLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(menuButton))))
+        );
+
+        Ventana_juego.add(Banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 140));
+
+        informacion_juego.setBackground(new java.awt.Color(0, 102, 204));
+        informacion_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Imagenes_precio.setBackground(new java.awt.Color(255, 255, 255));
+
+        Boton_comprar.setBackground(new java.awt.Color(0, 153, 255));
+        Boton_comprar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Boton_comprar.setForeground(new java.awt.Color(255, 255, 255));
+        Boton_comprar.setText("Comprar");
+        Boton_comprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_comprarActionPerformed(evt);
+            }
+        });
+
+        LabelPrecio.setBackground(new java.awt.Color(255, 255, 255));
+        LabelPrecio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        LabelPrecio.setText("Precio:");
+
+        ImagenJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dum.jpg"))); // NOI18N
+        ImagenJuego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImagenJuegoActionPerformed(evt);
+            }
+        });
+
+        LabelNota.setText("10/10");
+
+        javax.swing.GroupLayout Imagenes_precioLayout = new javax.swing.GroupLayout(Imagenes_precio);
+        Imagenes_precio.setLayout(Imagenes_precioLayout);
+        Imagenes_precioLayout.setHorizontalGroup(
+            Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Imagenes_precioLayout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(Boton_comprar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(Imagenes_precioLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Imagenes_precioLayout.createSequentialGroup()
+                        .addComponent(LabelPrecio)
+                        .addGap(192, 192, 192)
+                        .addComponent(LabelNota, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                    .addComponent(ImagenJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        Imagenes_precioLayout.setVerticalGroup(
+            Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Imagenes_precioLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(ImagenJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelPrecio)
+                    .addComponent(LabelNota))
+                .addGap(28, 28, 28)
+                .addComponent(Boton_comprar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
+        );
+
+        informacion_juego.add(Imagenes_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 460, 430));
+
+        Informacion_juego.setBackground(new java.awt.Color(102, 204, 255));
+        Informacion_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        LabelTitulo.setText("Titulo");
+        Informacion_juego.add(LabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 44, -1, -1));
+
+        LabelGenero.setText("Genero");
+        Informacion_juego.add(LabelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 80, 20));
+
+        LabelDesarrolladora.setText("Desarrolladora");
+        Informacion_juego.add(LabelDesarrolladora, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 360, 20));
+
+        LabelNjugadores.setText("Nº de jugadores");
+        Informacion_juego.add(LabelNjugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, 30));
+
+        LabelDescripcion.setBackground(new java.awt.Color(102, 204, 255));
+        LabelDescripcion.setColumns(20);
+        LabelDescripcion.setRows(5);
+        jScrollPane1.setViewportView(LabelDescripcion);
+
+        Informacion_juego.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 76, 350, 110));
+
+        informacion_juego.add(Informacion_juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 420, 438));
 
         Confirmacion_compra.setBackground(new java.awt.Color(178, 89, 249));
 
@@ -209,175 +381,12 @@ public class InterfazJuego extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(Boton_confirmacion_compra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
 
-        Ventana_juego.add(Confirmacion_compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 140, 620, 360));
-
-        Banner.setBackground(new java.awt.Color(0, 153, 255));
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("MANGO GAMES");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel4MousePressed(evt);
-            }
-        });
-
-        Boton_login.setBackground(new java.awt.Color(0, 153, 255));
-        Boton_login.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        Boton_login.setForeground(new java.awt.Color(255, 255, 255));
-        Boton_login.setText("login");
-        Boton_login.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Boton_loginMouseClicked(evt);
-            }
-        });
-        Boton_login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_loginActionPerformed(evt);
-            }
-        });
-
-        Boton_registro.setBackground(new java.awt.Color(0, 153, 255));
-        Boton_registro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        Boton_registro.setForeground(new java.awt.Color(255, 255, 255));
-        Boton_registro.setText("register");
-        Boton_registro.setToolTipText("");
-        Boton_registro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_registroActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
-        jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
-
-        javax.swing.GroupLayout BannerLayout = new javax.swing.GroupLayout(Banner);
-        Banner.setLayout(BannerLayout);
-        BannerLayout.setHorizontalGroup(
-            BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BannerLayout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addComponent(Boton_login)
-                .addGap(11, 11, 11)
-                .addComponent(Boton_registro)
-                .addGap(21, 21, 21))
-        );
-        BannerLayout.setVerticalGroup(
-            BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BannerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BannerLayout.createSequentialGroup()
-                        .addGroup(BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Boton_login, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Boton_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 114, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BannerLayout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BannerLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(15, 15, 15))))
-        );
-
-        Ventana_juego.add(Banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 140));
-
-        informacion_juego.setBackground(new java.awt.Color(0, 102, 204));
-        informacion_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Imagenes_precio.setBackground(new java.awt.Color(255, 255, 255));
-
-        Boton_comprar.setBackground(new java.awt.Color(0, 153, 255));
-        Boton_comprar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Boton_comprar.setForeground(new java.awt.Color(255, 255, 255));
-        Boton_comprar.setText("Comprar");
-        Boton_comprar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_comprarActionPerformed(evt);
-            }
-        });
-
-        LabelPrecio.setBackground(new java.awt.Color(255, 255, 255));
-        LabelPrecio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelPrecio.setText("Precio:");
-
-        LabelNota.setText("10/10");
-
-        ImagenJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dum.jpg"))); // NOI18N
-        ImagenJuego.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ImagenJuegoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout Imagenes_precioLayout = new javax.swing.GroupLayout(Imagenes_precio);
-        Imagenes_precio.setLayout(Imagenes_precioLayout);
-        Imagenes_precioLayout.setHorizontalGroup(
-            Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Imagenes_precioLayout.createSequentialGroup()
-                .addGroup(Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Imagenes_precioLayout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ImagenJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Imagenes_precioLayout.createSequentialGroup()
-                                .addComponent(LabelPrecio)
-                                .addGap(175, 175, 175)
-                                .addComponent(LabelNota, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(Imagenes_precioLayout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(Boton_comprar)))
-                .addGap(0, 67, Short.MAX_VALUE))
-        );
-        Imagenes_precioLayout.setVerticalGroup(
-            Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Imagenes_precioLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(ImagenJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(Imagenes_precioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Imagenes_precioLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(LabelNota)
-                        .addGap(54, 54, 54)
-                        .addComponent(Boton_comprar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46))
-                    .addGroup(Imagenes_precioLayout.createSequentialGroup()
-                        .addComponent(LabelPrecio)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-
-        informacion_juego.add(Imagenes_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 460, 430));
-
-        Informacion_juego.setBackground(new java.awt.Color(102, 204, 255));
-        Informacion_juego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        LabelTitulo.setText("Titulo");
-        Informacion_juego.add(LabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 44, -1, -1));
-
-        LabelDescripcion.setText("<html>Descripcion<html>");
-        Informacion_juego.add(LabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 78, -1, -1));
-
-        LabelGenero.setText("Genero");
-        Informacion_juego.add(LabelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 113, 80, 20));
-
-        LabelDesarrolladora.setText("Desarrolladora");
-        Informacion_juego.add(LabelDesarrolladora, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 151, 80, 20));
-
-        LabelNjugadores.setText("Nº de jugadores");
-        Informacion_juego.add(LabelNjugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 185, -1, 30));
-
-        informacion_juego.add(Informacion_juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 420, 438));
+        informacion_juego.add(Confirmacion_compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(-370, -40, -1, -1));
 
         Ventana_juego.add(informacion_juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 880, 420));
 
@@ -386,10 +395,20 @@ public class InterfazJuego extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Ventana_juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panel_excepcion_compra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Ventana_juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 100, Short.MAX_VALUE)
+                    .addComponent(panel_excepcion_compra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 100, Short.MAX_VALUE)))
         );
 
         pack();
@@ -540,7 +559,7 @@ public class InterfazJuego extends javax.swing.JFrame {
     private javax.swing.JPanel Imagenes_precio;
     private javax.swing.JPanel Informacion_juego;
     private javax.swing.JLabel LabelDesarrolladora;
-    private javax.swing.JLabel LabelDescripcion;
+    private javax.swing.JTextArea LabelDescripcion;
     private javax.swing.JLabel LabelGenero;
     private javax.swing.JLabel LabelNjugadores;
     private javax.swing.JLabel LabelNota;
@@ -555,6 +574,8 @@ public class InterfazJuego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton menuButton;
     public javax.swing.JPanel panel_excepcion_compra;
     // End of variables declaration//GEN-END:variables
 }
