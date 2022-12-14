@@ -50,6 +50,7 @@ public class InterfazJuego extends javax.swing.JFrame {
     }
     
     public Image convertir_imagen(){
+        System.out.println(this.juego.getImagen());
         Image img=getToolkit().getImage(this.juego.getImagen());
         img=img.getScaledInstance(ImagenJuego.getWidth(), ImagenJuego.getHeight(), Image.SCALE_DEFAULT);
         return img;
@@ -212,6 +213,11 @@ public class InterfazJuego extends javax.swing.JFrame {
 
         menuButton.setBackground(new java.awt.Color(0, 153, 255));
         menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+        menuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout BannerLayout = new javax.swing.GroupLayout(Banner);
         Banner.setLayout(BannerLayout);
@@ -501,6 +507,18 @@ public class InterfazJuego extends javax.swing.JFrame {
         }
        b.setVisible(true);
     }//GEN-LAST:event_Boton_registro_compraActionPerformed
+
+    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
+        // TODO add your handling code here:
+        homeInterface a = null;
+        try {
+            a = new homeInterface();
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       a.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_menuButtonActionPerformed
     
     
     /**@param args the command line arguments

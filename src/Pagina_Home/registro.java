@@ -14,6 +14,7 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
@@ -38,15 +39,6 @@ public class registro extends javax.swing.JFrame {
         Campo_Validador_nombre.add(nombre,StringValidators.REQUIRE_NON_EMPTY_STRING);
         Campo_Validador_apellido.add(apellidos,StringValidators.REQUIRE_NON_EMPTY_STRING);
         Campo_Validador_correo.add(correo_electronico,StringValidators.REQUIRE_NON_EMPTY_STRING,StringValidators.EMAIL_ADDRESS);
-        /*
-        Campo_Validador_nombre.add(nombre,StringValidators.CHARACTER_SET_NAME);
-        Campo_Validador_nombre.add(nombre,StringValidators.REQUIRE_NON_EMPTY_STRING);
-        Campo_Validador_apellido.add(apellidos,StringValidators.CHARACTER_SET_NAME);
-        Campo_Validador_correo.add(correo_electronico,StringValidators.EMAIL_ADDRESS);
-        Campo_Validador_correo.add(correo_electronico,StringValidators.REQUIRE_NON_EMPTY_STRING);
-        Campo_Validador_clave.add(clave,StringValidators.NO_WHITESPACE);
-        Campo_Validador_clave.add(clave,StringValidators.REQUIRE_NON_EMPTY_STRING);
-        */
         
         Validador_usuario.addChangeListener(new ChangeListener() {
         @Override
@@ -62,6 +54,15 @@ public class registro extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
         this.conexion_db = new consultas_sql("mango_games","root","root");
    }
+    
+    private void borrar_campos() {                                      
+        this.usuario.setText("");
+        this.nombre.setText("");
+        this.apellidos.setText("");
+        this.correo_electronico.setText("");
+        this.clave.setText("");
+        this.terminos_condiciones.setSelected(false);
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,9 +74,6 @@ public class registro extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        panel_excepcion_juego = new javax.swing.JPanel();
-        Boton_ventana_emergente = new javax.swing.JButton();
-        txt_ventana_emergente = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
@@ -99,8 +97,6 @@ public class registro extends javax.swing.JFrame {
         registro = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         residencia = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
-        confirmacion_clave = new javax.swing.JPasswordField();
         terminos_condiciones = new javax.swing.JCheckBox();
         Validador_usuario = new org.netbeans.validation.api.ui.swing.ValidationPanel();
         Validador_nombre = new org.netbeans.validation.api.ui.swing.ValidationPanel();
@@ -113,47 +109,6 @@ public class registro extends javax.swing.JFrame {
         setIconImages(null);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        panel_excepcion_juego.setBackground(new java.awt.Color(178, 89, 249));
-
-        Boton_ventana_emergente.setBackground(new java.awt.Color(0, 153, 255));
-        Boton_ventana_emergente.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Boton_ventana_emergente.setForeground(new java.awt.Color(255, 255, 255));
-        Boton_ventana_emergente.setText(org.openide.util.NbBundle.getMessage(registro.class, "Registro_juegos.Boton_ventana_emergente.text")); // NOI18N
-        Boton_ventana_emergente.setOpaque(true);
-        Boton_ventana_emergente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_ventana_emergenteActionPerformed(evt);
-            }
-        });
-
-        txt_ventana_emergente.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        txt_ventana_emergente.setText(org.openide.util.NbBundle.getMessage(registro.class, "Registro_juegos.txt_ventana_emergente.text")); // NOI18N
-
-        javax.swing.GroupLayout panel_excepcion_juegoLayout = new javax.swing.GroupLayout(panel_excepcion_juego);
-        panel_excepcion_juego.setLayout(panel_excepcion_juegoLayout);
-        panel_excepcion_juegoLayout.setHorizontalGroup(
-            panel_excepcion_juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_excepcion_juegoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Boton_ventana_emergente)
-                .addGap(273, 273, 273))
-            .addGroup(panel_excepcion_juegoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txt_ventana_emergente, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
-        );
-        panel_excepcion_juegoLayout.setVerticalGroup(
-            panel_excepcion_juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_excepcion_juegoLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(txt_ventana_emergente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addComponent(Boton_ventana_emergente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(panel_excepcion_juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 230, 590, 290));
 
         jPanel6.setBackground(new java.awt.Color(0, 153, 255));
 
@@ -184,6 +139,11 @@ public class registro extends javax.swing.JFrame {
 
         menuButton.setBackground(new java.awt.Color(0, 153, 255));
         menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+        menuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -325,18 +285,6 @@ public class registro extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setText("CONFIRMAR CONTRASEÑA:");
-        jLabel12.setAutoscrolls(true);
-        jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        confirmacion_clave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        confirmacion_clave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmacion_claveActionPerformed(evt);
-            }
-        });
-
         terminos_condiciones.setText("Aceptar nuestros terminos y condiciones");
         terminos_condiciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -386,11 +334,8 @@ public class registro extends javax.swing.JFrame {
                                 .addComponent(clave, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(terminos_condiciones)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Validador_clave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(confirmacion_clave, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)))))
+                                .addGap(191, 191, 191)
+                                .addComponent(Validador_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(228, 228, 228)
                         .addComponent(registro, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -432,11 +377,7 @@ public class registro extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(confirmacion_clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(50, 50, 50)
                 .addComponent(Validador_clave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(terminos_condiciones)
@@ -473,7 +414,9 @@ public class registro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(616, 616, 616))
         );
 
         pack();
@@ -511,10 +454,6 @@ public class registro extends javax.swing.JFrame {
        this.setVisible(false);
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void confirmacion_claveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmacion_claveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_confirmacion_claveActionPerformed
-
     private void terminos_condicionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminos_condicionesActionPerformed
         // TODO add your handling code here:
         System.out.println(terminos_condiciones.isSelected());
@@ -545,30 +484,37 @@ public class registro extends javax.swing.JFrame {
                 pass+=clave_array[j];
             }
             String [] datos_usuario = {usuario.getText(),nombre.getText(),apellidos.getText(),correo_electronico.getText(),residencia.getSelectedItem().toString(),pass};
-            String usuario= datos_usuario[0];
-            usuario=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select usuario from usuarios where usuario=="+usuario), usuario);
+            String usuario= "'"+datos_usuario[0]+"'";
+            usuario=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select * from usuarios where usuario="+usuario), "usuario");
             if(usuario==null){
                 conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador",this.conexion_db.parsear_atributos(datos_usuario)+",false" );
-            this.txt_ventana_emergente.setText("¡USUARIO REGISTRADO!");
-            this.panel_excepcion_juego.setVisible(true);
+                borrar_campos();
+                JOptionPane.showMessageDialog(rootPane, "USUARIO REGISTRADO");
             }else{
-                this.txt_ventana_emergente.setText("EL USUARIO YA ESTABA REGISTRADO");
-                this.panel_excepcion_juego.setVisible(true);
+                JOptionPane.showMessageDialog(rootPane, "ERROR: USUARIO YA REGISTRADO");
             }
         } catch (SQLException ex) {
             Exceptions.printStackTrace(ex);
         }
     }//GEN-LAST:event_registroActionPerformed
 
-    private void Boton_ventana_emergenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_ventana_emergenteActionPerformed
+    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         // TODO add your handling code here:
-        this.panel_excepcion_juego.setVisible(false);
-    }//GEN-LAST:event_Boton_ventana_emergenteActionPerformed
+        homeInterface a = null;
+        try {
+            a = new homeInterface();
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       a.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_menuButtonActionPerformed
     
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        Locale.setDefault(new Locale("es","ES"));
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -604,7 +550,6 @@ public class registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Boton_ventana_emergente;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_apellidos;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_clave;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_correo;
@@ -612,12 +557,10 @@ public class registro extends javax.swing.JFrame {
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_usuario;
     private javax.swing.JTextField apellidos;
     private javax.swing.JPasswordField clave;
-    private javax.swing.JPasswordField confirmacion_clave;
     private javax.swing.JTextField correo_electronico;
     private javax.swing.JButton jButton12;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -633,11 +576,9 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton menuButton;
     private javax.swing.JTextField nombre;
-    public javax.swing.JPanel panel_excepcion_juego;
     public javax.swing.JButton registro;
     private javax.swing.JComboBox<String> residencia;
     public javax.swing.JCheckBox terminos_condiciones;
-    private javax.swing.JLabel txt_ventana_emergente;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }

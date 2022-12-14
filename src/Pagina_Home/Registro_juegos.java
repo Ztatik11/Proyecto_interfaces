@@ -26,6 +26,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
@@ -85,9 +86,6 @@ public class Registro_juegos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        panel_excepcion_juego = new javax.swing.JPanel();
-        Boton_ventana_emergente = new javax.swing.JButton();
-        txt_ventana_emergente = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
@@ -126,46 +124,6 @@ public class Registro_juegos extends javax.swing.JFrame {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panel_excepcion_juego.setBackground(new java.awt.Color(178, 89, 249));
-
-        Boton_ventana_emergente.setBackground(new java.awt.Color(0, 153, 255));
-        Boton_ventana_emergente.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Boton_ventana_emergente.setForeground(new java.awt.Color(255, 255, 255));
-        Boton_ventana_emergente.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.Boton_ventana_emergente.text")); // NOI18N
-        Boton_ventana_emergente.setOpaque(true);
-        Boton_ventana_emergente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_ventana_emergenteActionPerformed(evt);
-            }
-        });
-
-        txt_ventana_emergente.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        txt_ventana_emergente.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.txt_ventana_emergente.text")); // NOI18N
-
-        javax.swing.GroupLayout panel_excepcion_juegoLayout = new javax.swing.GroupLayout(panel_excepcion_juego);
-        panel_excepcion_juego.setLayout(panel_excepcion_juegoLayout);
-        panel_excepcion_juegoLayout.setHorizontalGroup(
-            panel_excepcion_juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_excepcion_juegoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Boton_ventana_emergente)
-                .addGap(273, 273, 273))
-            .addGroup(panel_excepcion_juegoLayout.createSequentialGroup()
-                .addComponent(txt_ventana_emergente, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        panel_excepcion_juegoLayout.setVerticalGroup(
-            panel_excepcion_juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_excepcion_juegoLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(txt_ventana_emergente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
-                .addComponent(Boton_ventana_emergente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(panel_excepcion_juego, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 230, 570, 290));
-
         jPanel8.setBackground(new java.awt.Color(0, 153, 255));
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
@@ -195,6 +153,11 @@ public class Registro_juegos extends javax.swing.JFrame {
 
         menuButton.setBackground(new java.awt.Color(0, 153, 255));
         menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+        menuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -586,37 +549,33 @@ public class Registro_juegos extends javax.swing.JFrame {
             Titulo=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select Titulo from juegos where Titulo="+Titulo), Titulo);
             if(Titulo==null){
                 conexion_db.insertar_una_nueva_fila_en_una_tabla("juegos", "Titulo,Descripcion,Precio,Nota,Genero,Desarrolladora,Numero_jugadores,Imagen",this.conexion_db.parsear_atributos(datos_juego));
-                
-                this.txt_ventana_emergente.setText("¡JUEGO REGISTRADO!");
-                this.panel_excepcion_juego.setVisible(true);
-                this.formulario.setEnabled(false);
-               // this.txt_ventana_emergente.setVisible(true);
-               // this.Boton_ventana_emergente.setVisible(true);
                 borrar_campos();
+                JOptionPane.showMessageDialog(rootPane, "¡JUEGO REGISTRADO!");
             }else{
-                
-                
-                this.txt_ventana_emergente.setText("EL JUEGO YA ESTÁ REGISTRADO");
-                this.panel_excepcion_juego.setVisible(true);
-                this.formulario.setEnabled(false);
-               // this.txt_ventana_emergente.setVisible(true);
-               // this.Boton_ventana_emergente.setVisible(true);
-                borrar_campos();
+               JOptionPane.showMessageDialog(rootPane, "ERROR: EL JUEGO YA ESTABA REGISTRADO EN LA BASE DE DATOS");
             }
         } catch (SQLException ex) {
             Exceptions.printStackTrace(ex);
         }
     }//GEN-LAST:event_registro_juegoActionPerformed
 
-    private void Boton_ventana_emergenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_ventana_emergenteActionPerformed
+    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         // TODO add your handling code here:
-        this.panel_excepcion_juego.setVisible(false);
-    }//GEN-LAST:event_Boton_ventana_emergenteActionPerformed
+        homeInterface a = null;
+        try {
+            a = new homeInterface();
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       a.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_menuButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        Locale.setDefault(new Locale("es","ES"));
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -654,7 +613,6 @@ public class Registro_juegos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Boton_ventana_emergente;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_correo1;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_descripcion;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_precio;
@@ -684,12 +642,10 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jugadores;
     private javax.swing.JButton menuButton;
     private javax.swing.JComboBox<String> nota;
-    public javax.swing.JPanel panel_excepcion_juego;
     private javax.swing.JTextField precio;
     private javax.swing.JButton registro_juego;
     private javax.swing.JButton seleccionar_imagen;
     private javax.swing.JTextField titulo;
-    private javax.swing.JLabel txt_ventana_emergente;
     private javax.swing.JTextField txtruta;
     // End of variables declaration//GEN-END:variables
 }

@@ -97,6 +97,11 @@ public class inicio_sesion extends javax.swing.JFrame {
 
         menuButton.setBackground(new java.awt.Color(0, 153, 255));
         menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+        menuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuButtonActionPerformed(evt);
+            }
+        });
 
         ajustes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ajustes", "Administracion", "Cerrar sesion" }));
         ajustes.addActionListener(new java.awt.event.ActionListener() {
@@ -468,6 +473,18 @@ public class inicio_sesion extends javax.swing.JFrame {
     private void ajustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ajustesActionPerformed
+
+    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
+        // TODO add your handling code here:
+        homeInterface a = null;
+        try {
+            a = new homeInterface();
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       a.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_menuButtonActionPerformed
     
     
     /**
