@@ -92,6 +92,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
+        menuButton = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         formulario = new javax.swing.JScrollPane();
         jPanel10 = new javax.swing.JPanel();
@@ -192,12 +193,17 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel13.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jLabel13.text")); // NOI18N
         jLabel13.setPreferredSize(new java.awt.Dimension(100, 100));
 
+        menuButton.setBackground(new java.awt.Color(0, 153, 255));
+        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(164, 164, 164)
+                .addContainerGap()
+                .addComponent(menuButton)
+                .addGap(87, 87, 87)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jLabel10)
@@ -217,7 +223,10 @@ public class Registro_juegos extends javax.swing.JFrame {
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(menuButton))))
         );
 
         jPanel3.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 140));
@@ -673,6 +682,7 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JComboBox<String> jugadores;
+    private javax.swing.JButton menuButton;
     private javax.swing.JComboBox<String> nota;
     public javax.swing.JPanel panel_excepcion_juego;
     private javax.swing.JTextField precio;

@@ -78,6 +78,7 @@ public class InterfazJuego extends javax.swing.JFrame {
         Boton_login = new javax.swing.JButton();
         Boton_registro = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        menuButton = new javax.swing.JButton();
         informacion_juego = new javax.swing.JPanel();
         Imagenes_precio = new javax.swing.JPanel();
         Boton_comprar = new javax.swing.JButton();
@@ -257,12 +258,17 @@ public class InterfazJuego extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
 
+        menuButton.setBackground(new java.awt.Color(0, 153, 255));
+        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+
         javax.swing.GroupLayout BannerLayout = new javax.swing.GroupLayout(Banner);
         Banner.setLayout(BannerLayout);
         BannerLayout.setHorizontalGroup(
             BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BannerLayout.createSequentialGroup()
-                .addGap(142, 142, 142)
+                .addContainerGap()
+                .addComponent(menuButton)
+                .addGap(65, 65, 65)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel4)
@@ -287,7 +293,10 @@ public class InterfazJuego extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BannerLayout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(15, 15, 15))))
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BannerLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(menuButton))))
         );
 
         Ventana_juego.add(Banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 140));
@@ -555,6 +564,7 @@ public class InterfazJuego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JButton menuButton;
     public javax.swing.JPanel panel_excepcion_compra;
     // End of variables declaration//GEN-END:variables
 }

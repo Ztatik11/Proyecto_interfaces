@@ -36,6 +36,7 @@ public class homeInterface extends javax.swing.JFrame {
     public homeInterface() throws SQLException {
         initComponents();
         menu.setVisible(false);
+        sinResult.setVisible(false);
         this.J1.setVisible(false);
         this.J2.setVisible(false);
         this.J3.setVisible(false);
@@ -88,6 +89,12 @@ public class homeInterface extends javax.swing.JFrame {
         for(int i = 0; juegos.size()>i;i++){
             if(categoria.equalsIgnoreCase(juegos.get(i).getGenero())){
                 search.add(juegos.get(i)); 
+            }else{
+            for(int j=0;labelJuego.length>j;j++ ){
+                System.out.println("entra");
+                labelJuego[j].getParent().setVisible(false);
+                sinResult.setVisible(true);
+            }
             }
         }
         for(int j=0;search.size()>j;j++ ){
@@ -101,6 +108,7 @@ public class homeInterface extends javax.swing.JFrame {
                 labelJuego[j].getParent().setVisible(false);
             }else{
                 labelJuego[j].getParent().setVisible(true);
+                sinResult.setVisible(false);
             }
         } 
     }
@@ -160,6 +168,7 @@ public class homeInterface extends javax.swing.JFrame {
         J6 = new javax.swing.JPanel();
         B6 = new javax.swing.JButton();
         G6 = new javax.swing.JLabel();
+        sinResult = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
@@ -530,12 +539,6 @@ public class homeInterface extends javax.swing.JFrame {
 
         J2.setBackground(new java.awt.Color(255, 255, 255));
 
-        B2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout J2Layout = new javax.swing.GroupLayout(J2);
         J2.setLayout(J2Layout);
         J2Layout.setHorizontalGroup(
@@ -562,12 +565,6 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel16.add(J2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, 140));
 
         J3.setBackground(new java.awt.Color(255, 255, 255));
-
-        B3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B3ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout J3Layout = new javax.swing.GroupLayout(J3);
         J3.setLayout(J3Layout);
@@ -631,12 +628,6 @@ public class homeInterface extends javax.swing.JFrame {
 
         J5.setBackground(new java.awt.Color(255, 255, 255));
 
-        B5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B5ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout J5Layout = new javax.swing.GroupLayout(J5);
         J5.setLayout(J5Layout);
         J5Layout.setHorizontalGroup(
@@ -664,12 +655,6 @@ public class homeInterface extends javax.swing.JFrame {
 
         J6.setBackground(new java.awt.Color(255, 255, 255));
 
-        B6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B6ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout J6Layout = new javax.swing.GroupLayout(J6);
         J6.setLayout(J6Layout);
         J6Layout.setHorizontalGroup(
@@ -693,6 +678,10 @@ public class homeInterface extends javax.swing.JFrame {
         );
 
         jPanel16.add(J6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 150, 130));
+
+        sinResult.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        sinResult.setText("NO SE HAN ENCONTRADO RESULTADOS");
+        jPanel16.add(sinResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 460, 40));
 
         jScrollPane2.setViewportView(jPanel16);
 
@@ -808,7 +797,7 @@ public class homeInterface extends javax.swing.JFrame {
                 menuButtonActionPerformed(evt);
             }
         });
-        jPanel6.add(menuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 96, 52, 38));
+        jPanel6.add(menuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 74, 70, 60));
 
         jPanel2.add(jPanel6, java.awt.BorderLayout.NORTH);
 
@@ -820,11 +809,10 @@ public class homeInterface extends javax.swing.JFrame {
     private void B1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B1MousePressed
         InterfazJuego d = null;
         try {
-<<<<<<< HEAD
+
             d = new InterfazJuego(this.search.get(0));
-=======
             d = new InterfazJuego(search.get(0));
->>>>>>> 20ed723b67291ee7d3ce8d35d79db99cbc1b3648
+
         } catch (SQLException ex) {
             Exceptions.printStackTrace(ex);
         }
@@ -885,18 +873,6 @@ public class homeInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchBoxActionPerformed
 
-    private void menuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuButtonMouseClicked
-        if(menu.isVisible()==true){
-            menu.setVisible(false);
-        }else{
-            menu.setVisible(true);
-        }
-    }//GEN-LAST:event_menuButtonMouseClicked
-
-    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuButtonActionPerformed
-
     private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
         this.search.clear();
         JLabel[] labelJuego = {
@@ -935,8 +911,16 @@ public class homeInterface extends javax.swing.JFrame {
                         labelJuego[j].getParent().setVisible(false);
                     }else{
                         labelJuego[j].getParent().setVisible(true);
+                    }
                 }
-        } 
+                if(search.size()==0){
+                    for(int j=0;labelJuego.length>j;j++ ){
+                    labelJuego[j].getParent().setVisible(false);
+                    }
+                        sinResult.setVisible(true);      
+                }else{
+                        sinResult.setVisible(false);
+                }
 
     }//GEN-LAST:event_searchButtonMouseClicked
 
@@ -1029,6 +1013,18 @@ public class homeInterface extends javax.swing.JFrame {
         d.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_B6ActionPerformed
+
+    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuButtonActionPerformed
+
+    private void menuButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuButtonMouseClicked
+        if(menu.isVisible()==true){
+            menu.setVisible(false);
+        }else{
+            menu.setVisible(true);
+        }
+    }//GEN-LAST:event_menuButtonMouseClicked
 
         
     /**
@@ -1126,6 +1122,7 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JButton registerButton;
     private javax.swing.JTextField searchBox;
     public javax.swing.JButton searchButton;
+    private javax.swing.JLabel sinResult;
     private javax.swing.JButton soulsLike;
     // End of variables declaration//GEN-END:variables
 }
