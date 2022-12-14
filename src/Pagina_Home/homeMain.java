@@ -4,6 +4,7 @@
  */
 package Pagina_Home;
 import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -26,6 +27,11 @@ public class homeMain extends JFrame {
         creacion_tablas(conexion_db);
         ArrayList<String[]> juegos = conexion_db.leer_csv("C:\\Users\\yorks\\Desktop\\Workspace netbeans\\proyecto_interfaces\\src\\csv\\Juegos.csv");
         conexion_db.insertar_fichero_csv(juegos,"juegos","Titulo,Descripcion,Precio,Nota,Genero,Desarrolladora,Numero_jugadores,Imagen", false);
+        if(conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select * from usuarios where Usuario='root'"), "Usuario")==null){
+            conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador", "'root','root','root','alvarocarrascogarcia6@gmail.es','Sevilla','root',true");
+        }
+        
+        
         homeInterface a = null;
         try {
             a = new homeInterface();

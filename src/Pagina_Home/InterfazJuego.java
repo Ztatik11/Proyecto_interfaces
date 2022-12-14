@@ -4,10 +4,13 @@
  */
 package Pagina_Home;
 
+import java.awt.Image;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import org.openide.util.Exceptions;
 
 /**
@@ -20,9 +23,10 @@ public class InterfazJuego extends javax.swing.JFrame {
     boolean sesion_iniciada=false;
     String usuario = null;
     int IDjuego;
+    Juego juego;
     
     
-    public InterfazJuego() throws SQLException {
+    public InterfazJuego(Juego juego) throws SQLException {
         initComponents();
         this.Confirmacion_compra.setVisible(false);
         this.Confirmacion_compra.setEnabled(false);
@@ -30,51 +34,24 @@ public class InterfazJuego extends javax.swing.JFrame {
         this.panel_excepcion_compra.setEnabled(false);
         consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
         this.conexion_db = new consultas_sql("mango_games","root","root");
-        
-        java.sql.ResultSet DatosJuego;
-    
-        DatosJuego = this.conexion_db.realizar_consulta("Select * from juegos where ID = '" + IDjuego + "'");
-        
-        String Titulo = "";
-        String Descripcion = "";
-        double Precio = 0;
-        double Nota = 0;
-        String Genero1 = "";
-        String Genero2 = "";
-        String Desarrolladora = "";
-        int Njugadores = 0;
-        InputStream Imagen;
+        this.juego = juego;
         
         
-        try {
-        
-            while (DatosJuego.next()){
-            Titulo = (DatosJuego.getString("Titulo"));
-            Descripcion = (DatosJuego.getString("Descripcion"));
-            Precio = (DatosJuego.getDouble("Precio"));
-            Nota = (DatosJuego.getDouble("Nota"));
-            Genero1 = (DatosJuego.getString("Genero1"));
-            Genero2 = (DatosJuego.getString("Genero2"));
-            Desarrolladora = (DatosJuego.getString("Desarrolladora"));
-            Njugadores = (DatosJuego.getInt("Numero_jugadores"));
-            }
-            
-        } catch (SQLException ex) {
-            Exceptions.printStackTrace(ex);
-        }
-        
-        this.ImagenJuego.setIcon(null);
-        this.LabelTitulo.setText(Titulo);
-        this.LabelDescripcion.setText(Descripcion);
-        this.LabelDesarrolladora.setText(Desarrolladora);
-        this.LabelPrecio.setText(String.valueOf(Precio) + "€");
-        this.LabelNota.setText(String.valueOf(Nota));
-        this.LabelNjugadores.setText(String.valueOf(Njugadores));
-        this.LabelGenero.setText(Genero1 + "/" + Genero2);
+        this.ImagenJuego.setIcon((new ImageIcon(convertir_imagen())));
+        this.LabelTitulo.setText(this.juego.getTitulo());
+        this.LabelDescripcion.setText(this.juego.getDescripcion());
+        this.LabelDesarrolladora.setText(this.juego.getDesarrolladora());
+        this.LabelPrecio.setText(String.valueOf(this.juego.getPrecio()) + "€");
+        this.LabelNota.setText(this.juego.getNota());
+        this.LabelNjugadores.setText(this.juego.getNumero_jugadores());
+        this.LabelGenero.setText(this.juego.getGenero());
     }
     
-    
-    
+    public Image convertir_imagen(){
+        Image img=getToolkit().getImage(this.juego.getImagen());
+        img=img.getScaledInstance(ImagenJuego.getWidth(), ImagenJuego.getHeight(), Image.SCALE_DEFAULT);
+        return img;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -100,8 +77,6 @@ public class InterfazJuego extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Boton_login = new javax.swing.JButton();
         Boton_registro = new javax.swing.JButton();
-        searchButton = new javax.swing.JButton();
-        searchBox = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         informacion_juego = new javax.swing.JPanel();
         Imagenes_precio = new javax.swing.JPanel();
@@ -279,21 +254,6 @@ public class InterfazJuego extends javax.swing.JFrame {
             }
         });
 
-        searchButton.setBackground(new java.awt.Color(0, 153, 255));
-        searchButton.setForeground(new java.awt.Color(255, 255, 255));
-        searchButton.setText("SEARCH");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
-            }
-        });
-
-        searchBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBoxActionPerformed(evt);
-            }
-        });
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
 
@@ -306,19 +266,11 @@ public class InterfazJuego extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel4)
-                .addGroup(BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BannerLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Boton_login)
-                        .addGap(11, 11, 11)
-                        .addComponent(Boton_registro)
-                        .addGap(21, 21, 21))
-                    .addGroup(BannerLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(searchButton)
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addComponent(Boton_login)
+                .addGap(11, 11, 11)
+                .addComponent(Boton_registro)
+                .addGap(21, 21, 21))
         );
         BannerLayout.setVerticalGroup(
             BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,11 +281,7 @@ public class InterfazJuego extends javax.swing.JFrame {
                         .addGroup(BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Boton_login, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Boton_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(57, 57, 57)
-                        .addGroup(BannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchBox)
-                            .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                        .addGap(27, 27, 27))
+                        .addGap(27, 114, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BannerLayout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
@@ -447,14 +395,6 @@ public class InterfazJuego extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-       
-    }//GEN-LAST:event_searchButtonActionPerformed
-
-    private void searchBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchBoxActionPerformed
 
     private void Boton_comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_comprarActionPerformed
         // TODO add your handling code here:
@@ -574,15 +514,17 @@ public class InterfazJuego extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+   /*
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new InterfazJuego().setVisible(true);
+                    new InterfazJuego(juego).setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
+    */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -614,7 +556,5 @@ public class InterfazJuego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     public javax.swing.JPanel panel_excepcion_compra;
-    private javax.swing.JTextField searchBox;
-    private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
 }
