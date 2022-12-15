@@ -25,7 +25,7 @@ public class homeMain extends JFrame {
         
         consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
         creacion_tablas(conexion_db);
-        ArrayList<String[]> juegos = conexion_db.leer_csv("C:\\Users\\yorks\\Desktop\\Workspace netbeans\\proyecto_interfaces\\src\\csv\\Juegos.csv");
+        ArrayList<String[]> juegos = conexion_db.leer_csv(".\\src\\csv\\Juegos.csv");
         conexion_db.insertar_fichero_csv(juegos,"juegos","Titulo,Descripcion,Precio,Nota,Genero,Desarrolladora,Numero_jugadores,Imagen", false);
         if(conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select * from usuarios where Usuario='root'"), "Usuario")==null){
             conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador", "'root','root','root','alvarocarrascogarcia6@gmail.es','Sevilla','root',true");
