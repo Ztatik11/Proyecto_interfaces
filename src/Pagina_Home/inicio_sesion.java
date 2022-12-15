@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openide.util.Exceptions;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 
 /*
@@ -27,8 +29,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         this.UserLabel.setVisible(false);
         this.UserLabel.setText("");
         this.ajustes.setVisible(false);
-        this.Errorclave.setVisible(false);
-        this.ErrorUsuario.setVisible(false);
+        this.miniMenu.setVisible(false);
          this.conexion_db = new consultas_sql("mango_games","root","root");
     }
 
@@ -44,10 +45,15 @@ public class inicio_sesion extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        botonRegistro = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         menuButton = new javax.swing.JButton();
-        ajustes = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        ajustes = new javax.swing.JButton();
+        botonRegistro = new javax.swing.JButton();
+        miniMenu = new javax.swing.JPanel();
+        botonAdmin = new javax.swing.JButton();
+        cerrarSButon = new javax.swing.JButton();
         UserLabel = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -61,14 +67,13 @@ public class inicio_sesion extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         boton_inicion_sesion = new javax.swing.JButton();
-        ErrorUsuario = new javax.swing.JLabel();
-        Errorclave = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -79,6 +84,36 @@ public class inicio_sesion extends javax.swing.JFrame {
                 jLabel4MousePressed(evt);
             }
         });
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 43, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 15, 126, 125));
+
+        menuButton.setBackground(new java.awt.Color(0, 153, 255));
+        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+        menuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuButtonActionPerformed(evt);
+            }
+        });
+        jPanel6.add(menuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 76, -1, -1));
+
+        jPanel3.setBackground(new java.awt.Color(0, 153, 255));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ajustes.setBackground(new java.awt.Color(0, 153, 255));
+        ajustes.setForeground(new java.awt.Color(255, 255, 255));
+        ajustes.setText("Ajustes");
+        ajustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajustesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ajustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 90, -1));
 
         botonRegistro.setBackground(new java.awt.Color(0, 153, 255));
         botonRegistro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -90,72 +125,74 @@ public class inicio_sesion extends javax.swing.JFrame {
                 botonRegistroActionPerformed(evt);
             }
         });
+        jPanel1.add(botonRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
+        miniMenu.setBackground(new java.awt.Color(0, 102, 204));
 
-        menuButton.setBackground(new java.awt.Color(0, 153, 255));
-        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
-        menuButton.addActionListener(new java.awt.event.ActionListener() {
+        botonAdmin.setText("Admin");
+        botonAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuButtonActionPerformed(evt);
+                botonAdminActionPerformed(evt);
             }
         });
 
-        ajustes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ajustes", "Administracion", "Cerrar sesion" }));
-        ajustes.addActionListener(new java.awt.event.ActionListener() {
+        cerrarSButon.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        cerrarSButon.setText("Cerrar Sesion");
+        cerrarSButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ajustesActionPerformed(evt);
+                cerrarSButonActionPerformed(evt);
             }
         });
 
-        UserLabel.setText("Bienvenido mirey");
+        javax.swing.GroupLayout miniMenuLayout = new javax.swing.GroupLayout(miniMenu);
+        miniMenu.setLayout(miniMenuLayout);
+        miniMenuLayout.setHorizontalGroup(
+            miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(miniMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cerrarSButon, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        miniMenuLayout.setVerticalGroup(
+            miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(miniMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cerrarSButon)
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        UserLabel.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(menuButton)
-                .addGap(87, 87, 87)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ajustes, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(botonRegistro)
-                .addGap(21, 21, 21))
+                .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(miniMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ajustes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(UserLabel))
-                        .addGap(27, 112, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(menuButton))
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(miniMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        jPanel6.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 220, -1));
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 140));
 
@@ -224,12 +261,6 @@ public class inicio_sesion extends javax.swing.JFrame {
             }
         });
 
-        ErrorUsuario.setForeground(new java.awt.Color(255, 0, 0));
-        ErrorUsuario.setText("El usuario no se ha encontrado");
-
-        Errorclave.setForeground(new java.awt.Color(255, 0, 0));
-        Errorclave.setText("La contraseña es errónea");
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -239,6 +270,10 @@ public class inicio_sesion extends javax.swing.JFrame {
                 .addComponent(clave_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(181, 181, 181))
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(247, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(244, 244, 244))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -257,18 +292,7 @@ public class inicio_sesion extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(boton_inicion_sesion)
                             .addComponent(jButton2))))
-                .addContainerGap(127, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(Errorclave)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(ErrorUsuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(244, 244, 244))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,14 +308,10 @@ public class inicio_sesion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usuario_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ErrorUsuario))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(clave_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Errorclave)
-                .addGap(24, 24, 24)
+                .addGap(58, 58, 58)
                 .addComponent(boton_inicion_sesion)
                 .addGap(35, 35, 35)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -359,120 +379,49 @@ public class inicio_sesion extends javax.swing.JFrame {
        c.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MousePressed
- 
-    private void comprobarClave(String claveUser,String clave, String validNom) {
-        
-        if(claveUser.equalsIgnoreCase(clave)){
-            boolean sesion_iniciada=true;
-            this.Errorclave.setVisible(false);
-            this.UserLabel.setText("Bienvenido "+validNom);
-            this.UserLabel.setVisible(true);
-            this.ajustes.setVisible(true);
-            this.botonRegistro.setVisible(false);
-        }
-        else if(!claveUser.equalsIgnoreCase(clave)){
-            this.Errorclave.setVisible(true);
-        }
-    }
+
      
     private void boton_inicion_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_inicion_sesionActionPerformed
         // TODO add your handling code here:
-        
-        java.sql.ResultSet nom_usuario = null;
-        java.sql.ResultSet correo_usuario = null;
-        java.sql.ResultSet claveEm = null;
-        java.sql.ResultSet claveNom = null;
-        String validNom = null;
-        String validEm = null;
-        String validClave = null;
-        String clave = null;
-        
-        char[] caracteresClave = this.clave_inicio.getPassword();
-            for(int i = 0; i< caracteresClave.length;i++){
-                clave = String.valueOf(caracteresClave);
+        boolean admin;
+        String nombre_usuario;
+        char [] clave_array = clave_inicio.getPassword();
+            String pass = "";
+            
+            for (int j = 0; j < clave_array.length; j++) {
+                pass+=clave_array[j];
             }
-        
         try {
-            nom_usuario =this.conexion_db.realizar_consulta("Select Usuario from usuarios where Usuario =  '"  + this.usuario_correo.getText() + "'");
-            
-            while (nom_usuario.next()){
-            validNom = (nom_usuario.getString("Usuario"));
+            ResultSet usuario = conexion_db.realizar_consulta("select * from usuarios where (usuario="+conexion_db.parsear_cadena(usuario_correo.getText())+" or email="+conexion_db.parsear_cadena(usuario_correo.getText())+") and "+"clave="+conexion_db.parsear_cadena(pass));
+            if(conexion_db.leer_resultset_string(usuario, "Usuario")!=null){
+                
+                if(conexion_db.leer_resultset_string(usuario,"administrador").equalsIgnoreCase("true")){
+                    admin = true;
+                }else{
+                    admin = false;
+                }         
+                nombre_usuario=conexion_db.leer_resultset_string(usuario, "Usuario");
+                Usuario usuario_iniciado = new Usuario(nombre_usuario,admin);
+                this.UserLabel.setText("Bienvenido "+usuario_iniciado.getNombre_usuario());
+                this.UserLabel.setVisible(true);
+                this.ajustes.setVisible(true);
+                this.miniMenu.setVisible(true);
+                this.botonRegistro.setVisible(false);
+                }else{
+                String nombre = conexion_db.leer_resultset_string(usuario, "Usuario");
+                String correo = conexion_db.leer_resultset_string(usuario, "email");
+                System.out.println(nombre);
+                System.out.println(correo);
+                System.out.println(conexion_db.leer_resultset_string(usuario, "clave"));
+                if(nombre == null || correo == null || conexion_db.leer_resultset_string(usuario, "clave")== null){
+                    JOptionPane.showMessageDialog(rootPane, "ERROR: LOS DATOS INTRODUCIDOS SON ERRONEOS");
+                }
             }
-            
-            correo_usuario=this.conexion_db.realizar_consulta("Select Email from usuarios where Email = '"  + this.usuario_correo.getText() + "'");
-            
-            while (correo_usuario.next()){
-            validEm = (correo_usuario.getString("Email"));
-            }
-            
         } catch (SQLException ex) {
-            this.ErrorUsuario.setVisible(true);
             Exceptions.printStackTrace(ex);
         }
-        
-        boolean correcto = false;
-        
-        if (this.usuario_correo.getText().equalsIgnoreCase(validEm)){
-            this.ErrorUsuario.setVisible(false);
-            correcto = true;
-            usuario_correo.setText("");
-            
-            try {
-            claveEm =this.conexion_db.realizar_consulta("Select clave from usuarios where Email = " + "'" + validEm+ "'");
-            } catch (SQLException ex) {
-                this.Errorclave.setVisible(true);
-            Exceptions.printStackTrace(ex);
-            }
-            
-            try{
-            while (claveEm.next()){
-            validClave = claveEm.getString("clave");
-            }}catch (SQLException ex) {
-            Exceptions.printStackTrace(ex);
-            }
-           
-            comprobarClave(validClave, clave, validNom);
-           
-            usuario_correo.setText("");
-            clave_inicio.setText("");
-        }
-        else if(this.usuario_correo.getText().equalsIgnoreCase(validNom)){
-            this.ErrorUsuario.setVisible(false);
-            correcto = true;
-            usuario_correo.setText("");
-            
-            try {
-            claveNom =this.conexion_db.realizar_consulta("Select clave from usuarios where usuario = " + "'" + validNom+ "'");
-            } catch (SQLException ex) {
-                this.Errorclave.setVisible(true);
-                Exceptions.printStackTrace(ex);
-            }
-            
-            try{
-            while (claveNom.next()){
-            validClave = claveNom.getString("clave");
-            }}catch (SQLException ex) {
-            Exceptions.printStackTrace(ex);
-            }
-            
-            
-            comprobarClave(validClave, clave,validNom);
-           
-            usuario_correo.setText("");
-            clave_inicio.setText("");
-        }
-        if (correcto == false){
-            this.ErrorUsuario.setVisible(true);
-        }
-        else{
-            usuario_correo.setText("");
-            clave_inicio.setText("");
-        }              
+         
     }//GEN-LAST:event_boton_inicion_sesionActionPerformed
-
-    private void ajustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ajustesActionPerformed
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         // TODO add your handling code here:
@@ -485,6 +434,30 @@ public class inicio_sesion extends javax.swing.JFrame {
        a.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_menuButtonActionPerformed
+
+    private void ajustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustesActionPerformed
+         if(miniMenu.isVisible()==true){
+            miniMenu.setVisible(false);
+        }else{
+            miniMenu.setVisible(true);
+        }
+    }//GEN-LAST:event_ajustesActionPerformed
+
+    private void cerrarSButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSButonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cerrarSButonActionPerformed
+
+    private void botonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdminActionPerformed
+        // TODO add your handling code here:
+        Registro_juegos a = null;
+        try {
+            a = new Registro_juegos();
+        } catch (SQLException ex) {
+            Logger.getLogger(Registro_juegos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       a.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_botonAdminActionPerformed
     
     
     /**
@@ -527,12 +500,12 @@ public class inicio_sesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ErrorUsuario;
-    private javax.swing.JLabel Errorclave;
     private javax.swing.JLabel UserLabel;
-    private javax.swing.JComboBox<String> ajustes;
+    private javax.swing.JButton ajustes;
+    private javax.swing.JButton botonAdmin;
     private javax.swing.JButton botonRegistro;
     private javax.swing.JButton boton_inicion_sesion;
+    private javax.swing.JButton cerrarSButon;
     private javax.swing.JPasswordField clave_inicio;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -542,12 +515,15 @@ public class inicio_sesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JButton menuButton;
+    private javax.swing.JPanel miniMenu;
     private javax.swing.JTextField usuario_correo;
     // End of variables declaration//GEN-END:variables
 

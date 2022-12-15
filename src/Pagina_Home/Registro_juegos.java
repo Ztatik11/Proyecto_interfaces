@@ -43,6 +43,8 @@ public class Registro_juegos extends javax.swing.JFrame {
      */
     public Registro_juegos() throws SQLException {
         initComponents();
+        miniMenu.setVisible(false);
+        ajustes.setVisible(false);
         this.conexion_db = new consultas_sql("mango_games","root","root");
         ResultSet juegos = conexion_db.realizar_consulta("select * from juegos");
         System.out.println(juegos);
@@ -88,9 +90,16 @@ public class Registro_juegos extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jButton13 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         menuButton = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton13 = new javax.swing.JButton();
+        ajustes = new javax.swing.JButton();
+        miniMenu = new javax.swing.JPanel();
+        botonAdmin = new javax.swing.JButton();
+        cerrarSButon = new javax.swing.JButton();
+        UserLabel = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         formulario = new javax.swing.JScrollPane();
         jPanel10 = new javax.swing.JPanel();
@@ -136,17 +145,6 @@ public class Registro_juegos extends javax.swing.JFrame {
             }
         });
 
-        jButton13.setBackground(new java.awt.Color(0, 153, 255));
-        jButton13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(255, 255, 255));
-        jButton13.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton13.text")); // NOI18N
-        jButton13.setToolTipText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton13.toolTipText")); // NOI18N
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel13.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jLabel13.text")); // NOI18N
         jLabel13.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -159,6 +157,98 @@ public class Registro_juegos extends javax.swing.JFrame {
             }
         });
 
+        jPanel4.setBackground(new java.awt.Color(0, 153, 255));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton13.setBackground(new java.awt.Color(0, 153, 255));
+        jButton13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(255, 255, 255));
+        jButton13.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton13.text")); // NOI18N
+        jButton13.setToolTipText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton13.toolTipText")); // NOI18N
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 20));
+
+        ajustes.setBackground(new java.awt.Color(0, 153, 255));
+        ajustes.setForeground(new java.awt.Color(255, 255, 255));
+        ajustes.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.ajustes.text")); // NOI18N
+        ajustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajustesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ajustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 90, -1));
+
+        miniMenu.setBackground(new java.awt.Color(0, 102, 204));
+
+        botonAdmin.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.botonAdmin.text")); // NOI18N
+        botonAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAdminActionPerformed(evt);
+            }
+        });
+
+        cerrarSButon.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        cerrarSButon.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.cerrarSButon.text")); // NOI18N
+        cerrarSButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSButonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout miniMenuLayout = new javax.swing.GroupLayout(miniMenu);
+        miniMenu.setLayout(miniMenuLayout);
+        miniMenuLayout.setHorizontalGroup(
+            miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(miniMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cerrarSButon, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        miniMenuLayout.setVerticalGroup(
+            miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(miniMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cerrarSButon)
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        UserLabel.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(miniMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(miniMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -170,9 +260,9 @@ public class Registro_juegos extends javax.swing.JFrame {
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
-                .addComponent(jButton13)
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,11 +270,11 @@ public class Registro_juegos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 114, Short.MAX_VALUE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
@@ -571,6 +661,30 @@ public class Registro_juegos extends javax.swing.JFrame {
        this.setVisible(false);
     }//GEN-LAST:event_menuButtonActionPerformed
 
+    private void ajustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustesActionPerformed
+        if(miniMenu.isVisible()==true){
+            miniMenu.setVisible(false);
+        }else{
+            miniMenu.setVisible(true);
+        }
+    }//GEN-LAST:event_ajustesActionPerformed
+
+    private void botonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdminActionPerformed
+        // TODO add your handling code here:
+        Registro_juegos a = null;
+        try {
+            a = new Registro_juegos();
+        } catch (SQLException ex) {
+            Logger.getLogger(Registro_juegos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonAdminActionPerformed
+
+    private void cerrarSButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSButonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cerrarSButonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -613,10 +727,14 @@ public class Registro_juegos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel UserLabel;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_correo1;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_descripcion;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_precio;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_titulo;
+    private javax.swing.JButton ajustes;
+    private javax.swing.JButton botonAdmin;
+    private javax.swing.JButton cerrarSButon;
     private javax.swing.JTextField desarrolladora1;
     private javax.swing.JTextField descripcion;
     private javax.swing.JScrollPane formulario;
@@ -634,13 +752,16 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JComboBox<String> jugadores;
     private javax.swing.JButton menuButton;
+    private javax.swing.JPanel miniMenu;
     private javax.swing.JComboBox<String> nota;
     private javax.swing.JTextField precio;
     private javax.swing.JButton registro_juego;

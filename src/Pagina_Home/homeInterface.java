@@ -37,6 +37,8 @@ public class homeInterface extends javax.swing.JFrame {
         initComponents();
         menu.setVisible(false);
         sinResult.setVisible(false);
+        ajustes.setVisible(false);
+        miniMenu.setVisible(false);
         this.J1.setVisible(false);
         this.J2.setVisible(false);
         this.J3.setVisible(false);
@@ -177,6 +179,12 @@ public class homeInterface extends javax.swing.JFrame {
         searchBox = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         menuButton = new javax.swing.JButton();
+        ajustes = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        miniMenu = new javax.swing.JPanel();
+        botonAdmin = new javax.swing.JButton();
+        cerrarSButon = new javax.swing.JButton();
+        UserLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MangoGames");
@@ -771,14 +779,14 @@ public class homeInterface extends javax.swing.JFrame {
                 searchButtonKeyPressed(evt);
             }
         });
-        jPanel6.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(784, 83, -1, 30));
+        jPanel6.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, -1, 30));
 
         searchBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBoxActionPerformed(evt);
             }
         });
-        jPanel6.add(searchBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(641, 83, 125, 30));
+        jPanel6.add(searchBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 125, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel5.setText("jLabel5");
@@ -798,6 +806,63 @@ public class homeInterface extends javax.swing.JFrame {
             }
         });
         jPanel6.add(menuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 74, 70, 60));
+
+        ajustes.setBackground(new java.awt.Color(0, 153, 255));
+        ajustes.setForeground(new java.awt.Color(255, 255, 255));
+        ajustes.setText("Ajustes");
+        ajustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajustesActionPerformed(evt);
+            }
+        });
+        jPanel6.add(ajustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 90, -1));
+
+        jPanel11.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 120, -1));
+
+        miniMenu.setBackground(new java.awt.Color(0, 102, 204));
+
+        botonAdmin.setText("Admin");
+        botonAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAdminActionPerformed(evt);
+            }
+        });
+
+        cerrarSButon.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        cerrarSButon.setText("Cerrar Sesion");
+        cerrarSButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSButonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout miniMenuLayout = new javax.swing.GroupLayout(miniMenu);
+        miniMenu.setLayout(miniMenuLayout);
+        miniMenuLayout.setHorizontalGroup(
+            miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(miniMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cerrarSButon, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        miniMenuLayout.setVerticalGroup(
+            miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(miniMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cerrarSButon)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel6.add(miniMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 100, -1));
+
+        UserLabel.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel6.add(UserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 103, 20));
 
         jPanel2.add(jPanel6, java.awt.BorderLayout.NORTH);
 
@@ -853,17 +918,6 @@ public class homeInterface extends javax.swing.JFrame {
         a.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_loginButtonActionPerformed
-
-    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        registro b = null;
-        try {
-            b = new registro();
-        } catch (SQLException ex) {
-            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        b.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_registerButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
@@ -1026,6 +1080,41 @@ public class homeInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuButtonMouseClicked
 
+    private void ajustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustesActionPerformed
+        if(miniMenu.isVisible()==true){
+            miniMenu.setVisible(false);
+        }else{
+            miniMenu.setVisible(true);
+        }
+    }//GEN-LAST:event_ajustesActionPerformed
+
+    private void botonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdminActionPerformed
+        // TODO add your handling code here:
+        Registro_juegos a = null;
+        try {
+            a = new Registro_juegos();
+        } catch (SQLException ex) {
+            Logger.getLogger(Registro_juegos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonAdminActionPerformed
+
+    private void cerrarSButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSButonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cerrarSButonActionPerformed
+
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        registro b = null;
+        try {
+            b = new registro();
+        } catch (SQLException ex) {
+            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        b.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_registerButtonActionPerformed
+
         
     /**
      * @param args the command line arguments
@@ -1088,8 +1177,12 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JPanel J4;
     private javax.swing.JPanel J5;
     private javax.swing.JPanel J6;
+    private javax.swing.JLabel UserLabel;
     private javax.swing.JButton accion;
+    private javax.swing.JButton ajustes;
     private javax.swing.JButton aventura;
+    private javax.swing.JButton botonAdmin;
+    private javax.swing.JButton cerrarSButon;
     private javax.swing.JPanel content;
     private javax.swing.JButton criaturas;
     private javax.swing.JButton estrategia;
@@ -1098,6 +1191,7 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
@@ -1117,6 +1211,7 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JButton mOBA;
     private javax.swing.JPanel menu;
     private javax.swing.JButton menuButton;
+    private javax.swing.JPanel miniMenu;
     private javax.swing.JButton plataformas;
     private javax.swing.JButton rPG;
     private javax.swing.JButton registerButton;
