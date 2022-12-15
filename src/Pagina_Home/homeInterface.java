@@ -36,7 +36,7 @@ public class homeInterface extends javax.swing.JFrame {
     
     public homeInterface(Usuario usuario) throws SQLException {
         initComponents();
-        menu.setVisible(false);
+        menu.setVisible(true);
         sinResult.setVisible(false);
         ajustes.setVisible(false);
         miniMenu.setVisible(false);
@@ -72,14 +72,12 @@ public class homeInterface extends javax.swing.JFrame {
         if(usuario.getNombre_usuario().equals("")==false){
             esAdmin(usuario.getAdmin());
             ajustes.setVisible(true);
-            miniMenu.setVisible(true);
             this.UserLabel.setText("Bienvenido "+this.usuario_i.getNombre_usuario());
             UserLabel.setVisible(true);
             loginButton.setVisible(false);
             registerButton.setVisible(false);
         }else{
             ajustes.setVisible(false);
-            miniMenu.setVisible(false);
             UserLabel.setVisible(false);
             loginButton.setVisible(true);
             registerButton.setVisible(true);
@@ -741,7 +739,7 @@ public class homeInterface extends javax.swing.JFrame {
             .addGroup(contentLayout.createSequentialGroup()
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE))
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -776,7 +774,7 @@ public class homeInterface extends javax.swing.JFrame {
                 loginButtonActionPerformed(evt);
             }
         });
-        jPanel6.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(702, 6, -1, 20));
+        jPanel6.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, -1, 20));
 
         registerButton.setBackground(new java.awt.Color(0, 153, 255));
         registerButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -788,7 +786,7 @@ public class homeInterface extends javax.swing.JFrame {
                 registerButtonActionPerformed(evt);
             }
         });
-        jPanel6.add(registerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(785, 6, -1, 20));
+        jPanel6.add(registerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, -1, 20));
 
         searchButton.setBackground(new java.awt.Color(0, 153, 255));
         searchButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -808,14 +806,14 @@ public class homeInterface extends javax.swing.JFrame {
                 searchButtonKeyPressed(evt);
             }
         });
-        jPanel6.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, -1, 30));
+        jPanel6.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, -1, 30));
 
         searchBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBoxActionPerformed(evt);
             }
         });
-        jPanel6.add(searchBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 125, 30));
+        jPanel6.add(searchBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 125, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel5.setText("jLabel5");
@@ -844,7 +842,7 @@ public class homeInterface extends javax.swing.JFrame {
                 ajustesActionPerformed(evt);
             }
         });
-        jPanel6.add(ajustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 90, -1));
+        jPanel6.add(ajustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 90, -1));
 
         jPanel11.setBackground(new java.awt.Color(0, 153, 255));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -888,10 +886,10 @@ public class homeInterface extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel6.add(miniMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 30, 100, -1));
+        jPanel6.add(miniMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 40, 100, -1));
 
         UserLabel.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel6.add(UserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 103, 20));
+        jPanel6.add(UserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 103, 20));
 
         jPanel2.add(jPanel6, java.awt.BorderLayout.NORTH);
 
@@ -1130,7 +1128,11 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAdminActionPerformed
 
     private void cerrarSButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSButonActionPerformed
-        // TODO add your handling code here:
+        usuario_i.setAdmin(false);
+        usuario_i.setId("");
+        usuario_i.setNombre_usuario("");
+        comprobarInicioS(usuario_i);
+        miniMenu.setVisible(false); 
     }//GEN-LAST:event_cerrarSButonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed

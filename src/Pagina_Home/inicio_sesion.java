@@ -434,8 +434,15 @@ public class inicio_sesion extends javax.swing.JFrame {
                 this.UserLabel.setText("Bienvenido "+this.usuario_i.getNombre_usuario());
                 this.UserLabel.setVisible(true);
                 this.ajustes.setVisible(true);
-                this.miniMenu.setVisible(true);
                 this.botonRegistro.setVisible(false);
+                 homeInterface a = null;
+                    try {
+                        a = new homeInterface(usuario_i);
+                    } catch (SQLException ex) {
+                      Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    a.setVisible(true);
+                    this.setVisible(false);
                 }else{
                 String nombre = conexion_db.leer_resultset_string(usuario, "Usuario");
                 String correo = conexion_db.leer_resultset_string(usuario, "email");
@@ -473,7 +480,11 @@ public class inicio_sesion extends javax.swing.JFrame {
     }//GEN-LAST:event_ajustesActionPerformed
 
     private void cerrarSButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSButonActionPerformed
-        // TODO add your handling code here:
+        usuario_i.setAdmin(false);
+        usuario_i.setId("");
+        usuario_i.setNombre_usuario("");
+        comprobarInicioS(usuario_i);
+        miniMenu.setVisible(false);
     }//GEN-LAST:event_cerrarSButonActionPerformed
 
     private void botonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdminActionPerformed

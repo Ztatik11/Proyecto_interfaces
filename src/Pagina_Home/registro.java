@@ -641,7 +641,11 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAdminActionPerformed
 
     private void cerrarSButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSButonActionPerformed
-        // TODO add your handling code here:
+       usuario_i.setAdmin(false);
+        usuario_i.setId("");
+        usuario_i.setNombre_usuario("");
+        comprobarInicioS(usuario_i);
+        miniMenu.setVisible(false);
     }//GEN-LAST:event_cerrarSButonActionPerformed
     
     /**
