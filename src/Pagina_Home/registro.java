@@ -23,13 +23,17 @@ import org.netbeans.validation.api.ui.swing.ValidationPanel;
 import org.openide.util.Exceptions;
 
 public class registro extends javax.swing.JFrame {
-    
+    Usuario usuario_i;
     consultas_sql conexion_db;
     /**
      * Creates new form NewJFrame
      */
     public registro() throws SQLException {
         initComponents();
+        comprobarInicioS(usuario_i);
+        miniMenu.setVisible(false);
+        ajustes.setVisible(false);
+        UserLabel.setVisible(false);
         ValidationGroup Campo_Validador_usuario = Validador_usuario.getValidationGroup();
         ValidationGroup Campo_Validador_nombre = Validador_nombre.getValidationGroup();
         ValidationGroup Campo_Validador_apellido = Validador_apellidos.getValidationGroup();
@@ -63,7 +67,27 @@ public class registro extends javax.swing.JFrame {
         this.clave.setText("");
         this.terminos_condiciones.setSelected(false);
     } 
-
+     public void comprobarInicioS(Usuario usuario){
+        if(usuario.getNombre_usuario().equals("")==false){
+            esAdmin(usuario_i.getAdmin());
+            ajustes.setVisible(true);
+            this.UserLabel.setText("Bienvenido "+this.usuario_i.getNombre_usuario());
+            UserLabel.setVisible(true);
+            loginButton.setVisible(false);
+        }else{
+            ajustes.setVisible(false);
+            UserLabel.setVisible(false);
+            loginButton.setVisible(true);
+        }
+    }
+    
+    public void esAdmin(boolean admin){
+        if(admin==true){
+            botonAdmin.setVisible(true);
+        }else{
+            botonAdmin.setVisible(false);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,9 +100,16 @@ public class registro extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jButton12 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         menuButton = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        loginButton = new javax.swing.JButton();
+        ajustes = new javax.swing.JButton();
+        miniMenu = new javax.swing.JPanel();
+        botonAdmin = new javax.swing.JButton();
+        cerrarSButon = new javax.swing.JButton();
+        UserLabel = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
@@ -122,17 +153,6 @@ public class registro extends javax.swing.JFrame {
             }
         });
 
-        jButton12.setBackground(new java.awt.Color(0, 153, 255));
-        jButton12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton12.setText("login");
-        jButton12.setToolTipText("");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel5.setText("jLabel5");
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
@@ -145,6 +165,98 @@ public class registro extends javax.swing.JFrame {
             }
         });
 
+        jPanel3.setBackground(new java.awt.Color(0, 153, 255));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        loginButton.setBackground(new java.awt.Color(0, 153, 255));
+        loginButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(255, 255, 255));
+        loginButton.setText("login");
+        loginButton.setToolTipText("");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
+
+        ajustes.setBackground(new java.awt.Color(0, 153, 255));
+        ajustes.setForeground(new java.awt.Color(255, 255, 255));
+        ajustes.setText("Ajustes");
+        ajustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajustesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ajustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 90, -1));
+
+        miniMenu.setBackground(new java.awt.Color(0, 102, 204));
+
+        botonAdmin.setText("Admin");
+        botonAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAdminActionPerformed(evt);
+            }
+        });
+
+        cerrarSButon.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        cerrarSButon.setText("Cerrar Sesion");
+        cerrarSButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSButonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout miniMenuLayout = new javax.swing.GroupLayout(miniMenu);
+        miniMenu.setLayout(miniMenuLayout);
+        miniMenuLayout.setHorizontalGroup(
+            miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(miniMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cerrarSButon, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        miniMenuLayout.setVerticalGroup(
+            miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(miniMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cerrarSButon)
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        UserLabel.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(miniMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(miniMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -156,9 +268,9 @@ public class registro extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
-                .addComponent(jButton12)
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,11 +278,11 @@ public class registro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 114, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
@@ -441,16 +553,16 @@ public class registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_claveActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
        inicio_sesion a = null;
         try {
-            a = new inicio_sesion();
+            a = new inicio_sesion(usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(registro.class.getName()).log(Level.SEVERE, null, ex);
         }
        a.setVisible(true);
        this.setVisible(false);
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     private void terminos_condicionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminos_condicionesActionPerformed
         // TODO add your handling code here:
@@ -464,7 +576,7 @@ public class registro extends javax.swing.JFrame {
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
         homeInterface c = null;
         try {
-            c = new homeInterface();
+            c = new homeInterface(this.usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(registro.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -500,13 +612,37 @@ public class registro extends javax.swing.JFrame {
         // TODO add your handling code here:
         homeInterface a = null;
         try {
-            a = new homeInterface();
+            a = new homeInterface(this.usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
        a.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_menuButtonActionPerformed
+
+    private void ajustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustesActionPerformed
+        if(miniMenu.isVisible()==true){
+            miniMenu.setVisible(false);
+        }else{
+            miniMenu.setVisible(true);
+        }
+    }//GEN-LAST:event_ajustesActionPerformed
+
+    private void botonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdminActionPerformed
+        // TODO add your handling code here:
+        Registro_juegos a = null;
+        try {
+            a = new Registro_juegos(usuario_i);
+        } catch (SQLException ex) {
+            Logger.getLogger(Registro_juegos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonAdminActionPerformed
+
+    private void cerrarSButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSButonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cerrarSButonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -548,15 +684,18 @@ public class registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel UserLabel;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_apellidos;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_clave;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_correo;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_nombre;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_usuario;
+    private javax.swing.JButton ajustes;
     private javax.swing.JTextField apellidos;
+    private javax.swing.JButton botonAdmin;
+    private javax.swing.JButton cerrarSButon;
     private javax.swing.JPasswordField clave;
     private javax.swing.JTextField correo_electronico;
-    private javax.swing.JButton jButton12;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -566,13 +705,17 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton loginButton;
     private javax.swing.JButton menuButton;
+    private javax.swing.JPanel miniMenu;
     private javax.swing.JTextField nombre;
     public javax.swing.JButton registro;
     private javax.swing.JComboBox<String> residencia;

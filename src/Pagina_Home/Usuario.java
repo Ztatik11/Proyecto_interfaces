@@ -14,19 +14,23 @@ import java.sql.SQLException;
  */
 public class Usuario {
 
+    
+
     private boolean admin;
     private String nombre_usuario;
+    private String id;
     
-    public Usuario(String nombre_usuario,boolean admin) throws SQLException {
+    public Usuario(String nombre_usuario,boolean admin,String id) throws SQLException {
         this.admin = admin;
         this.nombre_usuario = nombre_usuario;
+        this.id = id;
     }
     
     
     /**
      * @return the admin
      */
-    public boolean isAdmin() {
+    public boolean getAdmin() {
         return admin;
     }
 
@@ -49,6 +53,20 @@ public class Usuario {
      */
     public void setNombre_usuario(String nombre_usuario) {
         this.nombre_usuario = nombre_usuario;
+    }
+    
+    /**
+     * @return the id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
     }
     
     

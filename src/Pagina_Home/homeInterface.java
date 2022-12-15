@@ -31,21 +31,25 @@ public class homeInterface extends javax.swing.JFrame {
     consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
     java.sql.ResultSet resultSet=conexion_db.realizar_consulta("SELECT * FROM juegos");
     ArrayList<Juego> search = new ArrayList<Juego>();
+    Usuario usuario_i;
     
     
-    public homeInterface() throws SQLException {
+    public homeInterface(Usuario usuario) throws SQLException {
         initComponents();
         menu.setVisible(false);
         sinResult.setVisible(false);
         ajustes.setVisible(false);
         miniMenu.setVisible(false);
+        UserLabel.setVisible(false);
         this.J1.setVisible(false);
         this.J2.setVisible(false);
         this.J3.setVisible(false);
         this.J4.setVisible(false);
         this.J5.setVisible(false);
         this.J6.setVisible(false);
-                
+        this.usuario_i=usuario;
+        comprobarInicioS(this.usuario_i);
+        
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
         //Se utiliza para terminar conseguir el numero de columnas del result set
@@ -64,6 +68,31 @@ public class homeInterface extends javax.swing.JFrame {
         }
     }
     
+    public void comprobarInicioS(Usuario usuario){
+        if(usuario.getNombre_usuario().equals("")==false){
+            esAdmin(usuario.getAdmin());
+            ajustes.setVisible(true);
+            miniMenu.setVisible(true);
+            this.UserLabel.setText("Bienvenido "+this.usuario_i.getNombre_usuario());
+            UserLabel.setVisible(true);
+            loginButton.setVisible(false);
+            registerButton.setVisible(false);
+        }else{
+            ajustes.setVisible(false);
+            miniMenu.setVisible(false);
+            UserLabel.setVisible(false);
+            loginButton.setVisible(true);
+            registerButton.setVisible(true);
+        }
+    }
+    
+    public void esAdmin(boolean admin){
+        if(admin==true){
+            botonAdmin.setVisible(true);
+        }else{
+            botonAdmin.setVisible(false);
+        }
+    }
     
     public void busquedaCategorias(String categoria){
     this.search.clear();
@@ -875,8 +904,8 @@ public class homeInterface extends javax.swing.JFrame {
         InterfazJuego d = null;
         try {
 
-            d = new InterfazJuego(this.search.get(0));
-            d = new InterfazJuego(search.get(0));
+            d = new InterfazJuego(this.search.get(0),usuario_i);
+            
 
         } catch (SQLException ex) {
             Exceptions.printStackTrace(ex);
@@ -889,7 +918,7 @@ public class homeInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         InterfazJuego d = null;
         try {
-            d = new InterfazJuego(search.get(3));
+            d = new InterfazJuego(search.get(3),usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -900,7 +929,7 @@ public class homeInterface extends javax.swing.JFrame {
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
     homeInterface c = null;
         try {
-            c = new homeInterface();
+            c = new homeInterface(usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -911,7 +940,7 @@ public class homeInterface extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         inicio_sesion a = null;
         try {
-            a = new inicio_sesion();
+            a = new inicio_sesion(usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1024,7 +1053,7 @@ public class homeInterface extends javax.swing.JFrame {
     private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2ActionPerformed
         InterfazJuego d = null;
         try {
-            d = new InterfazJuego(search.get(1));
+            d = new InterfazJuego(search.get(1),usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1036,7 +1065,7 @@ public class homeInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         InterfazJuego d = null;
         try {
-            d = new InterfazJuego(search.get(2));
+            d = new InterfazJuego(search.get(2),usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1048,7 +1077,7 @@ public class homeInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         InterfazJuego d = null;
         try {
-            d = new InterfazJuego(search.get(4));
+            d = new InterfazJuego(search.get(4),usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1060,7 +1089,7 @@ public class homeInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         InterfazJuego d = null;
         try {
-            d = new InterfazJuego(search.get(5));
+            d = new InterfazJuego(search.get(5),usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1092,7 +1121,7 @@ public class homeInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
         Registro_juegos a = null;
         try {
-            a = new Registro_juegos();
+            a = new Registro_juegos(usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(Registro_juegos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1147,6 +1176,7 @@ public class homeInterface extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+    /*
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -1156,6 +1186,7 @@ public class homeInterface extends javax.swing.JFrame {
                 }
             }
         });
+    */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

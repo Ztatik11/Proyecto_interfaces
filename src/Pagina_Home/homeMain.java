@@ -19,7 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class homeMain extends JFrame {
-
+Usuario usuario;
     
     public static void main(String[] args) throws SQLException, IOException {
         
@@ -34,7 +34,7 @@ public class homeMain extends JFrame {
         
         homeInterface a = null;
         try {
-            a = new homeInterface();
+            a = new homeInterface(new Usuario("",false,"0"));
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -37,14 +37,15 @@ public class Registro_juegos extends javax.swing.JFrame {
     consultas_sql conexion_db;
     File ruta;
     Image img;
+    Usuario usuario_i;
     byte [] datos_img;
     /**
      * Creates new form Registro_juegos
      */
-    public Registro_juegos() throws SQLException {
+    public Registro_juegos(Usuario usuario) throws SQLException {
+        this.usuario_i=usuario;
         initComponents();
-        miniMenu.setVisible(false);
-        ajustes.setVisible(false);
+        comprobarInicioS(usuario_i);
         this.conexion_db = new consultas_sql("mango_games","root","root");
         ResultSet juegos = conexion_db.realizar_consulta("select * from juegos");
         System.out.println(juegos);
@@ -83,6 +84,28 @@ public class Registro_juegos extends javax.swing.JFrame {
         this.desarrolladora1.setText("");
         this.txtruta.setText("");
     } 
+    
+     public void comprobarInicioS(Usuario usuario){
+        if(usuario.getNombre_usuario().equals("")==false){
+            esAdmin(usuario_i.getAdmin());
+            ajustes.setVisible(true);
+            this.UserLabel.setText("Bienvenido "+this.usuario_i.getNombre_usuario());
+            UserLabel.setVisible(true);
+            loginButton.setVisible(false);
+        }else{
+            ajustes.setVisible(false);
+            UserLabel.setVisible(false);
+            loginButton.setVisible(true);
+        }
+    }
+    
+    public void esAdmin(boolean admin){
+        if(admin==true){
+            botonAdmin.setVisible(true);
+        }else{
+            botonAdmin.setVisible(false);
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -94,7 +117,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         menuButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jButton13 = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
         ajustes = new javax.swing.JButton();
         miniMenu = new javax.swing.JPanel();
         botonAdmin = new javax.swing.JButton();
@@ -162,17 +185,17 @@ public class Registro_juegos extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton13.setBackground(new java.awt.Color(0, 153, 255));
-        jButton13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(255, 255, 255));
-        jButton13.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton13.text")); // NOI18N
-        jButton13.setToolTipText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton13.toolTipText")); // NOI18N
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setBackground(new java.awt.Color(0, 153, 255));
+        loginButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(255, 255, 255));
+        loginButton.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.loginButton.text")); // NOI18N
+        loginButton.setToolTipText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.loginButton.toolTipText")); // NOI18N
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 20));
+        jPanel1.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 20));
 
         ajustes.setBackground(new java.awt.Color(0, 153, 255));
         ajustes.setForeground(new java.awt.Color(255, 255, 255));
@@ -581,9 +604,9 @@ public class Registro_juegos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel10MousePressed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     private void tituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloActionPerformed
         // TODO add your handling code here:
@@ -653,7 +676,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         // TODO add your handling code here:
         homeInterface a = null;
         try {
-            a = new homeInterface();
+            a = new homeInterface(usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -673,7 +696,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         // TODO add your handling code here:
         Registro_juegos a = null;
         try {
-            a = new Registro_juegos();
+            a = new Registro_juegos(usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(Registro_juegos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -714,6 +737,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+    /*
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Locale.setDefault(new Locale("es","ES"));
@@ -724,6 +748,7 @@ public class Registro_juegos extends javax.swing.JFrame {
                 }
             }
         });
+    */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -740,7 +765,6 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JScrollPane formulario;
     private javax.swing.JComboBox<String> genero;
     private javax.swing.JLabel imglabel;
-    private javax.swing.JButton jButton13;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -760,6 +784,7 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JComboBox<String> jugadores;
+    private javax.swing.JButton loginButton;
     private javax.swing.JButton menuButton;
     private javax.swing.JPanel miniMenu;
     private javax.swing.JComboBox<String> nota;

@@ -21,18 +21,45 @@ import javax.swing.JOptionPane;
  */
 public class inicio_sesion extends javax.swing.JFrame {
     consultas_sql conexion_db;
+    Usuario usuario_i;
     /**
      * Creates new form inicio_sesion
      */
-    public inicio_sesion() throws SQLException {
+    public inicio_sesion(Usuario usuario_tranferido) throws SQLException {
+        this.usuario_i=usuario_tranferido;
         initComponents();
+        
+        comprobarInicioS(usuario_i);
         this.UserLabel.setVisible(false);
         this.UserLabel.setText("");
         this.ajustes.setVisible(false);
         this.miniMenu.setVisible(false);
-         this.conexion_db = new consultas_sql("mango_games","root","root");
+        this.conexion_db = new consultas_sql("mango_games","root","root");
+        
     }
-
+    
+     public void comprobarInicioS(Usuario usuario){
+        
+        if(usuario.getNombre_usuario().equals("")==false){
+            esAdmin(usuario_i.getAdmin());
+            ajustes.setVisible(true);
+            this.UserLabel.setText("Bienvenido "+this.usuario_i.getNombre_usuario());
+            UserLabel.setVisible(true);
+            botonRegistro.setVisible(false);
+        }else{
+            ajustes.setVisible(false);
+            UserLabel.setVisible(false);
+            botonRegistro.setVisible(true);
+        }
+    }
+    
+    public void esAdmin(boolean admin){
+        if(admin==true){
+            botonAdmin.setVisible(true);
+        }else{
+            botonAdmin.setVisible(false);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,8 +76,8 @@ public class inicio_sesion extends javax.swing.JFrame {
         menuButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        ajustes = new javax.swing.JButton();
         botonRegistro = new javax.swing.JButton();
+        ajustes = new javax.swing.JButton();
         miniMenu = new javax.swing.JPanel();
         botonAdmin = new javax.swing.JButton();
         cerrarSButon = new javax.swing.JButton();
@@ -105,16 +132,6 @@ public class inicio_sesion extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ajustes.setBackground(new java.awt.Color(0, 153, 255));
-        ajustes.setForeground(new java.awt.Color(255, 255, 255));
-        ajustes.setText("Ajustes");
-        ajustes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ajustesActionPerformed(evt);
-            }
-        });
-        jPanel1.add(ajustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 90, -1));
-
         botonRegistro.setBackground(new java.awt.Color(0, 153, 255));
         botonRegistro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botonRegistro.setForeground(new java.awt.Color(255, 255, 255));
@@ -126,6 +143,16 @@ public class inicio_sesion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
+
+        ajustes.setBackground(new java.awt.Color(0, 153, 255));
+        ajustes.setForeground(new java.awt.Color(255, 255, 255));
+        ajustes.setText("Ajustes");
+        ajustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajustesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ajustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 90, -1));
 
         miniMenu.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -372,7 +399,7 @@ public class inicio_sesion extends javax.swing.JFrame {
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
         homeInterface c = null;
         try {
-            c = new homeInterface();
+            c = new homeInterface(usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(inicio_sesion.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -385,6 +412,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         boolean admin;
         String nombre_usuario;
+        String id;
         char [] clave_array = clave_inicio.getPassword();
             String pass = "";
             
@@ -395,14 +423,15 @@ public class inicio_sesion extends javax.swing.JFrame {
             ResultSet usuario = conexion_db.realizar_consulta("select * from usuarios where (usuario="+conexion_db.parsear_cadena(usuario_correo.getText())+" or email="+conexion_db.parsear_cadena(usuario_correo.getText())+") and "+"clave="+conexion_db.parsear_cadena(pass));
             if(conexion_db.leer_resultset_string(usuario, "Usuario")!=null){
                 
-                if(conexion_db.leer_resultset_string(usuario,"administrador").equalsIgnoreCase("true")){
+                if(conexion_db.leer_resultset_string(usuario,"administrador").equalsIgnoreCase("1")){
                     admin = true;
                 }else{
                     admin = false;
                 }         
                 nombre_usuario=conexion_db.leer_resultset_string(usuario, "Usuario");
-                Usuario usuario_iniciado = new Usuario(nombre_usuario,admin);
-                this.UserLabel.setText("Bienvenido "+usuario_iniciado.getNombre_usuario());
+                id=conexion_db.leer_resultset_string(usuario, "ID");
+                this.usuario_i = new Usuario(nombre_usuario,admin,id);
+                this.UserLabel.setText("Bienvenido "+this.usuario_i.getNombre_usuario());
                 this.UserLabel.setVisible(true);
                 this.ajustes.setVisible(true);
                 this.miniMenu.setVisible(true);
@@ -427,7 +456,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         homeInterface a = null;
         try {
-            a = new homeInterface();
+            a = new homeInterface(usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -451,7 +480,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         Registro_juegos a = null;
         try {
-            a = new Registro_juegos();
+            a = new Registro_juegos(usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(Registro_juegos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -488,15 +517,17 @@ public class inicio_sesion extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        /*
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new inicio_sesion().setVisible(true);
+                    new inicio_sesion(this.).setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(inicio_sesion.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
+        */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
