@@ -8,8 +8,9 @@ package Pagina_Home;
  *
  * @author JoseManuelRodriguezC
  */
-import static Pagina_Home.consultas_sql.parsear_cadena;
+
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -597,7 +598,8 @@ public class registro extends javax.swing.JFrame {
             String usuario= "'"+datos_usuario[0]+"'";
             usuario=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select * from usuarios where usuario="+usuario), "usuario");
             if(usuario==null){
-                conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador",this.conexion_db.parsear_atributos(datos_usuario)+",false" );
+                LocalDate fecha = LocalDate.now();
+                conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador,fecha_registro,ultimo_inicio_sesion",this.conexion_db.parsear_atributos(datos_usuario)+",false,"+conexion_db.parsear_cadena(conexion_db.formatear_fecha(fecha))+","+conexion_db.parsear_cadena(conexion_db.formatear_fecha(fecha)));
                 borrar_campos();
                 JOptionPane.showMessageDialog(rootPane, "USUARIO REGISTRADO");
             }else{

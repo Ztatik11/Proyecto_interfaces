@@ -7,6 +7,10 @@ package Pagina_Home;
 import java.awt.Image;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -476,9 +480,10 @@ public class InterfazJuego extends javax.swing.JFrame {
     private void Boton_comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_comprarActionPerformed
         // TODO add your handling code here:
         this.Confirmacion_compra.setVisible(true); //Lo he puesto a true para que se active al pulsar de momento, al ejecutar he puesto que sea invisible(YONLEE)
+        LocalDate fecha = LocalDate.now();
         
         if(this.usuario_i.getNombre_usuario()!=""){
-           conexion_db.insertar_una_nueva_fila_en_una_tabla("compras", "id_usuario,id_juego", conexion_db.parsear_cadena(usuario_i.getId())+","+conexion_db.parsear_cadena(juego.getID()));
+           conexion_db.insertar_una_nueva_fila_en_una_tabla("compras", "id_usuario,id_juego,precio_transaccion,fecha_de_compra", conexion_db.parsear_cadena(usuario_i.getId())+","+conexion_db.parsear_cadena(juego.getID())+","+this.juego.getPrecio()+","+conexion_db.parsear_cadena(conexion_db.formatear_fecha(fecha)));
            this.Confirmacion_compra.setVisible(true);
            this.Confirmacion_compra.setEnabled(true);
         }else{

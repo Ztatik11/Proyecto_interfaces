@@ -16,6 +16,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
@@ -157,14 +159,14 @@ public class consultas_sql {
 
 	}
     
-    	public static String parsear_atributos(String[] atributos) {
+    	public String parsear_atributos(String[] atributos) {
 
 		String sentencia_atributos = "";
 
 		// Crea una sentencia compatible con MySQL
 		for (int j = 0; j < atributos.length; j++) {
 
-			atributos[j]=parsear_cadena(atributos[j]);
+			atributos[j]=this.parsear_cadena(atributos[j]);
 
 			sentencia_atributos += atributos[j];
 			if (j != atributos.length - 1) {
@@ -175,15 +177,31 @@ public class consultas_sql {
 		return sentencia_atributos;
 	}
         
-        public static String parsear_cadena(String cadena) {
+        public String parsear_cadena(String cadena) {
 		return (isParsable(cadena)) ? cadena : "'" + cadena + "'";
 	}
+        
+        public String formatear_fecha(LocalDate fecha) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+		return fecha.format(formatter);
+	}
+        
         public static boolean isParsable(String input) {
 		try {
 			Integer.parseInt(input);
 			return true;
 		} catch (final NumberFormatException e) {
 			return false;
+		}
+	}
+        
+        public void actualizar_resultset_string(ResultSet _rs, String atributo, String valor_actualizado) throws SQLException {
+		_rs.beforeFirst();
+		while (_rs.next()) {
+
+			_rs.updateString(atributo, valor_actualizado);
+			_rs.updateRow();
+
 		}
 	}
     

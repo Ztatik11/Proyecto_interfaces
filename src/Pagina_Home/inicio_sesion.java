@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openide.util.Exceptions;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 
@@ -443,6 +444,8 @@ public class inicio_sesion extends javax.swing.JFrame {
                     }
                     a.setVisible(true);
                     this.setVisible(false);
+                    LocalDate fecha = LocalDate.now();
+                    conexion_db.actualizar_resultset_string(usuario, "ultimo_inicio_sesion", conexion_db.formatear_fecha(fecha));
                 }else{
                 String nombre = conexion_db.leer_resultset_string(usuario, "Usuario");
                 String correo = conexion_db.leer_resultset_string(usuario, "email");
