@@ -873,7 +873,7 @@ public class homeInterface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(miniMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cerrarSButon, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                    .addComponent(cerrarSButon, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
                 .addContainerGap())
         );
         miniMenuLayout.setVerticalGroup(
@@ -886,10 +886,11 @@ public class homeInterface extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel6.add(miniMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 40, 100, -1));
+        jPanel6.add(miniMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 40, 110, -1));
 
         UserLabel.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel6.add(UserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 103, 20));
+        UserLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jPanel6.add(UserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 140, 20));
 
         jPanel2.add(jPanel6, java.awt.BorderLayout.NORTH);
 
