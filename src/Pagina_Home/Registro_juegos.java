@@ -8,7 +8,6 @@ package Pagina_Home;
  *
  * @author AlvaroCarrascoGarcia
  */
-import static Pagina_Home.consultas_sql.parsear_cadena;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
