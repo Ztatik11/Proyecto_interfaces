@@ -32,8 +32,15 @@ public class homeMain extends JFrame {
             conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador,fecha_registro,ultimo_inicio_sesion", "'root','root','root','alvarocarrascogarcia6@gmail.es','Sevilla','root',true,"+conexion_db.parsear_cadena(conexion_db.formatear_fecha(fecha))+","+conexion_db.parsear_cadena(conexion_db.formatear_fecha(fecha)));
         }
         
-        ArrayList<String[]> Usuarios = conexion_db.leer_csv(".\\src\\csv\\usuarios.csv");
-        conexion_db.insertar_fichero_csv(Usuarios,"usuarios","Usuario,Nombre,Apellidos,Email,residencia,clave,administrador,fecha_registro,ultimo_inicio_sesion", false);
+         ArrayList<String[]> Usuarios = conexion_db.leer_csv(".\\src\\csv\\usuarios.csv");
+        for(int i = 0; i < Usuarios.size(); i++){
+            if(conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select * from usuarios where Usuario='" + Usuarios.get(i)[0] +"'"), "Usuario")==null){
+            conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador,fecha_registro,ultimo_inicio_sesion", "'" + Usuarios.get(i)[0]+ "','" + Usuarios.get(i)[1]+"','" + Usuarios.get(i)[2]+"','" + Usuarios.get(i)[3]+"','" + Usuarios.get(i)[4]+"','" + Usuarios.get(i)[5]+"','" + Usuarios.get(i)[6]+"'," + Usuarios.get(i)[7] +"," + Usuarios.get(i)[8]);
+            }
+            else{
+                System.out.println("El usuario ya existe");
+            }
+        }
         
         ArrayList<String[]> compras = conexion_db.leer_csv(".\\src\\csv\\compras.csv");
         conexion_db.insertar_fichero_csv(compras,"compras","ID_usuario,ID_juego,Precio_transaccion,Fecha_de_compra", false);
