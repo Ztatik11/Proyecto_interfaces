@@ -34,7 +34,9 @@ public class homeMain extends JFrame {
         
         ArrayList<String[]> Usuarios = conexion_db.leer_csv(".\\src\\csv\\usuarios.csv");
         conexion_db.insertar_fichero_csv(Usuarios,"usuarios","Usuario,Nombre,Apellidos,Email,residencia,clave,administrador,fecha_registro,ultimo_inicio_sesion", false);
-          
+        
+        ArrayList<String[]> compras = conexion_db.leer_csv(".\\src\\csv\\compras.csv");
+        conexion_db.insertar_fichero_csv(compras,"compras","ID_usuario,ID_juego,Precio_transaccion,Fecha_de_compra", false);
         homeInterface a = null;
         try {
             a = new homeInterface(new Usuario("",false,"0"));
