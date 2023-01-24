@@ -32,12 +32,19 @@ import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
 import org.netbeans.validation.api.ui.swing.ValidationPanel;
 import org.openide.util.Exceptions;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.view.JasperViewer;
+
 public class Registro_juegos extends javax.swing.JFrame {
     consultas_sql conexion_db;
     File ruta;
     Image img;
     Usuario usuario_i;
     byte [] datos_img;
+    String rutaInforme="";
     
     /**
      * Creates new form Registro_juegos
@@ -98,11 +105,28 @@ public class Registro_juegos extends javax.swing.JFrame {
             loginButton.setVisible(true);
         }
     }
-    
+    public void creacionInformes(String tipoInforme, Boolean necesitaPar){
+        try{
+            File fn = new File(tipoInforme);
+            JasperReport jr= JasperCompileManager.compileReport(fn.getAbsolutePath());
+            JasperPrint jp = JasperFillManager.fillReport(jr,null, conexion_db.getConnection_() );
+            JasperViewer.viewReport(jp);
+            
+        }catch(Exception ex){
+            ex.printStackTrace();
+       }
+        if(necesitaPar){
+            menuDatos.setVisible(true);
+        }else{
+            menuDatos.setVisible(false);
+        }
+        
+    }
     public void esAdmin(boolean admin){
         if(admin==true){
             this.miniMenu.setVisible(false);
             this.menuInforme.setVisible(false);
+            this.menuDatos.setVisible(false);
             botonAdmin.setVisible(true);
         }else{
             this.miniMenu.setVisible(false);
@@ -160,6 +184,12 @@ public class Registro_juegos extends javax.swing.JFrame {
         Informe1 = new javax.swing.JButton();
         Informe2 = new javax.swing.JButton();
         Informe3 = new javax.swing.JButton();
+        menuDatos = new javax.swing.JPanel();
+        dato1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        dato2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -633,18 +663,76 @@ public class Registro_juegos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        dato1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.dato1.text")); // NOI18N
+
+        jTextField1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jTextField1.text")); // NOI18N
+
+        dato2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.dato2.text")); // NOI18N
+
+        jTextField2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jTextField2.text")); // NOI18N
+
+        jButton2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton2.text")); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout menuDatosLayout = new javax.swing.GroupLayout(menuDatos);
+        menuDatos.setLayout(menuDatosLayout);
+        menuDatosLayout.setHorizontalGroup(
+            menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuDatosLayout.createSequentialGroup()
+                .addGroup(menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuDatosLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(dato1))
+                    .addGroup(menuDatosLayout.createSequentialGroup()
+                        .addGroup(menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(menuDatosLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(menuDatosLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(menuDatosLayout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(dato2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        menuDatosLayout.setVerticalGroup(
+            menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuDatosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(dato1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuDatosLayout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dato2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 8, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
+                .addContainerGap(103, Short.MAX_VALUE)
                 .addComponent(formulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(menuInforme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(menuInforme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(menuDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -656,7 +744,9 @@ public class Registro_juegos extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(menuInforme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(menuInforme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(menuDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
@@ -794,10 +884,11 @@ public class Registro_juegos extends javax.swing.JFrame {
         }else{
             menuInforme.setVisible(true);
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-       
+      
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void Informe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe2ActionPerformed
@@ -805,8 +896,13 @@ public class Registro_juegos extends javax.swing.JFrame {
     }//GEN-LAST:event_Informe2ActionPerformed
 
     private void Informe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe1ActionPerformed
-        // TODO add your handling code here:
+        creacionInformes(".\\src\\Reportes\\Usuarios_mas_rentables.jasper",true);
     }//GEN-LAST:event_Informe1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -869,12 +965,15 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JButton cerrarSButon1;
     private javax.swing.JButton cerrarSButon2;
     private javax.swing.JButton cerrarSButon3;
+    private javax.swing.JLabel dato1;
+    private javax.swing.JLabel dato2;
     private javax.swing.JTextField desarrolladora1;
     private javax.swing.JTextField descripcion;
     private javax.swing.JScrollPane formulario;
     private javax.swing.JComboBox<String> genero;
     private javax.swing.JLabel imglabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -893,9 +992,12 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JComboBox<String> jugadores;
     private javax.swing.JButton loginButton;
     private javax.swing.JButton menuButton;
+    private javax.swing.JPanel menuDatos;
     private javax.swing.JPanel menuInforme;
     private javax.swing.JPanel miniMenu;
     private javax.swing.JPanel miniMenu1;
