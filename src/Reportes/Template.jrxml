@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Mango_Games_Report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d371842d-e430-4d10-badc-782d499ba4ef">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<queryString language="SQL">
+		<![CDATA[select count(Usuario) as numero_usuarios, month(fecha_registro) as mes, year(fecha_registro) as anyo from mango_games.usuarios group by mes,anyo]]>
+	</queryString>
+	<group name="Plantilla_mango_games">
+		<groupHeader>
+			<band height="50"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="134" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="FixRelativeToBottom" x="-20" y="-20" width="595" height="110" backcolor="#0E5482" uuid="940cf373-4b13-4200-8900-9dcf17a4b0d3"/>
+			</rectangle>
+			<image>
+				<reportElement x="460" y="-10" width="100" height="90" uuid="cede4164-f38c-480a-afcf-7d66d15ffcd9"/>
+				<imageExpression><![CDATA["C:/Users/yorks/JaspersoftWorkspace/MicrosoftTeams-image (2).png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="310" y="-10" width="140" height="58" forecolor="#BABCC2" uuid="bf69d52b-5450-47d4-b83a-0517d408e847">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="25"/>
+				</textElement>
+				<text><![CDATA[INFORME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="-10" width="270" height="80" forecolor="#FFFFFF" uuid="fe7b1dc0-fe50-4263-b658-5db9e24ec0e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="35"/>
+				</textElement>
+				<text><![CDATA[MANGO GAMES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="185" splitType="Stretch">
+			<frame>
+				<reportElement x="-20" y="0" width="595" height="185" backcolor="#0E5482" uuid="ca19723c-082c-4966-ab0d-41a2042c3c13"/>
+				<rectangle>
+					<reportElement x="0" y="80" width="595" height="70" backcolor="#0E5482" uuid="68c55067-1f80-411d-bf38-dfc276125fef"/>
+				</rectangle>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="120" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="131" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="10" width="595" height="121" backcolor="#0E5482" uuid="f12eb365-c946-4385-9e0b-03f18edbaf0c"/>
+			</rectangle>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="131" splitType="Stretch"/>
+	</summary>
+</jasperReport>
