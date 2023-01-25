@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b4a7a37-104c-4b37-b6c7-d78354677f3a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MG"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="98"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="897"/>
+	<queryString language="SQL">
+		<![CDATA[Select u.Usuario,c.ID_usuario, SUM(c.precio_transaccion) as sumaCompras, count(c.ID_juego) as cantidad_juegos from mango_games.usuarios u inner join mango_games.compras c on u.ID = c.ID_usuario group by c.ID_usuario]]>
+	</queryString>
+	<field name="Usuario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Usuario"/>
+		<property name="com.jaspersoft.studio.field.label" value="Usuario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+	</field>
+	<field name="ID_usuario" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID_usuario"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_usuario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="compras"/>
+	</field>
+	<field name="sumaCompras" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="sumaCompras"/>
+		<property name="com.jaspersoft.studio.field.label" value="sumaCompras"/>
+	</field>
+	<field name="cantidad_juegos" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="cantidad_juegos"/>
+		<property name="com.jaspersoft.studio.field.label" value="cantidad_juegos"/>
+	</field>
+	<group name="Plantilla_mango_games"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="134" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="FixRelativeToBottom" x="-20" y="-20" width="595" height="110" backcolor="#0E5482" uuid="940cf373-4b13-4200-8900-9dcf17a4b0d3"/>
+			</rectangle>
+			<image>
+				<reportElement x="460" y="-10" width="100" height="90" uuid="cede4164-f38c-480a-afcf-7d66d15ffcd9"/>
+				<imageExpression><![CDATA["MicrosoftTeams-image (2).png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="310" y="-10" width="140" height="58" forecolor="#BABCC2" uuid="bf69d52b-5450-47d4-b83a-0517d408e847">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="25"/>
+				</textElement>
+				<text><![CDATA[INFORME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="-10" width="270" height="80" forecolor="#FFFFFF" uuid="fe7b1dc0-fe50-4263-b658-5db9e24ec0e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="35"/>
+				</textElement>
+				<text><![CDATA[MANGO GAMES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="185" splitType="Stretch">
+			<frame>
+				<reportElement x="-20" y="0" width="595" height="185" backcolor="#0E5482" uuid="ca19723c-082c-4966-ab0d-41a2042c3c13"/>
+				<rectangle>
+					<reportElement x="0" y="80" width="595" height="70" backcolor="#0E5482" uuid="68c55067-1f80-411d-bf38-dfc276125fef"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="30" y="-44" width="534" height="124" forecolor="#030202" uuid="d19e8687-8b6e-409a-a9cb-25ddd1f7017f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="35"/>
+					</textElement>
+					<text><![CDATA[USUARIOS MÁS RENTABLES]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="333" splitType="Stretch">
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="90" width="250" height="227" uuid="55285f0a-b5e0-45b9-9179-c325c48f14c1"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset resetType="Report"/>
+					<keyExpression><![CDATA[$F{Usuario}]]></keyExpression>
+					<valueExpression><![CDATA[$F{cantidad_juegos}]]></valueExpression>
+					<labelExpression><![CDATA[" "+($F{cantidad_juegos})+" "]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="272" y="90" width="288" height="227" uuid="bd69ef38-8681-476d-8ac5-d36649c1b213"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset resetType="Report"/>
+					<keyExpression><![CDATA[$F{Usuario}]]></keyExpression>
+					<valueExpression><![CDATA[$F{sumaCompras}]]></valueExpression>
+					<labelExpression><![CDATA[" " + $F{sumaCompras} + " "]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<rectangle>
+				<reportElement x="-20" y="0" width="595" height="80" backcolor="#0E5482" uuid="8f8ccdc6-8e4e-4fdb-a8a9-932b3670cfaf"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="20" width="250" height="50" forecolor="#FFFFFF" backcolor="#0E5482" uuid="de5c03d3-a696-4052-aedd-e7a948aa9fed"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Usuario con más juegos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="272" y="20" width="288" height="50" forecolor="#FFFFFF" backcolor="#0E5482" uuid="19f6b93c-aaae-4ace-a3b9-bbd9ee819363"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Usuarios que más han gastado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="61" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="20" width="595" height="30" backcolor="#0E5482" uuid="f12eb365-c946-4385-9e0b-03f18edbaf0c"/>
+			</rectangle>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="19" splitType="Stretch"/>
+	</summary>
+</jasperReport>
