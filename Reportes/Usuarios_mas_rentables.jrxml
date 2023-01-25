@@ -55,6 +55,10 @@
 				</textElement>
 				<text><![CDATA[MANGO GAMES]]></text>
 			</staticText>
+			<image rotation="Left" hAlign="Left">
+				<reportElement positionType="FixRelativeToBottom" x="-20" y="-20" width="240" height="90" uuid="cf8c42eb-748b-4eea-87f6-deaab79baffb"/>
+				<imageExpression><![CDATA["C:/Users/swage/Downloads/—Pngtree—mango tree_5615756.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -150,10 +154,28 @@
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="49" splitType="Stretch">
+		<band height="87" splitType="Stretch">
 			<rectangle>
-				<reportElement x="-20" y="-20" width="595" height="61" backcolor="#0E5482" uuid="f12eb365-c946-4385-9e0b-03f18edbaf0c"/>
+				<reportElement x="-20" y="-20" width="595" height="99" backcolor="#0E5482" uuid="f12eb365-c946-4385-9e0b-03f18edbaf0c"/>
 			</rectangle>
+			<image rotation="None" hAlign="Right">
+				<reportElement x="430" y="-20" width="144" height="107" uuid="9d712a83-813c-46e5-980a-bedd148d2c4e"/>
+				<imageExpression><![CDATA["C:/Users/swage/Downloads/—Pngtree—mango tree_5615756.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="170" y="10" width="120" height="50" forecolor="#FFFFFF" uuid="6d14e0c1-6ecc-4208-903a-821a13051a71"/>
+				<textElement textAlignment="Right">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="290" y="10" width="110" height="50" forecolor="#FFFFFF" uuid="d44f9410-f2d7-497a-9b00-ee5207e8ff30"/>
+				<textElement textAlignment="Left">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 	<summary>
