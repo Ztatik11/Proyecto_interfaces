@@ -45,6 +45,7 @@ public class Registro_juegos extends javax.swing.JFrame {
     Usuario usuario_i;
     byte [] datos_img;
     String rutaInforme="";
+    File rutacarpeta = null;
     
     /**
      * Creates new form Registro_juegos
@@ -105,10 +106,9 @@ public class Registro_juegos extends javax.swing.JFrame {
             loginButton.setVisible(true);
         }
     }
-    public void creacionInformes(String tipoInforme, Boolean necesitaPar){
+    public void creacionInformes(Boolean necesitaPar){
         try{
-            File fn = new File(tipoInforme);
-            JasperReport jr= JasperCompileManager.compileReport(fn.getAbsolutePath());
+            JasperReport jr= JasperCompileManager.compileReport(this.rutacarpeta.getAbsolutePath());
             JasperPrint jp = JasperFillManager.fillReport(jr,null, conexion_db.getConnection_() );
             JasperViewer.viewReport(jp);
             
@@ -896,11 +896,13 @@ public class Registro_juegos extends javax.swing.JFrame {
     }//GEN-LAST:event_Informe2ActionPerformed
 
     private void Informe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe1ActionPerformed
-        creacionInformes(".\\src\\Reportes\\Usuarios_mas_rentables.jasper",true);
+        this.rutacarpeta= new File(".\\src\\Reportes\\Usuarios_mas_rentables.jasper");
+        creacionInformes(true);
     }//GEN-LAST:event_Informe1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        this.rutacarpeta= new File(".\\src\\Reportes\\Usuarios_mas_rentables.jasper");
+        creacionInformes(false);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
