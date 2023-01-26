@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Registro_usuarios_mensuales_2.0" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="251f9d06-92b1-4580-8b9f-fb070609e47d">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MG"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="201"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="789"/>
+	<parameter name="mes" class="java.lang.Integer"/>
+	<parameter name="anyo" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select Usuario, month(fecha_registro) as mes, year(fecha_registro) as anyo from mango_games.usuarios where month(fecha_registro) = $P{mes} and year(fecha_registro) = $P{anyo}]]>
+	</queryString>
+	<field name="Usuario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Usuario"/>
+		<property name="com.jaspersoft.studio.field.label" value="Usuario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+	</field>
+	<field name="mes" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="mes"/>
+		<property name="com.jaspersoft.studio.field.label" value="mes"/>
+	</field>
+	<field name="anyo" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="anyo"/>
+		<property name="com.jaspersoft.studio.field.label" value="anyo"/>
+	</field>
+	<variable name="usuario_COUNT" class="java.lang.Integer" calculation="Count">
+		<initialValueExpression><![CDATA[$F{Usuario}]]></initialValueExpression>
+	</variable>
+	<variable name="Usuario1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{Usuario}]]></variableExpression>
+	</variable>
+	<group name="mes">
+		<groupExpression><![CDATA[$F{mes}]]></groupExpression>
+	</group>
+	<group name="anyo">
+		<groupExpression><![CDATA[$F{anyo}]]></groupExpression>
+	</group>
+	<group name="Plantilla_mango_games"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="134" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="FixRelativeToBottom" x="-20" y="-20" width="595" height="110" backcolor="#0E5482" uuid="940cf373-4b13-4200-8900-9dcf17a4b0d3"/>
+			</rectangle>
+			<image>
+				<reportElement x="460" y="-10" width="100" height="90" uuid="cede4164-f38c-480a-afcf-7d66d15ffcd9"/>
+				<imageExpression><![CDATA["MicrosoftTeams-image (2).png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="310" y="-10" width="140" height="58" forecolor="#BABCC2" uuid="bf69d52b-5450-47d4-b83a-0517d408e847">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="25"/>
+				</textElement>
+				<text><![CDATA[INFORME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="-10" width="270" height="80" forecolor="#FFFFFF" uuid="fe7b1dc0-fe50-4263-b658-5db9e24ec0e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="35"/>
+				</textElement>
+				<text><![CDATA[MANGO GAMES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="185" splitType="Stretch">
+			<frame>
+				<reportElement x="-20" y="0" width="595" height="185" backcolor="#0E5482" uuid="ca19723c-082c-4966-ab0d-41a2042c3c13"/>
+				<rectangle>
+					<reportElement x="0" y="80" width="595" height="70" backcolor="#0E5482" uuid="68c55067-1f80-411d-bf38-dfc276125fef"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="30" y="-44" width="534" height="124" forecolor="#030202" uuid="6ea20360-107c-41e7-a8f1-9b9603c7371f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="35"/>
+					</textElement>
+					<text><![CDATA[REGISTRO DE USUARIOS MENSUALES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="90" width="190" height="50" forecolor="#FFFFFF" backcolor="#0E5482" uuid="0b62c489-6c96-4391-b505-253b10649d96"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="20"/>
+					</textElement>
+					<text><![CDATA[Numero de usuarios]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="200" y="90" width="190" height="50" forecolor="#FFFFFF" backcolor="#0E5482" uuid="887c463a-76e8-4668-ab81-b45ab3df6af8"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="20"/>
+					</textElement>
+					<text><![CDATA[Mes]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="400" y="90" width="195" height="50" forecolor="#FFFFFF" backcolor="#0E5482" uuid="a8b5c832-758d-40f9-92c6-6e85dd2a3819"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="20"/>
+					</textElement>
+					<text><![CDATA[Año]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="6" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="25" y="0" width="100" height="30" uuid="15120355-776f-4550-aee6-20b9d3f98766">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="911cac68-5f4e-46e6-bfb6-58ea87617e48"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="0" width="100" height="30" uuid="987d6526-6a2c-44ac-91b3-2dc56423fbe7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0467db0c-9ed8-4492-8571-69156d90b724"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="0" width="100" height="30" uuid="a306dfdb-5262-452a-a2a7-480b7fd720ff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="71abeb13-0211-49f3-84b9-ca40f80229f0"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{anyo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="9" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="38" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="0" width="595" height="38" backcolor="#0E5482" uuid="f12eb365-c946-4385-9e0b-03f18edbaf0c"/>
+			</rectangle>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="131" splitType="Stretch"/>
+	</summary>
+</jasperReport>
