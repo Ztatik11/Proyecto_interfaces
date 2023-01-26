@@ -116,7 +116,7 @@ public class Registro_juegos extends javax.swing.JFrame {
             //JasperReport jr= JasperCompileManager.compileReport(this.rutacarpeta.getAbsolutePath());
             System.out.println(this.rutacarpeta.getAbsolutePath());
             JasperPrint jp = JasperFillManager.fillReport(this.rutacarpeta.getAbsolutePath(),null, conexion_db.getConnection_() );
-            JasperViewer.viewReport(jp);
+            JasperViewer.viewReport(jp,false);
             
             }catch(Exception ex){
                 ex.printStackTrace();
@@ -189,9 +189,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         Informe3 = new javax.swing.JButton();
         menuDatos = new javax.swing.JPanel();
         dato1 = new javax.swing.JLabel();
-        javax.swing.JTextField campo_mes = new javax.swing.JTextField();
         dato2 = new javax.swing.JLabel();
-        campo_anyo = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -673,11 +671,7 @@ public class Registro_juegos extends javax.swing.JFrame {
 
         dato1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.dato1.text")); // NOI18N
 
-        campo_mes.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.campo_mes.text")); // NOI18N
-
         dato2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.dato2.text")); // NOI18N
-
-        campo_anyo.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.campo_anyo.text")); // NOI18N
 
         jButton2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton2.text")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -696,17 +690,9 @@ public class Registro_juegos extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addComponent(dato1))
                     .addGroup(menuDatosLayout.createSequentialGroup()
-                        .addGroup(menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(menuDatosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(campo_anyo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(menuDatosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(campo_mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(menuDatosLayout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(dato2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(22, 22, 22)
+                        .addComponent(dato2)
+                        .addGap(21, 21, 21)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -718,13 +704,10 @@ public class Registro_juegos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuDatosLayout.createSequentialGroup()
-                        .addComponent(campo_mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dato2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campo_anyo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addComponent(dato2))
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(0, 26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -986,7 +969,6 @@ public class Registro_juegos extends javax.swing.JFrame {
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_titulo;
     private javax.swing.JButton ajustes;
     private javax.swing.JButton botonAdmin;
-    private javax.swing.JTextField campo_anyo;
     private javax.swing.JButton cerrarSButon;
     private javax.swing.JLabel dato1;
     private javax.swing.JLabel dato2;
