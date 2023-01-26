@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b4a7a37-104c-4b37-b6c7-d78354677f3a">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MG"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="98"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="897"/>
 	<queryString language="SQL">
@@ -37,7 +37,7 @@
 			</rectangle>
 			<image>
 				<reportElement x="460" y="-10" width="100" height="90" uuid="cede4164-f38c-480a-afcf-7d66d15ffcd9"/>
-				<imageExpression><![CDATA["MicrosoftTeams-image (2).png"]]></imageExpression>
+				<imageExpression><![CDATA["https://github.com/Ztatik11/proyecto_interfaces/blob/master/src/Images/MicrosoftTeams-image%20(2).png?raw=true"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="310" y="-10" width="140" height="58" forecolor="#BABCC2" uuid="bf69d52b-5450-47d4-b83a-0517d408e847">
@@ -55,6 +55,10 @@
 				</textElement>
 				<text><![CDATA[MANGO GAMES]]></text>
 			</staticText>
+			<image rotation="Left" hAlign="Left">
+				<reportElement positionType="FixRelativeToBottom" x="-20" y="-20" width="240" height="90" uuid="cf8c42eb-748b-4eea-87f6-deaab79baffb"/>
+				<imageExpression><![CDATA["https://github.com/Ztatik11/proyecto_interfaces/blob/master/src/Images/Lovepik_com-401469910-mango-tree.png?raw=true"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -78,7 +82,7 @@
 		<band height="333" splitType="Stretch">
 			<pieChart>
 				<chart evaluationTime="Report">
-					<reportElement x="0" y="90" width="250" height="227" uuid="55285f0a-b5e0-45b9-9179-c325c48f14c1"/>
+					<reportElement x="-10" y="90" width="270" height="227" uuid="777b09ab-8c89-4c1d-bd79-d63ba11a9dc5"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -96,7 +100,7 @@
 			</pieChart>
 			<pieChart>
 				<chart evaluationTime="Report">
-					<reportElement x="272" y="90" width="288" height="227" uuid="bd69ef38-8681-476d-8ac5-d36649c1b213"/>
+					<reportElement x="303" y="100" width="270" height="227" uuid="18e54d6f-03ed-4c9d-8085-2f05c3f6fb7e"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -129,7 +133,7 @@
 				<text><![CDATA[Usuario con más juegos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="272" y="20" width="288" height="50" forecolor="#FFFFFF" backcolor="#0E5482" uuid="19f6b93c-aaae-4ace-a3b9-bbd9ee819363"/>
+				<reportElement mode="Opaque" x="303" y="20" width="265" height="50" forecolor="#FFFFFF" backcolor="#0E5482" uuid="19f6b93c-aaae-4ace-a3b9-bbd9ee819363"/>
 				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#030202"/>
@@ -139,7 +143,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="20"/>
 				</textElement>
-				<text><![CDATA[Usuarios que más han gastado]]></text>
+				<text><![CDATA[Usuario que más ha gastado]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -147,13 +151,31 @@
 		<band height="23" splitType="Stretch"/>
 	</detail>
 	<columnFooter>
-		<band height="61" splitType="Stretch"/>
+		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="50" splitType="Stretch">
+		<band height="87" splitType="Stretch">
 			<rectangle>
-				<reportElement x="-20" y="20" width="595" height="30" backcolor="#0E5482" uuid="f12eb365-c946-4385-9e0b-03f18edbaf0c"/>
+				<reportElement x="-20" y="-20" width="595" height="99" backcolor="#0E5482" uuid="f12eb365-c946-4385-9e0b-03f18edbaf0c"/>
 			</rectangle>
+			<image rotation="None" hAlign="Right">
+				<reportElement x="430" y="-20" width="144" height="107" uuid="9d712a83-813c-46e5-980a-bedd148d2c4e"/>
+				<imageExpression><![CDATA["https://github.com/Ztatik11/proyecto_interfaces/blob/master/src/Images/Lovepik_com-401469910-mango-tree.png?raw=true"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="170" y="10" width="120" height="50" forecolor="#FFFFFF" uuid="6d14e0c1-6ecc-4208-903a-821a13051a71"/>
+				<textElement textAlignment="Right">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="290" y="10" width="110" height="50" forecolor="#FFFFFF" uuid="d44f9410-f2d7-497a-9b00-ee5207e8ff30"/>
+				<textElement textAlignment="Left">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 	<summary>
