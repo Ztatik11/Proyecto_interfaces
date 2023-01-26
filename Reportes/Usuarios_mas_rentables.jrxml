@@ -57,7 +57,7 @@
 			</staticText>
 			<image rotation="Left" hAlign="Left">
 				<reportElement positionType="FixRelativeToBottom" x="-20" y="-20" width="240" height="90" uuid="cf8c42eb-748b-4eea-87f6-deaab79baffb"/>
-				<imageExpression><![CDATA["C:/Users/swage/Downloads/—Pngtree—mango tree_5615756.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/JoseManuelRodriguezC/Documents/NetBeansProjects/interfaces/src/Images/Lovepik_com-401469910-mango-tree.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -160,7 +160,7 @@
 			</rectangle>
 			<image rotation="None" hAlign="Right">
 				<reportElement x="430" y="-20" width="144" height="107" uuid="9d712a83-813c-46e5-980a-bedd148d2c4e"/>
-				<imageExpression><![CDATA["C:/Users/swage/Downloads/—Pngtree—mango tree_5615756.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/JoseManuelRodriguezC/Documents/NetBeansProjects/interfaces/src/Images/Lovepik_com-401469910-mango-tree.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="170" y="10" width="120" height="50" forecolor="#FFFFFF" uuid="6d14e0c1-6ecc-4208-903a-821a13051a71"/>
