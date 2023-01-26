@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -107,17 +108,19 @@ public class Registro_juegos extends javax.swing.JFrame {
         }
     }
     public void creacionInformes(Boolean necesitaPar){
-        try{
-            JasperReport jr= JasperCompileManager.compileReport(this.rutacarpeta.getAbsolutePath());
-            JasperPrint jp = JasperFillManager.fillReport(jr,null, conexion_db.getConnection_() );
-            JasperViewer.viewReport(jp);
-            
-        }catch(Exception ex){
-            ex.printStackTrace();
-       }
+        
         if(necesitaPar){
             menuDatos.setVisible(true);
         }else{
+            try{
+            //JasperReport jr= JasperCompileManager.compileReport(this.rutacarpeta.getAbsolutePath());
+            System.out.println(this.rutacarpeta.getAbsolutePath());
+            JasperPrint jp = JasperFillManager.fillReport(this.rutacarpeta.getAbsolutePath(),null, conexion_db.getConnection_() );
+            JasperViewer.viewReport(jp);
+            
+            }catch(Exception ex){
+                ex.printStackTrace();
+            }
             menuDatos.setVisible(false);
         }
         
@@ -186,9 +189,9 @@ public class Registro_juegos extends javax.swing.JFrame {
         Informe3 = new javax.swing.JButton();
         menuDatos = new javax.swing.JPanel();
         dato1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        javax.swing.JTextField campo_mes = new javax.swing.JTextField();
         dato2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        campo_anyo = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -638,6 +641,11 @@ public class Registro_juegos extends javax.swing.JFrame {
         Informe3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Informe3.setForeground(new java.awt.Color(255, 255, 255));
         Informe3.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.Informe3.text")); // NOI18N
+        Informe3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Informe3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuInformeLayout = new javax.swing.GroupLayout(menuInforme);
         menuInforme.setLayout(menuInformeLayout);
@@ -665,11 +673,11 @@ public class Registro_juegos extends javax.swing.JFrame {
 
         dato1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.dato1.text")); // NOI18N
 
-        jTextField1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jTextField1.text")); // NOI18N
+        campo_mes.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.campo_mes.text")); // NOI18N
 
         dato2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.dato2.text")); // NOI18N
 
-        jTextField2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jTextField2.text")); // NOI18N
+        campo_anyo.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.campo_anyo.text")); // NOI18N
 
         jButton2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton2.text")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -691,10 +699,10 @@ public class Registro_juegos extends javax.swing.JFrame {
                         .addGroup(menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(menuDatosLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(campo_anyo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(menuDatosLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(campo_mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(menuDatosLayout.createSequentialGroup()
                                 .addGap(22, 22, 22)
                                 .addComponent(dato2)))
@@ -710,11 +718,11 @@ public class Registro_juegos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuDatosLayout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campo_mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dato2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(campo_anyo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
@@ -893,18 +901,36 @@ public class Registro_juegos extends javax.swing.JFrame {
 
     private void Informe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe2ActionPerformed
         // TODO add your handling code here:
+        this.rutacarpeta= new File(".\\src\\Reportes\\usuarios_por_mes.jasper");
+        creacionInformes(true);
     }//GEN-LAST:event_Informe2ActionPerformed
 
     private void Informe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe1ActionPerformed
         this.rutacarpeta= new File(".\\src\\Reportes\\Usuarios_mas_rentables.jasper");
-        creacionInformes(true);
+        creacionInformes(false);
     }//GEN-LAST:event_Informe1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.rutacarpeta= new File(".\\src\\Reportes\\Usuarios_mas_rentables.jasper");
-        creacionInformes(false);
+
+        
+        try{
+            //JasperReport jr= JasperCompileManager.compileReport(this.rutacarpeta.getAbsolutePath());
+            System.out.println(this.rutacarpeta.getAbsolutePath());
+            JasperPrint jp = JasperFillManager.fillReport(this.rutacarpeta.getAbsolutePath(),null, conexion_db.getConnection_() );
+            JasperViewer.viewReport(jp);
+            
+            }catch(Exception ex){
+                ex.printStackTrace();
+            }
+            menuDatos.setVisible(false);
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void Informe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe3ActionPerformed
+        // TODO add your handling code here:
+        this.rutacarpeta= new File(".\\src\\Reportes\\Juegos_mas_rentables.jasper");
+        creacionInformes(false);
+    }//GEN-LAST:event_Informe3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -960,13 +986,8 @@ public class Registro_juegos extends javax.swing.JFrame {
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_titulo;
     private javax.swing.JButton ajustes;
     private javax.swing.JButton botonAdmin;
-    private javax.swing.JButton botonAdmin1;
-    private javax.swing.JButton botonAdmin2;
-    private javax.swing.JButton botonAdmin3;
+    private javax.swing.JTextField campo_anyo;
     private javax.swing.JButton cerrarSButon;
-    private javax.swing.JButton cerrarSButon1;
-    private javax.swing.JButton cerrarSButon2;
-    private javax.swing.JButton cerrarSButon3;
     private javax.swing.JLabel dato1;
     private javax.swing.JLabel dato2;
     private javax.swing.JTextField desarrolladora1;
@@ -994,17 +1015,12 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JComboBox<String> jugadores;
     private javax.swing.JButton loginButton;
     private javax.swing.JButton menuButton;
     private javax.swing.JPanel menuDatos;
     private javax.swing.JPanel menuInforme;
     private javax.swing.JPanel miniMenu;
-    private javax.swing.JPanel miniMenu1;
-    private javax.swing.JPanel miniMenu2;
-    private javax.swing.JPanel miniMenu3;
     private javax.swing.JComboBox<String> nota;
     private javax.swing.JTextField precio;
     private javax.swing.JButton registro_juego;
