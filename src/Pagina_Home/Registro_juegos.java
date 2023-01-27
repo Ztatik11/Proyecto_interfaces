@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -921,10 +922,12 @@ public class Registro_juegos extends javax.swing.JFrame {
 
         
         try{
-            //JasperReport jr= JasperCompileManager.compileReport(this.rutacarpeta.getAbsolutePath());
+            Map parametros = new HashMap();
+            parametros.put("mes",Integer.parseInt(this.campo_mes.getText()));
+            parametros.put("anyo",Integer.parseInt(this.campo_anyo.getText()));
             System.out.println(this.rutacarpeta.getAbsolutePath());
-            JasperPrint jp = JasperFillManager.fillReport(this.rutacarpeta.getAbsolutePath(),null, conexion_db.getConnection_() );
-            JasperViewer.viewReport(jp);
+            JasperPrint jp = JasperFillManager.fillReport(this.rutacarpeta.getAbsolutePath(),parametros, conexion_db.getConnection_() );
+            JasperViewer.viewReport(jp,false);
             
             }catch(Exception ex){
                 ex.printStackTrace();
