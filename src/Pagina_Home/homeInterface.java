@@ -12,6 +12,7 @@ package Pagina_Home;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.net.MalformedURLException;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import javax.swing.ImageIcon;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.help.HelpSetException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -32,9 +34,11 @@ public class homeInterface extends javax.swing.JFrame {
     java.sql.ResultSet resultSet=conexion_db.realizar_consulta("SELECT * FROM juegos");
     ArrayList<Juego> search = new ArrayList<Juego>();
     Usuario usuario_i;
+    Ayuda ayuda_pagina;
     
     
     public homeInterface(Usuario usuario) throws SQLException {
+        this.ayuda_pagina = new Ayuda("pepe",this.helpButton);
         initComponents();
         menu.setVisible(true);
         sinResult.setVisible(false);
@@ -56,7 +60,6 @@ public class homeInterface extends javax.swing.JFrame {
         ResultSetMetaData rsmd = resultSet.getMetaData();
         int totalColumnas = rsmd.getColumnCount();
         
-        
         while (resultSet.next()) {
             //Pilla todos los atributos de cada registro
             for(int i=1; totalColumnas>=i; i++){
@@ -74,12 +77,12 @@ public class homeInterface extends javax.swing.JFrame {
             ajustes.setVisible(true);
             this.UserLabel.setText("Bienvenido "+this.usuario_i.getNombre_usuario());
             UserLabel.setVisible(true);
-            loginButton.setVisible(false);
+            helpButton.setVisible(false);
             registerButton.setVisible(false);
         }else{
             ajustes.setVisible(false);
             UserLabel.setVisible(false);
-            loginButton.setVisible(true);
+            helpButton.setVisible(true);
             registerButton.setVisible(true);
         }
     }
@@ -200,7 +203,6 @@ public class homeInterface extends javax.swing.JFrame {
         sinResult = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        loginButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         searchBox = new javax.swing.JTextField();
@@ -212,6 +214,8 @@ public class homeInterface extends javax.swing.JFrame {
         botonAdmin = new javax.swing.JButton();
         cerrarSButon = new javax.swing.JButton();
         UserLabel = new javax.swing.JLabel();
+        loginButton1 = new javax.swing.JButton();
+        helpButton = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MangoGames");
@@ -765,17 +769,6 @@ public class homeInterface extends javax.swing.JFrame {
         });
         jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 37, -1, -1));
 
-        loginButton.setBackground(new java.awt.Color(0, 153, 255));
-        loginButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        loginButton.setForeground(new java.awt.Color(255, 255, 255));
-        loginButton.setText("login");
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
-            }
-        });
-        jPanel6.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, -1, 20));
-
         registerButton.setBackground(new java.awt.Color(0, 153, 255));
         registerButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         registerButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -892,6 +885,25 @@ public class homeInterface extends javax.swing.JFrame {
         UserLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jPanel6.add(UserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 140, 20));
 
+        loginButton1.setBackground(new java.awt.Color(0, 153, 255));
+        loginButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        loginButton1.setForeground(new java.awt.Color(255, 255, 255));
+        loginButton1.setText("login");
+        loginButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButton1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(loginButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, -1, 20));
+
+        helpButton.setLabel("button1");
+        helpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpButtonActionPerformed(evt);
+            }
+        });
+        jPanel6.add(helpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
         jPanel2.add(jPanel6, java.awt.BorderLayout.NORTH);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -935,17 +947,6 @@ public class homeInterface extends javax.swing.JFrame {
        c.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_jLabel4MousePressed
-
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        inicio_sesion a = null;
-        try {
-            a = new inicio_sesion(usuario_i);
-        } catch (SQLException ex) {
-            Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        a.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_loginButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
@@ -1147,6 +1148,20 @@ public class homeInterface extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_registerButtonActionPerformed
 
+    private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginButton1ActionPerformed
+
+    private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
+        try {
+            this.ayuda_pagina.cargarAyuda();
+        } catch (HelpSetException ex) {
+            Exceptions.printStackTrace(ex);
+        } catch (MalformedURLException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+    }//GEN-LAST:event_helpButtonActionPerformed
+
         
     /**
      * @param args the command line arguments
@@ -1221,6 +1236,7 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JButton criaturas;
     private javax.swing.JButton estrategia;
     private javax.swing.JButton fPS;
+    private java.awt.Button helpButton;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
@@ -1241,7 +1257,7 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton loginButton;
+    private javax.swing.JButton loginButton1;
     private javax.swing.JButton mOBA;
     private javax.swing.JPanel menu;
     private javax.swing.JButton menuButton;
