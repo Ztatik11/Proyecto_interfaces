@@ -29,7 +29,8 @@ public class registro extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public registro() throws SQLException {
+    public registro(Usuario usuario_tranferido) throws SQLException {
+        this.usuario_i=usuario_tranferido;
         initComponents();
         comprobarInicioS(usuario_i);
         miniMenu.setVisible(false);
@@ -676,7 +677,7 @@ public class registro extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Locale.setDefault(new Locale("es","ES"));
@@ -687,6 +688,7 @@ public class registro extends javax.swing.JFrame {
                 }
             }
         });
+*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

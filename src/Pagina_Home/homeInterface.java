@@ -1139,7 +1139,7 @@ public class homeInterface extends javax.swing.JFrame {
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         registro b = null;
         try {
-            b = new registro();
+            b = new registro(this.usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(homeInterface.class.getName()).log(Level.SEVERE, null, ex);
         }

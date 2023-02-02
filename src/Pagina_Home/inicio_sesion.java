@@ -386,7 +386,7 @@ public class inicio_sesion extends javax.swing.JFrame {
     private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
        registro b = null;
         try {
-            b = new registro();
+            b = new registro(this.usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(inicio_sesion.class.getName()).log(Level.SEVERE, null, ex);
         }

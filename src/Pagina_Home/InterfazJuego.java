@@ -517,7 +517,7 @@ public class InterfazJuego extends javax.swing.JFrame {
     private void Boton_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_registroActionPerformed
        registro b = null;
         try {
-            b = new registro();
+            b = new registro(this.usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -559,7 +559,7 @@ public class InterfazJuego extends javax.swing.JFrame {
         // TODO add your handling code here:
         registro b = null;
         try {
-            b = new registro();
+            b = new registro(this.usuario_i);
         } catch (SQLException ex) {
             Logger.getLogger(InterfazJuego.class.getName()).log(Level.SEVERE, null, ex);
         }
