@@ -12,6 +12,7 @@ package Pagina_Home;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -152,6 +153,8 @@ public class homeInterface extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        MenuAyuda = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel2 = new javax.swing.JPanel();
         content = new javax.swing.JPanel();
         menu = new javax.swing.JPanel();
@@ -212,16 +215,28 @@ public class homeInterface extends javax.swing.JFrame {
         botonAdmin = new javax.swing.JButton();
         cerrarSButon = new javax.swing.JButton();
         UserLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
+        jMenuItem1.setText("Ayuda");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem1MousePressed(evt);
+            }
+        });
+        MenuAyuda.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MangoGames");
         setIconImages(null);
 
+        jPanel2.setComponentPopupMenu(MenuAyuda);
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         content.setBackground(new java.awt.Color(0, 102, 204));
+        content.setComponentPopupMenu(MenuAyuda);
 
         menu.setBackground(new java.awt.Color(0, 102, 204));
+        menu.setComponentPopupMenu(MenuAyuda);
         menu.setLayout(new java.awt.GridBagLayout());
 
         jScrollPane1.setBackground(new java.awt.Color(0, 102, 204));
@@ -526,6 +541,7 @@ public class homeInterface extends javax.swing.JFrame {
         menu.add(jScrollPane1, gridBagConstraints);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setComponentPopupMenu(MenuAyuda);
         jPanel3.setLayout(new java.awt.GridBagLayout());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -750,6 +766,7 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel2.add(content, java.awt.BorderLayout.CENTER);
 
         jPanel6.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel6.setComponentPopupMenu(MenuAyuda);
         jPanel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -845,10 +862,13 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel6.add(ajustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 90, -1));
 
         jPanel11.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel11.setComponentPopupMenu(MenuAyuda);
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel6.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 120, -1));
 
         miniMenu.setBackground(new java.awt.Color(0, 102, 204));
+        miniMenu.setComponentPopupMenu(MenuAyuda);
+        miniMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         botonAdmin.setText("Admin");
         botonAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -891,6 +911,20 @@ public class homeInterface extends javax.swing.JFrame {
         UserLabel.setForeground(new java.awt.Color(255, 255, 255));
         UserLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jPanel6.add(UserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 140, 20));
+
+        jButton1.setBackground(new java.awt.Color(0, 153, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/info.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jPanel2.add(jPanel6, java.awt.BorderLayout.NORTH);
 
@@ -1147,6 +1181,32 @@ public class homeInterface extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_registerButtonActionPerformed
 
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+        String url = "http://www.google.com";
+        
+        try {
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
+        } catch (IOException e) {
+            System.out.println("No se ha encontrado ningún buscador para el enlace: " + url);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jMenuItem1MousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+               String url = "http://www.google.com";
+        
+        try {
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
+        } catch (IOException e) {
+            System.out.println("No se ha encontrado ningún buscador para el enlace: " + url);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
         
     /**
      * @param args the command line arguments
@@ -1211,6 +1271,7 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JPanel J4;
     private javax.swing.JPanel J5;
     private javax.swing.JPanel J6;
+    private javax.swing.JPopupMenu MenuAyuda;
     private javax.swing.JLabel UserLabel;
     private javax.swing.JButton accion;
     private javax.swing.JButton ajustes;
@@ -1221,8 +1282,10 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JButton criaturas;
     private javax.swing.JButton estrategia;
     private javax.swing.JButton fPS;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
