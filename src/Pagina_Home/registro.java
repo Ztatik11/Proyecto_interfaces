@@ -9,6 +9,9 @@ package Pagina_Home;
  * @author JoseManuelRodriguezC
  */
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Locale;
@@ -112,6 +115,7 @@ public class registro extends javax.swing.JFrame {
         botonAdmin = new javax.swing.JButton();
         cerrarSButon = new javax.swing.JButton();
         UserLabel = new javax.swing.JLabel();
+        BotonInformacion = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
@@ -259,13 +263,30 @@ public class registro extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        BotonInformacion.setBackground(new java.awt.Color(0, 153, 255));
+        BotonInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/info.png"))); // NOI18N
+        BotonInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonInformacionMouseClicked(evt);
+            }
+        });
+        BotonInformacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonInformacionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(menuButton)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuButton)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(BotonInformacion)))
                 .addGap(87, 87, 87)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -288,7 +309,8 @@ public class registro extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BotonInformacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(menuButton))))
         );
 
@@ -650,6 +672,19 @@ public class registro extends javax.swing.JFrame {
         comprobarInicioS(usuario_i);
         miniMenu.setVisible(false);
     }//GEN-LAST:event_cerrarSButonActionPerformed
+
+    private void BotonInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInformacionMouseClicked
+        File htmlFile = new File("C:src/Pagina_manual//index.html");
+        try {
+            Desktop.getDesktop().browse(htmlFile.toURI());
+        } catch (IOException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+    }//GEN-LAST:event_BotonInformacionMouseClicked
+
+    private void BotonInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInformacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonInformacionActionPerformed
     
     /**
      * @param args the command line arguments
@@ -692,6 +727,7 @@ public class registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonInformacion;
     private javax.swing.JLabel UserLabel;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_apellidos;
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_clave;

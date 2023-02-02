@@ -4,7 +4,10 @@
  */
 package Pagina_Home;
 
+import java.awt.Desktop;
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -121,6 +124,7 @@ public class InterfazJuego extends javax.swing.JFrame {
         botonAdmin2 = new javax.swing.JButton();
         cerrarSButon2 = new javax.swing.JButton();
         ajustes2 = new javax.swing.JButton();
+        BotonInformacion = new javax.swing.JButton();
         informacion_juego = new javax.swing.JPanel();
         Imagenes_precio = new javax.swing.JPanel();
         Boton_comprar = new javax.swing.JButton();
@@ -372,6 +376,20 @@ public class InterfazJuego extends javax.swing.JFrame {
         });
         Banner.add(ajustes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 90, -1));
 
+        BotonInformacion.setBackground(new java.awt.Color(0, 153, 255));
+        BotonInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/info.png"))); // NOI18N
+        BotonInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonInformacionMouseClicked(evt);
+            }
+        });
+        BotonInformacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonInformacionActionPerformed(evt);
+            }
+        });
+        Banner.add(BotonInformacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
         Ventana_juego.add(Banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 140));
 
         informacion_juego.setBackground(new java.awt.Color(0, 102, 204));
@@ -605,6 +623,19 @@ public class InterfazJuego extends javax.swing.JFrame {
         comprobarInicioS(usuario_i);
         miniMenu2.setVisible(false);
     }//GEN-LAST:event_cerrarSButon2ActionPerformed
+
+    private void BotonInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInformacionMouseClicked
+        File htmlFile = new File("C:src/Pagina_manual//index.html");
+        try {
+            Desktop.getDesktop().browse(htmlFile.toURI());
+        } catch (IOException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+    }//GEN-LAST:event_BotonInformacionMouseClicked
+
+    private void BotonInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInformacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonInformacionActionPerformed
     
     
     /**@param args the command line arguments
@@ -652,6 +683,7 @@ public class InterfazJuego extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Banner;
+    private javax.swing.JButton BotonInformacion;
     private javax.swing.JButton Boton_comprar;
     private javax.swing.JButton Boton_confirmacion_compra;
     private javax.swing.JButton Boton_inicio_sesion_compra1;

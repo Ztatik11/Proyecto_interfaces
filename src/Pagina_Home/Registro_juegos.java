@@ -8,6 +8,7 @@ package Pagina_Home;
  *
  * @author AlvaroCarrascoGarcia
  */
+import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -151,6 +152,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         botonAdmin = new javax.swing.JButton();
         cerrarSButon = new javax.swing.JButton();
         UserLabel = new javax.swing.JLabel();
+        BotonInformacion = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         formulario = new javax.swing.JScrollPane();
         jPanel10 = new javax.swing.JPanel();
@@ -312,13 +314,30 @@ public class Registro_juegos extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        BotonInformacion.setBackground(new java.awt.Color(0, 153, 255));
+        BotonInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/info.png"))); // NOI18N
+        BotonInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonInformacionMouseClicked(evt);
+            }
+        });
+        BotonInformacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonInformacionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(menuButton)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuButton)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(BotonInformacion)))
                 .addGap(87, 87, 87)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -338,7 +357,8 @@ public class Registro_juegos extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(BotonInformacion)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(menuButton))
                             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
@@ -361,7 +381,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(232, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(187, 187, 187))
         );
@@ -906,6 +926,19 @@ public class Registro_juegos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void BotonInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInformacionMouseClicked
+        File htmlFile = new File("C:src/Pagina_manual//index.html");
+        try {
+            Desktop.getDesktop().browse(htmlFile.toURI());
+        } catch (IOException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+    }//GEN-LAST:event_BotonInformacionMouseClicked
+
+    private void BotonInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInformacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonInformacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -950,6 +983,7 @@ public class Registro_juegos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonInformacion;
     private javax.swing.JButton Informe1;
     private javax.swing.JButton Informe2;
     private javax.swing.JButton Informe3;
@@ -960,13 +994,7 @@ public class Registro_juegos extends javax.swing.JFrame {
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_titulo;
     private javax.swing.JButton ajustes;
     private javax.swing.JButton botonAdmin;
-    private javax.swing.JButton botonAdmin1;
-    private javax.swing.JButton botonAdmin2;
-    private javax.swing.JButton botonAdmin3;
     private javax.swing.JButton cerrarSButon;
-    private javax.swing.JButton cerrarSButon1;
-    private javax.swing.JButton cerrarSButon2;
-    private javax.swing.JButton cerrarSButon3;
     private javax.swing.JLabel dato1;
     private javax.swing.JLabel dato2;
     private javax.swing.JTextField desarrolladora1;
@@ -1002,9 +1030,6 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JPanel menuDatos;
     private javax.swing.JPanel menuInforme;
     private javax.swing.JPanel miniMenu;
-    private javax.swing.JPanel miniMenu1;
-    private javax.swing.JPanel miniMenu2;
-    private javax.swing.JPanel miniMenu3;
     private javax.swing.JComboBox<String> nota;
     private javax.swing.JTextField precio;
     private javax.swing.JButton registro_juego;

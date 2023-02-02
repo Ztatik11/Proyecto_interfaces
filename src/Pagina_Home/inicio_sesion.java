@@ -1,6 +1,9 @@
 package Pagina_Home;
 
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
 import static java.lang.Short.toString;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -83,6 +86,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         botonAdmin = new javax.swing.JButton();
         cerrarSButon = new javax.swing.JButton();
         UserLabel = new javax.swing.JLabel();
+        BotonInformacion = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -218,6 +222,20 @@ public class inicio_sesion extends javax.swing.JFrame {
 
         UserLabel.setForeground(new java.awt.Color(255, 255, 255));
         jPanel6.add(UserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 250, 20));
+
+        BotonInformacion.setBackground(new java.awt.Color(0, 153, 255));
+        BotonInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/info.png"))); // NOI18N
+        BotonInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonInformacionMouseClicked(evt);
+            }
+        });
+        BotonInformacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonInformacionActionPerformed(evt);
+            }
+        });
+        jPanel6.add(BotonInformacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 140));
 
@@ -498,6 +516,19 @@ public class inicio_sesion extends javax.swing.JFrame {
        a.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_botonAdminActionPerformed
+
+    private void BotonInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInformacionMouseClicked
+        File htmlFile = new File("C:src/Pagina_manual//index.html");
+        try {
+            Desktop.getDesktop().browse(htmlFile.toURI());
+        } catch (IOException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+    }//GEN-LAST:event_BotonInformacionMouseClicked
+
+    private void BotonInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInformacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonInformacionActionPerformed
     
     
     /**
@@ -542,6 +573,7 @@ public class inicio_sesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonInformacion;
     private javax.swing.JLabel UserLabel;
     private javax.swing.JButton ajustes;
     private javax.swing.JButton botonAdmin;

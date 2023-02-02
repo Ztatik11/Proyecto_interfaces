@@ -9,6 +9,7 @@ package Pagina_Home;
  * @author JoseManuelRodriguezC
  */
 
+import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -215,7 +216,7 @@ public class homeInterface extends javax.swing.JFrame {
         botonAdmin = new javax.swing.JButton();
         cerrarSButon = new javax.swing.JButton();
         UserLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        BotonInformacion = new javax.swing.JButton();
 
         jMenuItem1.setText("Ayuda");
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -912,19 +913,19 @@ public class homeInterface extends javax.swing.JFrame {
         UserLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jPanel6.add(UserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 140, 20));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/info.png"))); // NOI18N
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        BotonInformacion.setBackground(new java.awt.Color(0, 153, 255));
+        BotonInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/info.png"))); // NOI18N
+        BotonInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                BotonInformacionMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotonInformacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BotonInformacionActionPerformed(evt);
             }
         });
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel6.add(BotonInformacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jPanel2.add(jPanel6, java.awt.BorderLayout.NORTH);
 
@@ -1182,30 +1183,26 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-        String url = "http://www.google.com";
-        
+        File htmlFile = new File("C:src/Pagina_manual//index.html");
         try {
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
-        } catch (IOException e) {
-            System.out.println("No se ha encontrado ningún buscador para el enlace: " + url);
-            e.printStackTrace();
+            Desktop.getDesktop().browse(htmlFile.toURI());
+        } catch (IOException ex) {
+            Exceptions.printStackTrace(ex);
         }
     }//GEN-LAST:event_jMenuItem1MousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BotonInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInformacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BotonInformacionActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-               String url = "http://www.google.com";
-        
+    private void BotonInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInformacionMouseClicked
+        File htmlFile = new File("C:src/Pagina_manual//index.html");
         try {
-            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
-        } catch (IOException e) {
-            System.out.println("No se ha encontrado ningún buscador para el enlace: " + url);
-            e.printStackTrace();
+            Desktop.getDesktop().browse(htmlFile.toURI());
+        } catch (IOException ex) {
+            Exceptions.printStackTrace(ex);
         }
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_BotonInformacionMouseClicked
 
         
     /**
@@ -1259,6 +1256,7 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JButton B4;
     private javax.swing.JButton B5;
     private javax.swing.JButton B6;
+    private javax.swing.JButton BotonInformacion;
     public javax.swing.JLabel G1;
     private javax.swing.JLabel G2;
     private javax.swing.JLabel G3;
@@ -1282,7 +1280,6 @@ public class homeInterface extends javax.swing.JFrame {
     private javax.swing.JButton criaturas;
     private javax.swing.JButton estrategia;
     private javax.swing.JButton fPS;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuItem jMenuItem1;
