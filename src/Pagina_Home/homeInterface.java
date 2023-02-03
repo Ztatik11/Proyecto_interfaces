@@ -245,10 +245,13 @@ public class homeInterface extends javax.swing.JFrame {
         jScrollPane1.setToolTipText("");
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel1.setComponentPopupMenu(MenuAyuda);
 
         jPanel4.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel4.setComponentPopupMenu(MenuAyuda);
 
         fPS.setText("FPS");
+        fPS.setToolTipText("First person shooter");
         fPS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fPSActionPerformed(evt);
@@ -273,6 +276,7 @@ public class homeInterface extends javax.swing.JFrame {
         );
 
         jPanel5.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel5.setComponentPopupMenu(MenuAyuda);
 
         plataformas.setText("Plataformas");
         plataformas.addActionListener(new java.awt.event.ActionListener() {
@@ -299,8 +303,10 @@ public class homeInterface extends javax.swing.JFrame {
         );
 
         jPanel7.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel7.setComponentPopupMenu(MenuAyuda);
 
         mOBA.setText("MOBA");
+        mOBA.setToolTipText("Multiplayer Online Battle Arena");
         mOBA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mOBAMouseClicked(evt);
@@ -330,6 +336,7 @@ public class homeInterface extends javax.swing.JFrame {
         );
 
         jPanel8.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel8.setComponentPopupMenu(MenuAyuda);
 
         estrategia.setText("Estrategia");
         estrategia.addActionListener(new java.awt.event.ActionListener() {
@@ -356,8 +363,10 @@ public class homeInterface extends javax.swing.JFrame {
         );
 
         jPanel9.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel9.setComponentPopupMenu(MenuAyuda);
 
         rPG.setText("RPG");
+        rPG.setToolTipText("Role playing Game");
         rPG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rPGActionPerformed(evt);
@@ -382,8 +391,10 @@ public class homeInterface extends javax.swing.JFrame {
         );
 
         jPanel10.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel10.setComponentPopupMenu(MenuAyuda);
 
         soulsLike.setText("SoulsLike");
+        soulsLike.setToolTipText("Juego parecido a \"Dark Souls\"");
         soulsLike.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 soulsLikeActionPerformed(evt);
@@ -408,6 +419,7 @@ public class homeInterface extends javax.swing.JFrame {
         );
 
         jPanel13.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel13.setComponentPopupMenu(MenuAyuda);
 
         aventura.setText("Aventura");
         aventura.addActionListener(new java.awt.event.ActionListener() {
@@ -434,6 +446,7 @@ public class homeInterface extends javax.swing.JFrame {
         );
 
         jPanel14.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel14.setComponentPopupMenu(MenuAyuda);
 
         accion.setText("Accion");
         accion.addActionListener(new java.awt.event.ActionListener() {
@@ -460,6 +473,7 @@ public class homeInterface extends javax.swing.JFrame {
         );
 
         jPanel15.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel15.setComponentPopupMenu(MenuAyuda);
 
         criaturas.setText("Criaturas");
         criaturas.addActionListener(new java.awt.event.ActionListener() {
@@ -553,9 +567,11 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel3.add(jSeparator1, gridBagConstraints);
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel16.setComponentPopupMenu(MenuAyuda);
         jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         J1.setBackground(new java.awt.Color(255, 255, 255));
+        J1.setComponentPopupMenu(MenuAyuda);
 
         B1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -590,6 +606,7 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel16.add(J1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 170, 140));
 
         J2.setBackground(new java.awt.Color(255, 255, 255));
+        J2.setComponentPopupMenu(MenuAyuda);
 
         javax.swing.GroupLayout J2Layout = new javax.swing.GroupLayout(J2);
         J2.setLayout(J2Layout);
@@ -617,6 +634,7 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel16.add(J2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, 140));
 
         J3.setBackground(new java.awt.Color(255, 255, 255));
+        J3.setComponentPopupMenu(MenuAyuda);
 
         javax.swing.GroupLayout J3Layout = new javax.swing.GroupLayout(J3);
         J3.setLayout(J3Layout);
@@ -645,6 +663,7 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel16.add(J3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 160, 140));
 
         J4.setBackground(new java.awt.Color(255, 255, 255));
+        J4.setComponentPopupMenu(MenuAyuda);
 
         B4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -679,6 +698,7 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel16.add(J4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 160, -1));
 
         J5.setBackground(new java.awt.Color(255, 255, 255));
+        J5.setComponentPopupMenu(MenuAyuda);
 
         javax.swing.GroupLayout J5Layout = new javax.swing.GroupLayout(J5);
         J5.setLayout(J5Layout);
@@ -706,6 +726,7 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel16.add(J5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 150, 130));
 
         J6.setBackground(new java.awt.Color(255, 255, 255));
+        J6.setComponentPopupMenu(MenuAyuda);
 
         javax.swing.GroupLayout J6Layout = new javax.swing.GroupLayout(J6);
         J6.setLayout(J6Layout);
@@ -826,6 +847,7 @@ public class homeInterface extends javax.swing.JFrame {
         });
         jPanel6.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, -1, 30));
 
+        searchBox.setToolTipText("Buscar juego por nombres");
         searchBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBoxActionPerformed(evt);
@@ -911,6 +933,7 @@ public class homeInterface extends javax.swing.JFrame {
 
         UserLabel.setForeground(new java.awt.Color(255, 255, 255));
         UserLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        UserLabel.setComponentPopupMenu(MenuAyuda);
         jPanel6.add(UserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 140, 20));
 
         BotonInformacion.setBackground(new java.awt.Color(0, 153, 255));
