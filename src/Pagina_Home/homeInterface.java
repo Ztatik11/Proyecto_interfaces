@@ -1206,7 +1206,7 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-        File htmlFile = new File("C:src/Pagina_manual//index.html");
+        File htmlFile = new File("C:src/Pagina_manual//paginaPrincipal.html");
         try {
             Desktop.getDesktop().browse(htmlFile.toURI());
         } catch (IOException ex) {
@@ -1219,7 +1219,7 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonInformacionActionPerformed
 
     private void BotonInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInformacionMouseClicked
-        File htmlFile = new File("C:src/Pagina_manual//index.html");
+        File htmlFile = new File("C:src/Pagina_manual//paginaPrincipal.html");
         try {
             Desktop.getDesktop().browse(htmlFile.toURI());
         } catch (IOException ex) {

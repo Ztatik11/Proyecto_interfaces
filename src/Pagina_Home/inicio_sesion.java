@@ -73,6 +73,8 @@ public class inicio_sesion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        MenuAyuda = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -100,17 +102,27 @@ public class inicio_sesion extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         boton_inicion_sesion = new javax.swing.JButton();
 
+        jMenuItem1.setText("Ayuda");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jMenuItem1MousePressed(evt);
+            }
+        });
+        MenuAyuda.add(jMenuItem1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel6.setComponentPopupMenu(MenuAyuda);
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("MANGO GAMES");
+        jLabel4.setComponentPopupMenu(MenuAyuda);
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel4MousePressed(evt);
@@ -120,11 +132,13 @@ public class inicio_sesion extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel5.setText("jLabel5");
+        jLabel5.setComponentPopupMenu(MenuAyuda);
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
         jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 15, 126, 125));
 
         menuButton.setBackground(new java.awt.Color(0, 153, 255));
         menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+        menuButton.setComponentPopupMenu(MenuAyuda);
         menuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuButtonActionPerformed(evt);
@@ -133,6 +147,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         jPanel6.add(menuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 76, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel3.setComponentPopupMenu(MenuAyuda);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -160,8 +175,10 @@ public class inicio_sesion extends javax.swing.JFrame {
         jPanel1.add(ajustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 90, -1));
 
         miniMenu.setBackground(new java.awt.Color(0, 102, 204));
+        miniMenu.setComponentPopupMenu(MenuAyuda);
 
         botonAdmin.setText("Admin");
+        botonAdmin.setComponentPopupMenu(MenuAyuda);
         botonAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAdminActionPerformed(evt);
@@ -170,6 +187,7 @@ public class inicio_sesion extends javax.swing.JFrame {
 
         cerrarSButon.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         cerrarSButon.setText("Cerrar Sesion");
+        cerrarSButon.setComponentPopupMenu(MenuAyuda);
         cerrarSButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cerrarSButonActionPerformed(evt);
@@ -225,6 +243,7 @@ public class inicio_sesion extends javax.swing.JFrame {
 
         BotonInformacion.setBackground(new java.awt.Color(0, 153, 255));
         BotonInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/info.png"))); // NOI18N
+        BotonInformacion.setComponentPopupMenu(MenuAyuda);
         BotonInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BotonInformacionMouseClicked(evt);
@@ -240,6 +259,9 @@ public class inicio_sesion extends javax.swing.JFrame {
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 140));
 
         jPanel5.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel5.setComponentPopupMenu(MenuAyuda);
+
+        jPanel4.setComponentPopupMenu(MenuAyuda);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("CONTRASEÑA:");
@@ -252,6 +274,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         clave_inicio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        clave_inicio.setComponentPopupMenu(MenuAyuda);
         clave_inicio.setMaximumSize(new java.awt.Dimension(880, 560));
         clave_inicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,6 +285,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         jButton2.setText("jButton2");
 
         usuario_correo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        usuario_correo.setComponentPopupMenu(MenuAyuda);
         usuario_correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuario_correoActionPerformed(evt);
@@ -271,6 +295,7 @@ public class inicio_sesion extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 
         jPanel7.setBackground(new java.awt.Color(0, 102, 153));
+        jPanel7.setComponentPopupMenu(MenuAyuda);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setText("INICIO DE SESIÓN");
@@ -295,9 +320,11 @@ public class inicio_sesion extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("USUARIO/CORREO ELECTRÓNICO:");
         jLabel6.setAutoscrolls(true);
+        jLabel6.setComponentPopupMenu(MenuAyuda);
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         boton_inicion_sesion.setText("INICIAR SESIÓN");
+        boton_inicion_sesion.setComponentPopupMenu(MenuAyuda);
         boton_inicion_sesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_inicion_sesionActionPerformed(evt);
@@ -518,7 +545,7 @@ public class inicio_sesion extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAdminActionPerformed
 
     private void BotonInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInformacionMouseClicked
-        File htmlFile = new File("C:src/Pagina_manual//index.html");
+        File htmlFile = new File("C:src/Pagina_manual//login.html");
         try {
             Desktop.getDesktop().browse(htmlFile.toURI());
         } catch (IOException ex) {
@@ -529,6 +556,15 @@ public class inicio_sesion extends javax.swing.JFrame {
     private void BotonInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInformacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonInformacionActionPerformed
+
+    private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
+        File htmlFile = new File("C:src/Pagina_manual//login.html");
+        try {
+            Desktop.getDesktop().browse(htmlFile.toURI());
+        } catch (IOException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+    }//GEN-LAST:event_jMenuItem1MousePressed
     
     
     /**
@@ -574,6 +610,7 @@ public class inicio_sesion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonInformacion;
+    private javax.swing.JPopupMenu MenuAyuda;
     private javax.swing.JLabel UserLabel;
     private javax.swing.JButton ajustes;
     private javax.swing.JButton botonAdmin;
@@ -589,6 +626,7 @@ public class inicio_sesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
