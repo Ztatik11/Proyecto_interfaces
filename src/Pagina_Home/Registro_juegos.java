@@ -685,11 +685,20 @@ public class Registro_juegos extends javax.swing.JFrame {
 
         dato1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.dato1.text")); // NOI18N
 
+        jTextField1.setColumns(6);
         jTextField1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jTextField1.text")); // NOI18N
+        jTextField1.setToolTipText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jTextField1.toolTipText")); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         dato2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.dato2.text")); // NOI18N
 
+        jTextField2.setColumns(6);
         jTextField2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jTextField2.text")); // NOI18N
+        jTextField2.setToolTipText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jTextField2.toolTipText")); // NOI18N
 
         jButton2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton2.text")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -705,22 +714,21 @@ public class Registro_juegos extends javax.swing.JFrame {
             .addGroup(menuDatosLayout.createSequentialGroup()
                 .addGroup(menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuDatosLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(dato1))
+                        .addContainerGap()
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menuDatosLayout.createSequentialGroup()
-                        .addGroup(menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(menuDatosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(menuDatosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(menuDatosLayout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(dato2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menuDatosLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(dato2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(menuDatosLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(dato1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuDatosLayout.setVerticalGroup(
             menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -744,7 +752,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
+                .addContainerGap(88, Short.MAX_VALUE)
                 .addComponent(formulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -938,6 +946,10 @@ public class Registro_juegos extends javax.swing.JFrame {
     private void BotonInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInformacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonInformacionActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
