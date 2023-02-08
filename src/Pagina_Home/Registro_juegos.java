@@ -108,19 +108,20 @@ public class Registro_juegos extends javax.swing.JFrame {
         }
     }
     public void creacionInformes(Boolean necesitaPar){
-        try{
-            JasperReport jr= JasperCompileManager.compileReport(this.rutacarpeta.getAbsolutePath());
-            JasperPrint jp = JasperFillManager.fillReport(jr,null, conexion_db.getConnection_() );
-            JasperViewer.viewReport(jp);
-            
-        }catch(Exception ex){
-            ex.printStackTrace();
-       }
         if(necesitaPar){
             menuDatos.setVisible(true);
         }else{
+            try{
+            //JasperReport jr= JasperCompileManager.compileReport(this.rutacarpeta.getAbsolutePath());
+            System.out.println(this.rutacarpeta.getAbsolutePath());
+            JasperPrint jp = JasperFillManager.fillReport(this.rutacarpeta.getAbsolutePath(),null, conexion_db.getConnection_() );
+            JasperViewer.viewReport(jp);
+
+            }catch(Exception ex){
+                ex.printStackTrace();
+            }
             menuDatos.setVisible(false);
-        }
+            }
         
     }
     public void esAdmin(boolean admin){
@@ -658,6 +659,11 @@ public class Registro_juegos extends javax.swing.JFrame {
         Informe3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Informe3.setForeground(new java.awt.Color(255, 255, 255));
         Informe3.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.Informe3.text")); // NOI18N
+        Informe3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Informe3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuInformeLayout = new javax.swing.GroupLayout(menuInforme);
         menuInforme.setLayout(menuInformeLayout);
@@ -920,18 +926,27 @@ public class Registro_juegos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void Informe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe2ActionPerformed
-        // TODO add your handling code here:
+        this.rutacarpeta= new File(".\\src\\Reportes\\usuarios_por_mes.jasper");
+        creacionInformes(true);
     }//GEN-LAST:event_Informe2ActionPerformed
 
     private void Informe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe1ActionPerformed
         this.rutacarpeta= new File(".\\src\\Reportes\\Usuarios_mas_rentables.jasper");
-        creacionInformes(true);
+        creacionInformes(false);
     }//GEN-LAST:event_Informe1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.rutacarpeta= new File(".\\src\\Reportes\\Usuarios_mas_rentables.jasper");
-        creacionInformes(false);
-        
+
+        try{
+            //JasperReport jr= JasperCompileManager.compileReport(this.rutacarpeta.getAbsolutePath());
+            System.out.println(this.rutacarpeta.getAbsolutePath());
+            JasperPrint jp = JasperFillManager.fillReport(this.rutacarpeta.getAbsolutePath(),null, conexion_db.getConnection_() );
+            JasperViewer.viewReport(jp);
+
+            }catch(Exception ex){
+                ex.printStackTrace();
+            }
+            menuDatos.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void BotonInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInformacionMouseClicked
@@ -950,6 +965,12 @@ public class Registro_juegos extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void Informe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe3ActionPerformed
+        // TODO add your handling code here:
+        this.rutacarpeta= new File(".\\src\\Reportes\\Juegos_mas_rentables.jasper");
+        creacionInformes(false);
+    }//GEN-LAST:event_Informe3ActionPerformed
 
     /**
      * @param args the command line arguments
