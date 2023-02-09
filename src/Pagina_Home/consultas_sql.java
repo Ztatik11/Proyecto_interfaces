@@ -52,7 +52,6 @@ public class consultas_sql {
                         this.connection_=null;
                         this.connection_ = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db_,login_,password_);
                         System.out.println("Conexion a base de datos " + db_ + " correcta.");
-                        e.printStackTrace();
                     }
 	}
     public Connection getConnection_() {
