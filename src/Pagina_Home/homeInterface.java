@@ -250,7 +250,7 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 102, 204));
         jPanel4.setComponentPopupMenu(MenuAyuda);
 
-        fPS.setText("FPS");
+        fPS.setText("Shooter");
         fPS.setToolTipText("First person shooter");
         fPS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -607,6 +607,12 @@ public class homeInterface extends javax.swing.JFrame {
 
         J2.setBackground(new java.awt.Color(255, 255, 255));
         J2.setComponentPopupMenu(MenuAyuda);
+
+        B2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout J2Layout = new javax.swing.GroupLayout(J2);
         J2.setLayout(J2Layout);
