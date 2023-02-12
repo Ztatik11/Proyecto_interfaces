@@ -336,7 +336,7 @@
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/MicrosoftTeams-image (2).png"/>
+                  <Image iconType="3" name="/Pagina_Home/images/MicrosoftTeams-image (2).png"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[100, 100]"/>
@@ -354,7 +354,7 @@
                   <Color blue="ff" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/homeIcon.png"/>
+                  <Image iconType="3" name="/Pagina_Home/images/homeIcon.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -478,7 +478,7 @@
                   <Color blue="ff" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Images/info.png"/>
+                  <Image iconType="3" name="/Pagina_Home/images/info.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -590,11 +590,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="ImagenJuego">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/dum.jpg"/>
-                    </Property>
-                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ImagenJuegoActionPerformed"/>
                   </Events>

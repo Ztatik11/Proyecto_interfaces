@@ -20,9 +20,7 @@ import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -117,7 +115,7 @@ public class Registro_juegos extends javax.swing.JFrame {
             //JasperReport jr= JasperCompileManager.compileReport(this.rutacarpeta.getAbsolutePath());
             System.out.println(this.rutacarpeta.getAbsolutePath());
             JasperPrint jp = JasperFillManager.fillReport(this.rutacarpeta.getAbsolutePath(),null, conexion_db.getConnection_() );
-            JasperViewer.viewReport(jp,false);
+            JasperViewer.viewReport(jp);
 
             }catch(Exception ex){
                 ex.printStackTrace();
@@ -191,9 +189,9 @@ public class Registro_juegos extends javax.swing.JFrame {
         Informe3 = new javax.swing.JButton();
         menuDatos = new javax.swing.JPanel();
         dato1 = new javax.swing.JLabel();
-        campo_anyo = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         dato2 = new javax.swing.JLabel();
-        campo_mes = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -212,12 +210,12 @@ public class Registro_juegos extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pagina_Home/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel13.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jLabel13.text")); // NOI18N
         jLabel13.setPreferredSize(new java.awt.Dimension(100, 100));
 
         menuButton.setBackground(new java.awt.Color(0, 153, 255));
-        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pagina_Home/images/homeIcon.png"))); // NOI18N
         menuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuButtonActionPerformed(evt);
@@ -318,7 +316,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         );
 
         BotonInformacion.setBackground(new java.awt.Color(0, 153, 255));
-        BotonInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/info.png"))); // NOI18N
+        BotonInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pagina_Home/images/info.png"))); // NOI18N
         BotonInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BotonInformacionMouseClicked(evt);
@@ -447,7 +445,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel19.setAutoscrolls(true);
         jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Shooter", "Plataformas", "RPG", "Criaturas", "MOBA", "Estrategia", "SoulsLike", "Accion", "Aventura" }));
+        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Shooter", "Plataformas", "RPG", "Rol", "MOBA", "Survival", "Horror", "Accion", "Aventura" }));
         genero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generoActionPerformed(evt);
@@ -490,7 +488,7 @@ public class Registro_juegos extends javax.swing.JFrame {
 
         nota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
-        jugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        jugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "multi" }));
 
         registro_juego.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.registro_juego.text")); // NOI18N
         registro_juego.setEnabled(false);
@@ -566,7 +564,7 @@ public class Registro_juegos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(0, 505, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21)
                             .addComponent(seleccionar_imagen)
@@ -575,7 +573,7 @@ public class Registro_juegos extends javax.swing.JFrame {
                         .addComponent(registro_juego))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
                             .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -640,7 +638,6 @@ public class Registro_juegos extends javax.swing.JFrame {
         Informe1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Informe1.setForeground(new java.awt.Color(255, 255, 255));
         Informe1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.Informe1.text")); // NOI18N
-        Informe1.setToolTipText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.Informe1.toolTipText")); // NOI18N
         Informe1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Informe1ActionPerformed(evt);
@@ -694,20 +691,20 @@ public class Registro_juegos extends javax.swing.JFrame {
 
         dato1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.dato1.text")); // NOI18N
 
-        campo_anyo.setColumns(6);
-        campo_anyo.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.campo_anyo.text")); // NOI18N
-        campo_anyo.setToolTipText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.campo_anyo.toolTipText")); // NOI18N
-        campo_anyo.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.setColumns(6);
+        jTextField1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jTextField1.text")); // NOI18N
+        jTextField1.setToolTipText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jTextField1.toolTipText")); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campo_anyoActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
 
         dato2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.dato2.text")); // NOI18N
 
-        campo_mes.setColumns(6);
-        campo_mes.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.campo_mes.text")); // NOI18N
-        campo_mes.setToolTipText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.campo_mes.toolTipText")); // NOI18N
+        jTextField2.setColumns(6);
+        jTextField2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jTextField2.text")); // NOI18N
+        jTextField2.setToolTipText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jTextField2.toolTipText")); // NOI18N
 
         jButton2.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton2.text")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -724,15 +721,15 @@ public class Registro_juegos extends javax.swing.JFrame {
                 .addGroup(menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuDatosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(campo_mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menuDatosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(campo_anyo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menuDatosLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(dato2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(menuDatosLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
@@ -747,11 +744,11 @@ public class Registro_juegos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(menuDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menuDatosLayout.createSequentialGroup()
-                        .addComponent(campo_anyo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dato2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campo_mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
@@ -761,13 +758,14 @@ public class Registro_juegos extends javax.swing.JFrame {
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(88, Short.MAX_VALUE)
                 .addComponent(formulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(menuInforme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(menuDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(menuInforme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(menuDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11))
         );
         jPanel9Layout.setVerticalGroup(
@@ -849,8 +847,7 @@ public class Registro_juegos extends javax.swing.JFrame {
 
     private void registro_juegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registro_juegoActionPerformed
        // TODO add your handling code here:
-        String ruta_nueva = txtruta.getText().replace("\\", "\\\\");
-        String [] datos_juego = {titulo.getText(),descripcion.getText(),precio.getText(),nota.getSelectedItem().toString(),genero.getSelectedItem().toString(),desarrolladora1.getText(),jugadores.getSelectedItem().toString(),ruta_nueva};
+        String [] datos_juego = {titulo.getText(),descripcion.getText(),precio.getText(),nota.getSelectedItem().toString(),genero.getSelectedItem().toString(),desarrolladora1.getText(),jugadores.getSelectedItem().toString(),txtruta.getText()};
         String Titulo= "'" + datos_juego[0] + "'";
         try {
             Titulo=conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select Titulo from juegos where Titulo="+Titulo), Titulo);
@@ -929,13 +926,11 @@ public class Registro_juegos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void Informe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe2ActionPerformed
-        
         this.rutacarpeta= new File(".\\src\\Reportes\\usuarios_por_mes.jasper");
         creacionInformes(true);
     }//GEN-LAST:event_Informe2ActionPerformed
 
     private void Informe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe1ActionPerformed
-        menuDatos.setVisible(false);
         this.rutacarpeta= new File(".\\src\\Reportes\\Usuarios_mas_rentables.jasper");
         creacionInformes(false);
     }//GEN-LAST:event_Informe1ActionPerformed
@@ -944,13 +939,9 @@ public class Registro_juegos extends javax.swing.JFrame {
 
         try{
             //JasperReport jr= JasperCompileManager.compileReport(this.rutacarpeta.getAbsolutePath());
-            Map parametros = new HashMap();
-            parametros.put("mes",Integer.parseInt(this.campo_mes.getText()));
-            parametros.put("anyo",Integer.parseInt(this.campo_anyo.getText()));
             System.out.println(this.rutacarpeta.getAbsolutePath());
-            JasperPrint jp;
-            jp = JasperFillManager.fillReport(this.rutacarpeta.getAbsolutePath(),parametros, conexion_db.getConnection_());
-            JasperViewer.viewReport(jp,false);
+            JasperPrint jp = JasperFillManager.fillReport(this.rutacarpeta.getAbsolutePath(),null, conexion_db.getConnection_() );
+            JasperViewer.viewReport(jp);
 
             }catch(Exception ex){
                 ex.printStackTrace();
@@ -971,13 +962,12 @@ public class Registro_juegos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonInformacionActionPerformed
 
-    private void campo_anyoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_anyoActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campo_anyoActionPerformed
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void Informe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe3ActionPerformed
         // TODO add your handling code here:
-        menuDatos.setVisible(false);
         this.rutacarpeta= new File(".\\src\\Reportes\\Juegos_mas_rentables.jasper");
         creacionInformes(false);
     }//GEN-LAST:event_Informe3ActionPerformed
@@ -1037,8 +1027,6 @@ public class Registro_juegos extends javax.swing.JFrame {
     private org.netbeans.validation.api.ui.swing.ValidationPanel Validador_titulo;
     private javax.swing.JButton ajustes;
     private javax.swing.JButton botonAdmin;
-    private javax.swing.JTextField campo_anyo;
-    private javax.swing.JTextField campo_mes;
     private javax.swing.JButton cerrarSButon;
     private javax.swing.JLabel dato1;
     private javax.swing.JLabel dato2;
@@ -1067,6 +1055,8 @@ public class Registro_juegos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JComboBox<String> jugadores;
     private javax.swing.JButton loginButton;
     private javax.swing.JButton menuButton;

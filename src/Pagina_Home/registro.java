@@ -171,13 +171,13 @@ public class registro extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pagina_Home/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel5.setText("jLabel5");
         jLabel5.setComponentPopupMenu(MenuAyuda);
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
 
         menuButton.setBackground(new java.awt.Color(0, 153, 255));
-        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeIcon.png"))); // NOI18N
+        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pagina_Home/images/homeIcon.png"))); // NOI18N
         menuButton.setComponentPopupMenu(MenuAyuda);
         menuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,7 +284,7 @@ public class registro extends javax.swing.JFrame {
         );
 
         BotonInformacion.setBackground(new java.awt.Color(0, 153, 255));
-        BotonInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/info.png"))); // NOI18N
+        BotonInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pagina_Home/images/info.png"))); // NOI18N
         BotonInformacion.setComponentPopupMenu(MenuAyuda);
         BotonInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

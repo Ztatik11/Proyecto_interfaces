@@ -6,6 +6,7 @@ package Pagina_Home;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
 
 public class homeMain extends JFrame {
     
-    public static void main(String[] args) throws SQLException, IOException {
+    public static void main(String[] args) throws SQLException, IOException, URISyntaxException {
         LocalDate fecha = LocalDate.now();
         consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
         creacion_tablas(conexion_db);

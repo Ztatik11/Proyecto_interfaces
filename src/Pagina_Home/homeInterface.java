@@ -53,7 +53,7 @@ public class homeInterface extends javax.swing.JFrame {
         comprobarInicioS(this.usuario_i);
         
         setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-        this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
+        //this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
         //Se utiliza para terminar conseguir el numero de columnas del result set
         ResultSetMetaData rsmd = resultSet.getMetaData();
         int totalColumnas = rsmd.getColumnCount();
@@ -250,7 +250,7 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 102, 204));
         jPanel4.setComponentPopupMenu(MenuAyuda);
 
-        fPS.setText("Shooter");
+        fPS.setText("FPS");
         fPS.setToolTipText("First person shooter");
         fPS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -608,12 +608,6 @@ public class homeInterface extends javax.swing.JFrame {
         J2.setBackground(new java.awt.Color(255, 255, 255));
         J2.setComponentPopupMenu(MenuAyuda);
 
-        B2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout J2Layout = new javax.swing.GroupLayout(J2);
         J2.setLayout(J2Layout);
         J2Layout.setHorizontalGroup(
@@ -861,13 +855,13 @@ public class homeInterface extends javax.swing.JFrame {
         });
         jPanel6.add(searchBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 125, 30));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pagina_Home/images/MicrosoftTeams-image (2).png"))); // NOI18N
         jLabel5.setText("jLabel5");
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
         jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(164, 9, 126, 125));
 
         menuButton.setBackground(new java.awt.Color(0, 153, 255));
-        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu_32px.png"))); // NOI18N
+        menuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pagina_Home/images/menu_32px.png"))); // NOI18N
         menuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuButtonMouseClicked(evt);
@@ -943,7 +937,7 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel6.add(UserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 140, 20));
 
         BotonInformacion.setBackground(new java.awt.Color(0, 153, 255));
-        BotonInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/info.png"))); // NOI18N
+        BotonInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pagina_Home/images/info.png"))); // NOI18N
         BotonInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BotonInformacionMouseClicked(evt);

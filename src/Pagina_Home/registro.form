@@ -148,7 +148,7 @@
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/MicrosoftTeams-image (2).png"/>
+                  <Image iconType="3" name="/Pagina_Home/images/MicrosoftTeams-image (2).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel5"/>
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -165,7 +165,7 @@
                   <Color blue="ff" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/homeIcon.png"/>
+                  <Image iconType="3" name="/Pagina_Home/images/homeIcon.png"/>
                 </Property>
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="MenuAyuda"/>
@@ -355,7 +355,7 @@
                   <Color blue="ff" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Images/info.png"/>
+                  <Image iconType="3" name="/Pagina_Home/images/info.png"/>
                 </Property>
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="MenuAyuda"/>
