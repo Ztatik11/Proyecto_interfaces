@@ -445,7 +445,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         jLabel19.setAutoscrolls(true);
         jLabel19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Shooter", "Plataformas", "RPG", "Rol", "MOBA", "Survival", "Horror", "Accion", "Aventura" }));
+        genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "FPS", "Plataformas", "RPG", "Rol", "MOBA", "Criaturas", "SoulsLike", "Accion", "Aventura" }));
         genero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generoActionPerformed(evt);
@@ -620,7 +620,6 @@ public class Registro_juegos extends javax.swing.JFrame {
         formulario.setViewportView(jPanel10);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LogoInform.png"))); // NOI18N
         jButton1.setText(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton1.text")); // NOI18N
         jButton1.setActionCommand(org.openide.util.NbBundle.getMessage(Registro_juegos.class, "Registro_juegos.jButton1.actionCommand")); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
