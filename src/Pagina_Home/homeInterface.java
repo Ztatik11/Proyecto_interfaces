@@ -39,7 +39,8 @@ public class homeInterface extends javax.swing.JFrame {
     public homeInterface(Usuario usuario) throws SQLException {
         initComponents();
         menu.setVisible(true);
-        sinResult.setVisible(false);
+        sinResult.setText("¡BIENVENIDO!");
+        sinResult.setVisible(true);
         ajustes.setVisible(false);
         miniMenu.setVisible(false);
         UserLabel.setVisible(false);
@@ -124,6 +125,7 @@ public class homeInterface extends javax.swing.JFrame {
             for(int j=0;labelJuego.length>j;j++ ){
                 System.out.println("entra");
                 labelJuego[j].getParent().setVisible(false);
+                sinResult.setText("NO SE HAN ENCONTRADO RESULTADOS");
                 sinResult.setVisible(true);
             }
             }
@@ -753,7 +755,8 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel16.add(J6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 150, 130));
 
         sinResult.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        sinResult.setText("NO SE HAN ENCONTRADO RESULTADOS");
+        sinResult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        sinResult.setText("¡BIENVENIDO!");
         jPanel16.add(sinResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 460, 40));
 
         jScrollPane2.setViewportView(jPanel16);
@@ -1057,6 +1060,7 @@ public class homeInterface extends javax.swing.JFrame {
                     for(int j=0;labelJuego.length>j;j++ ){
                     labelJuego[j].getParent().setVisible(false);
                     }
+                        sinResult.setText("NO SE HAN ENCONTRADO RESULTADOS");
                         sinResult.setVisible(true);      
                 }else{
                         sinResult.setVisible(false);
