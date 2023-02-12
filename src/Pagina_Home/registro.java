@@ -60,7 +60,6 @@ public class registro extends javax.swing.JFrame {
           }
         }
       });
-        this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
         this.conexion_db = new consultas_sql("mango_games","root","root");
    }
     
@@ -708,7 +707,7 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_cerrarSButonActionPerformed
 
     private void BotonInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInformacionMouseClicked
-        File htmlFile = new File("C:src/Pagina_manual//registro.html");
+        File htmlFile = new File("resources/Pagina_manual/registro.html");
         try {
             Desktop.getDesktop().browse(htmlFile.toURI());
         } catch (IOException ex) {
@@ -721,7 +720,7 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonInformacionActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-        File htmlFile = new File("C:src/Pagina_manual//registro.html");
+        File htmlFile = new File("resources/Pagina_manual/registro.html");
         try {
             Desktop.getDesktop().browse(htmlFile.toURI());
         } catch (IOException ex) {

@@ -61,7 +61,7 @@ public class Registro_juegos extends javax.swing.JFrame {
         this.conexion_db = new consultas_sql("mango_games","root","root");
         ResultSet juegos = conexion_db.realizar_consulta("select * from juegos");
         System.out.println(juegos);
-        this.setIconImage(new ImageIcon(getClass().getResource("/images/MicrosoftTeams-image (2).png")).getImage());
+       
         
         ValidationGroup Campo_Validador_titulo = Validador_titulo.getValidationGroup();
         ValidationGroup Campo_Validador_descripcion = Validador_descripcion.getValidationGroup();
@@ -930,13 +930,13 @@ public class Registro_juegos extends javax.swing.JFrame {
 
     private void Informe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe2ActionPerformed
         menuDatos.setVisible(true);
-        this.rutacarpeta= new File(".\\src\\Reportes\\usuarios_por_mes.jasper");
+        this.rutacarpeta= new File("resources/Reportes/usuarios_por_mes.jasper");
         creacionInformes(true);
     }//GEN-LAST:event_Informe2ActionPerformed
 
     private void Informe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe1ActionPerformed
         menuDatos.setVisible(false);
-        this.rutacarpeta= new File(".\\src\\Reportes\\Usuarios_mas_rentables.jasper");
+        this.rutacarpeta= new File("resources/Reportes/Usuarios_mas_rentables.jasper");
         creacionInformes(false);
     }//GEN-LAST:event_Informe1ActionPerformed
 
@@ -957,7 +957,7 @@ public class Registro_juegos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void BotonInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInformacionMouseClicked
-        File htmlFile = new File("C:src/Pagina_manual//index.html");
+        File htmlFile = new File("resources/Pagina_manual/menuAdministrador.html");
         try {
             Desktop.getDesktop().browse(htmlFile.toURI());
         } catch (IOException ex) {
@@ -976,7 +976,7 @@ public class Registro_juegos extends javax.swing.JFrame {
     private void Informe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Informe3ActionPerformed
         // TODO add your handling code here:
         menuDatos.setVisible(false);
-        this.rutacarpeta= new File(".\\src\\Reportes\\Juegos_mas_rentables.jasper");
+        this.rutacarpeta= new File("resources/Reportes/Juegos_mas_rentables.jasper");
         creacionInformes(false);
     }//GEN-LAST:event_Informe3ActionPerformed
 

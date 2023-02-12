@@ -230,7 +230,7 @@ public class InterfazJuego extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Smile.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pagina_Home/images/Smile.png"))); // NOI18N
         jLabel7.setText("jLabel7");
 
         javax.swing.GroupLayout Confirmacion_compraLayout = new javax.swing.GroupLayout(Confirmacion_compra);
@@ -624,7 +624,7 @@ public class InterfazJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_cerrarSButon2ActionPerformed
 
     private void BotonInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInformacionMouseClicked
-        File htmlFile = new File("C:src/Pagina_manual//index.html");
+        File htmlFile = new File("resources/Pagina_manual/interfazJuego.html");
         try {
             Desktop.getDesktop().browse(htmlFile.toURI());
         } catch (IOException ex) {

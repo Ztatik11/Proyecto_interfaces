@@ -210,7 +210,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JButton" name="fPS">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="FPS"/>
+                                <Property name="text" type="java.lang.String" value="Shooter"/>
                                 <Property name="toolTipText" type="java.lang.String" value="First person shooter"/>
                               </Properties>
                               <Events>
@@ -648,6 +648,7 @@
                             <Component class="javax.swing.JButton" name="B1">
                               <Events>
                                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="B1MousePressed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B1ActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="G1">

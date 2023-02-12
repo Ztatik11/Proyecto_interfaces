@@ -123,7 +123,6 @@ public class homeInterface extends javax.swing.JFrame {
                 search.add(juegos.get(i)); 
             }else{
             for(int j=0;labelJuego.length>j;j++ ){
-                System.out.println("entra");
                 labelJuego[j].getParent().setVisible(false);
                 sinResult.setText("NO SE HAN ENCONTRADO RESULTADOS");
                 sinResult.setVisible(true);
@@ -252,7 +251,7 @@ public class homeInterface extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 102, 204));
         jPanel4.setComponentPopupMenu(MenuAyuda);
 
-        fPS.setText("FPS");
+        fPS.setText("Shooter");
         fPS.setToolTipText("First person shooter");
         fPS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -578,6 +577,11 @@ public class homeInterface extends javax.swing.JFrame {
         B1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 B1MousePressed(evt);
+            }
+        });
+        B1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B1ActionPerformed(evt);
             }
         });
 
@@ -1211,7 +1215,7 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void jMenuItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MousePressed
-        File htmlFile = new File("C:src/Pagina_manual//paginaPrincipal.html");
+        File htmlFile = new File("resources/Pagina_manual/paginaPrincipal.html");
         try {
             Desktop.getDesktop().browse(htmlFile.toURI());
         } catch (IOException ex) {
@@ -1224,13 +1228,17 @@ public class homeInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonInformacionActionPerformed
 
     private void BotonInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInformacionMouseClicked
-        File htmlFile = new File("C:src/Pagina_manual//paginaPrincipal.html");
+        File htmlFile = new File("resources/Pagina_manual/paginaPrincipal.html");
         try {
             Desktop.getDesktop().browse(htmlFile.toURI());
         } catch (IOException ex) {
             Exceptions.printStackTrace(ex);
         }
     }//GEN-LAST:event_BotonInformacionMouseClicked
+
+    private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B1ActionPerformed
 
         
     /**

@@ -26,14 +26,14 @@ public class homeMain extends JFrame {
         LocalDate fecha = LocalDate.now();
         consultas_sql conexion_db = new consultas_sql("mango_games","root","root");
         creacion_tablas(conexion_db);
-        ArrayList<String[]> juegos = conexion_db.leer_csv(".\\src\\csv\\juegos.csv");
+        ArrayList<String[]> juegos = conexion_db.leer_csv("resources/csv/juegos.csv");
         conexion_db.insertar_fichero_csv(juegos,"juegos","Titulo,Descripcion,Precio,Nota,Genero,Desarrolladora,Numero_jugadores,Imagen", false);
         
         if(conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select * from usuarios where Usuario='root'"), "Usuario")==null){
             conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador,fecha_registro,ultimo_inicio_sesion", "'root','root','root','alvarocarrascogarcia6@gmail.es','Sevilla','root',true,"+conexion_db.parsear_cadena(conexion_db.formatear_fecha(fecha))+","+conexion_db.parsear_cadena(conexion_db.formatear_fecha(fecha)));
         }
         
-         ArrayList<String[]> Usuarios = conexion_db.leer_csv(".\\src\\csv\\usuarios.csv");
+         ArrayList<String[]> Usuarios = conexion_db.leer_csv("resources/csv/usuarios.csv");
         for(int i = 0; i < Usuarios.size(); i++){
             if(conexion_db.leer_resultset_string(conexion_db.realizar_consulta("select * from usuarios where Usuario='" + Usuarios.get(i)[0] +"'"), "Usuario")==null){
             conexion_db.insertar_una_nueva_fila_en_una_tabla("usuarios", "Usuario,Nombre,Apellidos,Email,residencia,clave,administrador,fecha_registro,ultimo_inicio_sesion", "'" + Usuarios.get(i)[0]+ "','" + Usuarios.get(i)[1]+"','" + Usuarios.get(i)[2]+"','" + Usuarios.get(i)[3]+"','" + Usuarios.get(i)[4]+"','" + Usuarios.get(i)[5]+"','" + Usuarios.get(i)[6]+"'," + Usuarios.get(i)[7] +"," + Usuarios.get(i)[8]);
@@ -43,7 +43,7 @@ public class homeMain extends JFrame {
             }
         }
         
-        ArrayList<String[]> compras = conexion_db.leer_csv(".\\src\\csv\\compras.csv");
+        ArrayList<String[]> compras = conexion_db.leer_csv("resources/csv/compras.csv");
         conexion_db.insertar_fichero_csv(compras,"compras","ID_usuario,ID_juego,Precio_transaccion,Fecha_de_compra", false);
         homeInterface a = null;
         try {
