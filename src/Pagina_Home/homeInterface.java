@@ -1039,7 +1039,8 @@ public class homeInterface extends javax.swing.JFrame {
                 String busqueda=searchBox.getText();
                 for(int i = 0; juegos.size()>i;i++){
                     System.out.println(busqueda+"=="+juegos.get(i).getTitulo());
-                    if(busqueda.equalsIgnoreCase(juegos.get(i).getTitulo())){
+                    String titulo=juegos.get(i).getTitulo();
+                    if(titulo.toLowerCase().startsWith(busqueda.toLowerCase())){
                         search.add(juegos.get(i)); 
                     }
                 }
